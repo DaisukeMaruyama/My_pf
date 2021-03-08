@@ -15,6 +15,7 @@
  */
  @import "bootstrap";
  
+ //common //
  body {
 	font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
     }
@@ -38,4 +39,41 @@
 
 .nav-link:hover {
 	opacity: 0.6;
+}
+
+/* flash  */
+
+.flash {
+  margin: 0 auto;
+  color: green;
+  background-color: #F5FFFA;
+  width: 100%;
+  text-align: center;
+}
+
+/*error */
+
+.error-explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 33px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+.error-explanation h3 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 33px;
+    background-color: #c00;
+    color: #fff;
+}
+
+.error-explanation li {
+    font-size: 12px;
+    margin: 0 33px;
 }

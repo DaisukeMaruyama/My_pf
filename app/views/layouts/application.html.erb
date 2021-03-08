@@ -74,6 +74,19 @@
       </div>
       </nav>
     </header>
+    
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="flash" style="color: red;">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    
     <%= yield %>
     <div class="contact-form">
       <div class="container">
