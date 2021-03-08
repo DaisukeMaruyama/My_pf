@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.instance_of?(Customer)
+    if resource.instance_of?(User)
       root_path
     elsif resource.instance_of?(Admin)
       admin_orders_path
@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_up_path_for(resource)
-    if resource.instance_of?(Customer)
-      customer_path(current_customer)
+    if resource.instance_of?(User)
+      customer_path(current_user)
     elsif resource.instance_of?(Admin)
       admin_orders_path
     else
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if resource == :customer
+    if resource == :User
       new_customer_session_path
     elsif resource == :admin
       new_admin_session_path
