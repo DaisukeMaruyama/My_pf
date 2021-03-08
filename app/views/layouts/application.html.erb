@@ -10,6 +10,63 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26110F;">
+        <div class="container">
+        <a class="navbar-brand" href="#" style="color: #EBE9DE;">SnackBen</a>
+        <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign up', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Login', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            </li>
+          </ul>
+          <form class="form-inline my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline my-sm-0" type="submit" style="color: #D98E04;">Search</button>
+          </form>
+        </div>
+      </div>
+      </nav>
+    </header>
     <%= yield %>
+    <div class="contact-form">
+      <div class="container">
+        <div class="row">
+          <h2 class="col-md-3 mt-3">SnackBen</h2>
+          <div class="col-md-4 mt-1">
+            <h2 class="cantact-heading">Information</h2>
+            <%= link_to 'About us', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            <%= link_to 'Inquiry', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+          </div>
+          <div class="col-md-5 mt-3">
+            <h5 class="mb-3">100% SATISFACTION GUARANTEED</h5>
+            <p>Contact us at any time and we'll get back to you right away!</p>
+          </div>
+          <p class="ml-2">© 2021 SnackBen.</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
