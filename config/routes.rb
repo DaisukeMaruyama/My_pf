@@ -14,5 +14,16 @@ devise_scope :user do
   get "login", :to => "users/sessions#new"
   get "logout", :to => "users/sessions#destroy"
 end
+
+resources :items, only: [:index, :show]
+
+namespace :admin do
+  resources :items, only: [:index, :create, :new, :update, :destroy, :show]
+end
+
+namespace :admin do
+  resources :genres, only: [:index, :create, :new, :update, :destroy, :show]
+end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
