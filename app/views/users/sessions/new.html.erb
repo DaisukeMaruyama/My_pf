@@ -1,26 +1,53 @@
-<h2>Log in</h2>
+<div class="container">
+    <h2 class="signup-heading mb-4" style="margin-top: 60px;">Sign in</h2>
+    <div class="Signup-section">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <% if @user.errors.any? %>
+        <div class="error-explanation">
+          <h3><%= @user.errors.count %>errors from being saved.</h3>
+          <% @user.errors.full_messages.each do |message| %>
+            <ul>
+              <li><%= message %></li>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="form-group row mt-2">
+        <label class="col-md-3"><strong>Email</strong></label>
+        <div class="col-md-9">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-2">
+        <label class="col-md-3"><strong>Password<br><span style="font-size: 8px;">(6 characters minimum)</span></strong></label>
+        <div class="col-md-9">
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="form-group row mt-2">
+        <label class="col-md-3"></label>
+        <div class="col-md-3 mt-2">
+          <%= f.submit "Signin", class:"btn btn-success" %>
+        </div>
+        <p class="col-sm-9 mt-4" style="margin-bottom: 90px;">New Customer? => <%= render "users/shared/links" %></p>
+      </div>
+    <% end %>
+
+
     </div>
-  <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+
