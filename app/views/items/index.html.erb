@@ -22,7 +22,7 @@
       
       <% @items.each do |item| %>
       <div class="card" style="width: 18rem;">
-        <span><%= attachment_image_tag item, :image, size:"190x150", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
         <div class="card-body">
           <h5 class="card-title"><%= item.item_name %></h5>
           <p class="card-text"><%= item.introduction %></p>
@@ -30,7 +30,6 @@
         </div>
       </div>
       <% end %>
-
       
     </div>
     
