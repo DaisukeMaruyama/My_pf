@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',
-  :sessions => 'users/sessions'   
+  :sessions => 'users/sessions',
+  :passwords => 'users/passwords'
 } 
 
 devise_scope :user do
@@ -13,6 +14,7 @@ devise_scope :user do
   get "signup", :to => "users/registrations#new"
   get "login", :to => "users/sessions#new"
   get "logout", :to => "users/sessions#destroy"
+  get "password", :to => "users/passwords#new" 
 end
 
 resources :items, only: [:index, :show]
