@@ -7,39 +7,18 @@
 		</div>
 		<h2 class="item-heading text-center col-md-12">Featured products</h2>
 	</div>	
+	
 	<div class="items col-md-12 mx-auto">	
-		<div class="card" style="width: 18rem;">
-			<img src="/assets/photo-1.jpeg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">the card's content.</p>
-				<a href="#" class="btn btn-primary">Add to cart</a>
-			</div>				
-		</div>
-		<div class="card" style="width: 18rem;">
-			<img src="/assets/photo-1.jpeg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">the card's content.</p>
-				<a href="#" class="btn btn-primary">Add to cart</a>
-			</div>				
-		</div>
-		<div class="card" style="width: 18rem;">
-			<img src="/assets/photo-1.jpeg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">the card's content.</p>
-				<a href="#" class="btn btn-primary">Add to cart</a>
-			</div>				
-		</div>
-		<div class="card" style="width: 18rem;">
-			<img src="/assets/photo-1.jpeg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">the card's content.</p>
-				<a href="#" class="btn btn-primary">Add to cart</a>
-			</div>				
-		</div>		
+		<% @items.each do |item| %>
+      <div class="card" style="width: 18rem; min-height: 340px;">
+        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+        <div class="card-body">
+          <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
+          <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
+          <%= link_to 'Add to cart', root_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>	
 	</div>
 	
 	<div class="container">
