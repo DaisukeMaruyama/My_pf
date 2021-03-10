@@ -25,7 +25,7 @@
         <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
         <div class="card-body">
           <h5 class="card-title"><%= item.item_name %></h5>
-          <p class="card-text"><%= item.introduction %></p>
+          <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
           <span><%= link_to 'Add to cart', root_path, class: 'btn btn-primary' %></span>
         </div>
       </div>
