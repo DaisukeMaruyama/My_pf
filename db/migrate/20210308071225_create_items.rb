@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :item_name
       t.string :image_id
       t.text :introduction
-      t.integer :price
+      t.decimal  :price, precision: 8, scale: 2
       t.boolean :is_active, default: true
 
       t.timestamps

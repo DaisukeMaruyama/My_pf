@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_075547) do
     t.string "item_name"
     t.string "image_id"
     t.text "introduction"
-    t.integer "price"
+    t.decimal "price", precision: 8, scale: 2
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_075547) do
     t.datetime "remember_created_at"
     t.string "last_name"
     t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"

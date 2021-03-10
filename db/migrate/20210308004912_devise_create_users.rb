@@ -15,8 +15,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
       t.string "last_name"
       t.string "first_name"
-      t.string "last_name_kana"
-      t.string "first_name_kana"
       t.string "postal_code"
       t.string "address"
       t.string "phone_number"
