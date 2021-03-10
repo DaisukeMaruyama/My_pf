@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Itme.find(params[:id])
+    @item = Ite.find(params[:id])
   end
   
 end
