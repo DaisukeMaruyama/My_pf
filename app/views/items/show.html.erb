@@ -1,2 +1,20 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <h2 class="mt-4 mb-4">Product detail</h2>
+  <div class="row"  style="padding-bottom: 70px;">
+    <div class="col-lg-5 col-sm-12">
+      <%= attachment_image_tag @item, :image, size: "450x450", fallback: "no-image.jpeg", format: "jpeg", class: "card" %>
+    </div>
+    <div class="col-lg-5 offset-lg-1 col-sm-11 col-md-10">
+      <h2>Brand name</h2>
+      <h3 style="margin-bottom: 30px;"><%= @item.item_name %></h3>
+      <h5 style="margin-bottom: 30px;"><%= @item.introduction %></h5>
+      <h2 style="margin-bottom: 30px;">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
+
+      <%= form_with model: @item, url: cart_items_path, scope: :cart_item, local:true do |f| %>
+        <%= f.select :amount,(1..10).to_a, {}, {:class => "form-control"} %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit 'Add to card',class:"btn btn-success mt-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>
