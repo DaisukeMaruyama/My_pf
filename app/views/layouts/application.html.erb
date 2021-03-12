@@ -64,14 +64,13 @@
               <%= link_to 'Sign in', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
             </li>
             <% end %>
-            
           </ul>
-          <form class="form-inline my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline my-sm-0" type="submit" style="color: #D98E04;">Search</button>
-          </form>
+          <%= form_tag(root_path, method: :get, class:"d-flex flex-row form-inline my-lg-0") do %>
+            <%= text_field_tag 'search[content]','', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
+            <%= submit_tag 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
+          <% end %>
         </div>
-      </div>
+        </div>
       </nav>
     </header>
     <main>
