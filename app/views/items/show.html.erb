@@ -10,11 +10,13 @@
       <h5 style="margin-bottom: 30px;"><%= @item.introduction %></h5>
       <h2 style="margin-bottom: 30px;">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
 
-      <%= form_with model: @item, url: cart_items_path, scope: :cart_item, local:true do |f| %>
-        <%= f.select :amount,(1..10).to_a, {}, {:class => "form-control"} %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit 'Add to card',class:"btn btn-success mt-4" %>
-      <% end %>
+      <% if current_user %>
+        <%= form_with model: @cart_items,url: cart_items_path, local:true, scope: :cart_item do |f|  %>
+          <%= f.select :amount,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg mt-4"%>
+        <% end %>
+      <% end %>  
     </div>
   </div>
 </div>
