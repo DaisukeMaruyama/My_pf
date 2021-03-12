@@ -1,2 +1,65 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="ec-cart-index-main col-md-12">
+			<h2 class="ec-cart-index-title">Shopping Cart</h2>
+			<!-- success-massageはlayout.html -->
+
+			<div class="btn-box text-right">
+				<%= link_to "Empty the cart", cart_items_destroy_all_path, method: :delete, class:"btn btn-danger" %>
+			</div>
+			<!-- カート商品一覧 -->
+			<div class="cart-item-table row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="active" colspan="2">Product name</th>
+							<th class="active text-center">Unit Price</th>
+							<th class="active text-center">Amount</th>
+							<th class="active text-center">Subtotal</th>
+							<th class="active"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @user.cart_items.each do |cart_item| %>
+						<tr>
+						  <td><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %> </td>
+							<td><%= cart_item.item.item_name %></td>
+							<td class="text-center">$ <%= number_with_precision(cart_item.item.price, precision: 2) %></td>
+							<td class="d-flex justify-content-center">
+
+								<%= form_with model: cart_item, class:"form-inline",local:true do |f| %>
+									<div class="ml-auto">
+										<%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
+										<%= f.submit "Edit", class:"btn btn-primary" %>
+									</div>
+								<% end %>
+
+							</td>
+							<td class="text-center">$ <%= number_with_precision(cart_item.subtotal_price, precision: 2) %></td><!-- cart_item.subtotal_priceはcart_item.rbに記載 -->
+							<td class="text-right"><%= link_to "Remove", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<!-- 合計金額 -->
+			<div class="cart-total-table row">
+				<div class="col-8 return-shopping-btn-wrapper"><%= link_to "Continue Shopping", items_path, class:"btn btn-default" %></div>
+				<div class="col-4">
+					<table class="table">
+						<tbody>
+							<th class="active-nonsense">Grand total</th><!-- クラス名を後ほど作成。とりあえずの名前 -->
+							<td class="text-right">$ <%= number_with_precision(@user.cart_item_sum, precision: 2) %></td><!-- cart_item_sumはuserモデルに定義あり -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- ボタン群 -->
+      <% if current_user.cart_items.present? %>
+				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4">
+					<%= link_to "Proceed to cheakout",root_path, class:"btn btn-primary form-control" %>
+        </div>
+      <% end %>
+		</div>
+	</div>
+</div>

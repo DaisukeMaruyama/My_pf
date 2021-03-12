@@ -1,3 +1,29 @@
 // Place all the styles related to the cartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ec-cart-index-main{
+	margin: 30px auto;
+}
+.ec-cart-index-title{
+	font-family: 'Noto Serif JP', serif;
+	margin-bottom: 50px;
+}
+
+.cart-item-table,
+.cart-total-table{
+	margin-top: 30px;
+}
+
+.return-shopping-btn-wrapper{
+	margin-top: 10px;
+}
+
+.create-order-btn-wrapper{
+	margin-top: 50px;
+	height: 50px;
+}
+
+.create-order-btn-wrapper{
+	margin-bottom: 50px;
+}
