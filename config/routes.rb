@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'cart_items/index'
-  get 'cart_items/create'
-  get 'cart_items/destroy'
-  get 'cart_items/destroy_all'
-  get 'cart_items/update'
   root to: 'homes#top'
   get '/about' => 'homes#about'
   
@@ -24,6 +19,7 @@ end
 
 resources :items, only: [:index, :show]
 
+delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
 
 namespace :admin do
