@@ -9,7 +9,7 @@
 			</div>
 			<!-- カート商品一覧 -->
 			<div class="cart-item-table row">
-				<table class="table01">
+				<table class="table01 table table-sm">
     <thead>
       <tr>
         <th colspan="2">Product name</th>
@@ -24,9 +24,9 @@
       	<% @user.cart_items.each do |cart_item| %>
       	<tr>
         <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
-        <td label="Product name" class="text-center"><p><%= cart_item.item.item_name %></p></td>
-        <td label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
-        <td label="Amount" class="text-center" style="white-space: nowrap;" >
+        <td data-label="Product name" class="text-center"><p><%= cart_item.item.item_name %></p></td>
+        <td data-label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
+        <td data-label="Amount" class="text-center" style="white-space: nowrap;" >
         	<%= form_with model: cart_item, class:"form-inline",local:true do |f| %>
 						<div class="mx-auto">
 							<%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
@@ -34,7 +34,7 @@
 					  </div>
 					<% end %>
         </td>
-        <td label="Subtotal" class="text-center"><p>$ <%= number_with_precision(cart_item.subtotal_price, precision: 2) %></p></td><!-- cart_item.subtotal_priceはcart_item.rbに記載 -->
+        <td data-label="Subtotal" class="text-center"><p>$ <%= number_with_precision(cart_item.subtotal_price, precision: 2) %></p></td><!-- cart_item.subtotal_priceはcart_item.rbに記載 -->
 				<td class="text-right"><p><%= link_to "Remove", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></p></td>
         </tr>
         <% end %>
@@ -48,8 +48,8 @@
 				<div class="col-md-8 return-shopping-btn-wrapper"><%= link_to "Continue Shopping", items_path, class:"btn btn-default" %></div>
 				<div class="col-md-4 ">
 					<table class="table">
-						<tbody>
-							<th class="active-nonsense">Grand total</th><!-- クラス名を後ほど作成。とりあえずの名前 -->
+						<tbody class="active-grand-total">
+							<th>Grand total</th><!-- クラス名を後ほど作成。とりあえずの名前 -->
 							<td class="text-right">$ <%= number_with_precision(@user.cart_item_sum, precision: 2) %></td><!-- cart_item_sumはuserモデルに定義あり -->
 						</tbody>
 					</table>
@@ -57,8 +57,8 @@
 			</div>
 			<!-- ボタン群 -->
       <% if current_user.cart_items.present? %>
-				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mb-5">
-					<%= link_to "Proceed to cheakout",root_path, class:"btn btn-primary form-control" %>
+				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mb-5 text-center">
+					<%= link_to "Proceed to cheakout",root_path, class:"btn btn-primary form-control mt-4", style:"width: 60%;" %>
         </div>
       <% end %>
 		</div>
