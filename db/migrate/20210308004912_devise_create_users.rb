@@ -18,6 +18,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string "postal_code"
       t.string "address"
       t.string "phone_number"
+      t.string "country"
+      t.string "city"
       t.boolean "is_deleted", default: false
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
