@@ -23,7 +23,7 @@
           <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
           <%= f.label :oaddress, "Your address" %><br>
           <p class="ml-4">〒<%= @user.postal_code %> <%= @user.address %></p>
-          <p class="ml-4"><%= @user.last_name+" "+@user.first_name %> 様</p>
+          <p class="ml-4"><%= @user.first_name %>+" "+<%= @user.last_name %></p>
         </div>
       <% end %>
   
@@ -55,30 +55,23 @@
         </div>
         
         <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
+          <label class="col-sm-3"><strong>City</strong></label>
           <div class="col-sm-9">
-             <%= f.text_field :postal_code %>
+            <%= f.text_field :city %>
           </div>
         </div>
         
         <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>City</strong></label>
+          <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
           <div class="col-sm-9">
-            <%= f.text_field :city %>
+             <%= f.text_field :postal_code %>
           </div>
         </div>
       
         <div class="form-group row mt-2">
           <label class="col-sm-3"><strong>Country</strong></label>
           <div class="col-sm-9">
-            <%= f.text_field :country %>
-          </div>
-        </div>
-        
-        <div class="form-group row mt-2 mb-5">
-          <label class="col-sm-3"><strong>Phone Number</strong></label>
-          <div class="col-sm-9">
-            <%= f.text_field :phone_number %>
+            <%= f.country_select :country, { only: ["AU", "US", "DE", "KR", "TW", "GB", "CN"], selected: "US"  }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
           </div>
         </div>
       </div>  
@@ -88,9 +81,11 @@
   <div class="col-lg-4">
     <h4><strong><%= f.label :shipping_method, "Shipping Method" %></strong></h4>
       <div class="field mb-5">
-          <%= f.radio_button :shipping_method,:"Includes tracking (SP)",  checked: "checked" ,class:"ml-3" %>
+        
+        
+          <%= f.radio_button :shipping_method, :Includes_tracking ,  checked: "checked" ,class:"ml-3" %>
           <%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %><br>
-          <%= f.radio_button :shipping_method, :"DHL / FedEx" ,class:"ml-3" %>
+          <%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
           <%= f.label :shipping_method, "DHL / FedEx $ 23.00" %>
       </div>
       
@@ -112,7 +107,7 @@
       
 
 
-      <div class="actions text-center mb-3">
+      <div class="actions text-center mb-5">
         <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
       </div>
 

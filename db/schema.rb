@@ -41,9 +41,13 @@ ActiveRecord::Schema.define(version: 2021_03_14_110320) do
     t.integer "user_id"
     t.string "postal_code"
     t.string "address"
-    t.string "name"
     t.integer "shipping_cost"
     t.integer "total_payment"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "country"
+    t.string "city"
+    t.integer "shipping_method", default: 0
     t.integer "payment_method", default: 0
     t.integer "order_status", default: 0
     t.datetime "created_at", null: false
@@ -61,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_110320) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
+    t.string "country"
+    t.string "city"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
