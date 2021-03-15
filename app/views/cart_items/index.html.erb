@@ -58,7 +58,7 @@
 			<!-- ボタン群 -->
       <% if current_user.cart_items.present? %>
 				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mb-5 text-center">
-					<%= link_to "Proceed to cheakout",root_path, class:"btn btn-primary form-control mt-4", style:"width: 60%;" %>
+					<%= link_to "Proceed to cheakout", new_order_path, class:"btn btn-primary form-control mt-4", style:"width: 60%;" %>
         </div>
       <% end %>
 		</div>
