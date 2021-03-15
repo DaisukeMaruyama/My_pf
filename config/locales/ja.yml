@@ -1,0 +1,11 @@
+ja:
+enum:
+   order:
+   new:
+     country:
+       US: "United states"
+       CN: "Cinna"
+       GM: "Germany"
+       GB: "United kingdom"
+       TW: "Taiwan"
+       KR: "Korea"  
