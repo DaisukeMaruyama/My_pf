@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :cart_items, dependent: :destroy
+  has_many :order
   
      # カートアイテム金額合計
   def cart_item_sum

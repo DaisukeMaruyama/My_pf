@@ -1,0 +1,121 @@
+<div class="container">
+
+	<h2 class="ec-cart-index-title mt-3">Cheak Out</h2>
+
+
+  <%= form_with model: @order,url: confirm_orders_path, method: :post, local: true do |f| %>
+    <% if @order.errors.any? %>
+        <div class="error-explanation">
+          <h3><%= @order.errors.count %>件のエラーが発生しております。</h3>
+          <% @order.errors.full_messages.each do |message| %>
+            <ul>
+              <li><%= message %></li>
+            </ul>
+          <% end %>  
+        </div>
+    <% end %>
+
+<div class="row">
+  <div class="col-lg-8">
+    <h4><strong><%= f.label :address, "Billing Information" %></strong></h4>
+      <% if current_user.postal_code && current_user.address %>
+        <div class="field mt-3 ml-3">
+          <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
+          <%= f.label :oaddress, "Your address" %><br>
+          <p class="ml-4">〒<%= @user.postal_code %> <%= @user.address %></p>
+          <p class="ml-4"><%= @user.last_name+" "+@user.first_name %> 様</p>
+        </div>
+      <% end %>
+  
+  
+      <div class="field ml-3">
+        <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
+        <%= f.label :address, "Ship to registered addresses" %><br>
+        <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
+        <%#<%= f.collection_select(:address, @registered_addresses, :id, :full_shipping_address,{prompt: "選択してください"}, {class: "ml-4 registered-address"} ) %>
+      </div>
+  
+      
+      <div class="field mt-3 ml-3">
+          <%= radio_button_tag :address_type, 2 ,class:"ml-3"%>
+          <%= f.label :address, "Ship to this address" %><br>
+          
+        <div class="form-group row mt-2">
+          <label class="col-sm-3"><strong>Name</strong></label>
+          <div class="col-sm-9">
+            <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+          </div>
+        </div>
+        
+        <div class="form-group row mt-2">
+          <label class="col-sm-3"><strong>Address</strong></label>
+          <div class="col-sm-9">
+            <%= f.text_field :address, size:"45" %>
+          </div>
+        </div>
+        
+        <div class="form-group row mt-2">
+          <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
+          <div class="col-sm-9">
+             <%= f.text_field :postal_code %>
+          </div>
+        </div>
+        
+        <div class="form-group row mt-2">
+          <label class="col-sm-3"><strong>City</strong></label>
+          <div class="col-sm-9">
+            <%= f.text_field :city %>
+          </div>
+        </div>
+      
+        <div class="form-group row mt-2">
+          <label class="col-sm-3"><strong>Country</strong></label>
+          <div class="col-sm-9">
+            <%= f.text_field :country %>
+          </div>
+        </div>
+        
+        <div class="form-group row mt-2 mb-5">
+          <label class="col-sm-3"><strong>Phone Number</strong></label>
+          <div class="col-sm-9">
+            <%= f.text_field :phone_number %>
+          </div>
+        </div>
+      </div>  
+      
+    </div>    
+    
+  <div class="col-lg-4">
+    <h4><strong><%= f.label :shipping_method, "Shipping Method" %></strong></h4>
+      <div class="field mb-5">
+          <%= f.radio_button :shipping_method,:"Includes tracking (SP)",  checked: "checked" ,class:"ml-3" %>
+          <%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %><br>
+          <%= f.radio_button :shipping_method, :"DHL / FedEx" ,class:"ml-3" %>
+          <%= f.label :shipping_method, "DHL / FedEx $ 23.00" %>
+      </div>
+      
+      
+      <h4><strong><%= f.label :payment_method, "Payment Information" %></strong></h4>
+      <div class="field mb-5">
+          <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
+          <%= f.label :payment_method, "Credit Card" %><br>
+          <%= f.radio_button :payment_method, :Paypal ,class:"ml-3" %>
+          <%= f.label :payment_method, "Paypal" %>
+      </div>
+      
+  </div>
+  
+
+
+  
+</div>  
+      
+
+
+      <div class="actions text-center mb-3">
+        <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
+      </div>
+
+  <% end %>
+</div>
+

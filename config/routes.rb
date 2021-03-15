@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'homes#top'
   get '/about' => 'homes#about'
   
@@ -21,6 +21,13 @@ resources :items, only: [:index, :show]
 
 delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+
+get 'orders/thanks' => 'orders#thanks'
+resources :orders, only: [:show, :index, :new, :create] do
+  collection do
+    post :confirm
+  end
+end
 
 namespace :admin do
   resources :items, only: [:index, :create, :new, :update, :destroy, :show]
