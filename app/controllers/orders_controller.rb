@@ -62,6 +62,9 @@ class OrdersController < ApplicationController
     #Delivery.create(customer_id: current_user.id, postal_code: @order.postal_code, address: @order.address, name: @order.name)
     #current_user.cart_items.destroy_all
    # redirect_to orders_thanks_path
+   
+   
+   
   end
 
   def thanks

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :charges
+
   root to: 'homes#top'
   get '/about' => 'homes#about'
   
