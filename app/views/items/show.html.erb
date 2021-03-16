@@ -14,7 +14,7 @@
         <%= form_with model: @cart_items,url: cart_items_path, local:true, scope: :cart_item do |f|  %>
           <%= f.select :amount,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg mt-4"%>
+          <%= f.submit 'Add to cart', class: "btn btn-success btn-new-register btn-lg mt-4"%>
         <% end %>
       <% end %>  
     </div>
