@@ -11,12 +11,6 @@ class OrdersController < ApplicationController
 
   def show
     #@order = Order.find(params[:id])
-    @shipping_cost = 800
-
-    # 商品合計(送料なし)
-    #@payment_without_shipping = @order.total_payment -= 800
-    # 商品合計(送料あり)
-    #@payment_with_shipping = @order.total_payment += 800
   end
 
   def index
@@ -24,11 +18,10 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @shipping_cost = 800
+
     @order = current_user.order.build(set_order)
 
-    #合計金額
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @shipping_cost
+    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_i
 
     case params[:address_type]
     when "0"
@@ -48,7 +41,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.order.build(set_order)
     @shipping_cost = 800
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @shipping_cost
+    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + shipping_cost
 
     unless @order.valid?
       @delivery = Delivery.new
