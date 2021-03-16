@@ -15,102 +15,100 @@
         </div>
     <% end %>
 
-<div class="row">
-  <div class="col-lg-8">
-    <h4><strong><%= f.label :address, "Billing Information" %></strong></h4>
-      <% if current_user.postal_code && current_user.address %>
-        <div class="field mt-3 ml-3">
-          <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
-          <%= f.label :oaddress, "Your address" %><br>
-          <p class="ml-4">〒<%= @user.postal_code %> <%= @user.address %></p>
-          <p class="ml-4"><%= @user.first_name %>+" "+<%= @user.last_name %></p>
-        </div>
-      <% end %>
-  
-  
-      <div class="field ml-3">
-        <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
-        <%= f.label :address, "Ship to registered addresses" %><br>
-        <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
-        <%#<%= f.collection_select(:address, @registered_addresses, :id, :full_shipping_address,{prompt: "選択してください"}, {class: "ml-4 registered-address"} ) %>
-      </div>
-  
-      
-      <div class="field mt-3 ml-3">
-          <%= radio_button_tag :address_type, 2 ,class:"ml-3"%>
-          <%= f.label :address, "Ship to this address" %><br>
-          
-        <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>Name</strong></label>
-          <div class="col-sm-9">
-            <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+  <div class="row">
+    <div class="col-lg-8">
+      <h4><strong><%= f.label :address, "Shipping Information" %></strong></h4>
+        <% if current_user.postal_code && current_user.address %>
+          <div class="field mt-3 ml-3">
+            <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
+            <%= f.label :oaddress, "Your address" %><br>
+            <p class="ml-4">〒<%= @user.postal_code %> <%= @user.address %></p>
+            <p class="ml-4"><%= @user.first_name %>+" "+<%= @user.last_name %></p>
           </div>
-        </div>
-        
-        <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>Address</strong></label>
-          <div class="col-sm-9">
-            <%= f.text_field :address, size:"45" %>
-          </div>
-        </div>
-        
-        <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>City</strong></label>
-          <div class="col-sm-9">
-            <%= f.text_field :city %>
-          </div>
-        </div>
-        
-        <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
-          <div class="col-sm-9">
-             <%= f.text_field :postal_code %>
-          </div>
-        </div>
-      
-        <div class="form-group row mt-2">
-          <label class="col-sm-3"><strong>Country</strong></label>
-          <div class="col-sm-9">
-            <%= f.country_select :country, { only: ["AU", "US", "DE", "KR", "TW", "GB", "CN"], selected: "US"  }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
-          </div>
-        </div>
-      </div>  
-      
-    </div>    
+        <% end %>
     
-  <div class="col-lg-4">
-    <h4><strong><%= f.label :shipping_method, "Shipping Method" %></strong></h4>
-      <div class="field mb-5">
+    
+        <div class="field ml-3">
+          <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
+          <%= f.label :address, "Ship to registered addresses" %><br>
+          <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
+          <%#<%= f.collection_select(:address, @registered_addresses, :id, :full_shipping_address,{prompt: "選択してください"}, {class: "ml-4 registered-address"} ) %>
+        </div>
+    
         
+        <div class="field mt-3 ml-3">
+            <%= radio_button_tag :address_type, 2 ,class:"ml-3"%>
+            <%= f.label :address, "Ship to this address" %><br>
+            
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>Name</strong></label>
+            <div class="col-sm-9">
+              <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+            </div>
+          </div>
+          
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>Address</strong></label>
+            <div class="col-sm-9">
+              <%= f.text_field :address, size:"45" %>
+            </div>
+          </div>
+          
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>City</strong></label>
+            <div class="col-sm-9">
+              <%= f.text_field :city %>
+            </div>
+          </div>
+          
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
+            <div class="col-sm-9">
+               <%= f.text_field :postal_code %>
+            </div>
+          </div>
         
-          <%= f.radio_button :shipping_method, :Includes_tracking ,  checked: "checked" ,class:"ml-3" %>
-          <%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %><br>
-          <%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
-          <%= f.label :shipping_method, "DHL / FedEx $ 23.00" %>
-      </div>
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>Country</strong></label>
+            <div class="col-sm-9">
+              <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"], selected: "US"  }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
+            </div>
+          </div>
+        </div>  
+        
+      </div>    
       
+      <div class="col-lg-4">
       
-      <h4><strong><%= f.label :payment_method, "Payment Information" %></strong></h4>
-      <div class="field mb-5">
-          <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
-          <%= f.label :payment_method, "Credit Card" %><br>
-          <%= f.radio_button :payment_method, :Paypal ,class:"ml-3" %>
-          <%= f.label :payment_method, "Paypal" %>
-      </div>
-      
-  </div>
+      <%#<%= f.label :shipping_method, "Shipping Method" %>
+        <div class="field mb-5">
   
+            <%#後学のため残す。
+            <%#<%= f.radio_button :shipping_method, :Includes_tracking ,  checked: "checked" ,class:"ml-3" %>
+            <%#<%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %>
+            <%#<%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
+            <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %> 
 
-
-  
-</div>  
-      
-
-
-      <div class="actions text-center mb-5">
-        <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
+          <h4><strong><%= f.label :payment_method, "Payment Method" %></strong></h4>
+          <div class="field mb-5">
+              <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
+              <%= f.label :payment_method, "Credit Card" %><br>
+              <%= f.radio_button :payment_method, :Paypal ,class:"ml-3 mt-2" %>
+              <%= f.label :payment_method, "Paypal" %>
+          </div>
+        </div>
+        <div class="field">
+          <h5><strong>Dlivery Service</strong></h5>
+  　　　　<p class="text-justify" style="font-size: 15px; margin-top: -10px;">Depending on the country.Plese cheak it out on the next page.<br>We try our best to get deliveries out to you on time, but sometimes international deliveries can take longer than expected.</p>
+        </div>  
       </div>
-
+    </div>  
+        
+    <div class="actions text-center mb-5 mt-3">
+      <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
+    </div>
+  
   <% end %>
 </div>
 
