@@ -24,10 +24,12 @@ resources :items, only: [:index, :show]
 delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
 
+
 get 'orders/thanks' => 'orders#thanks'
 resources :orders, only: [:show, :index, :new, :create] do
   collection do
     post :confirm
+    post :pay
   end
 end
 
