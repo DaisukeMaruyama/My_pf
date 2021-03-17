@@ -2,7 +2,7 @@ class Order < ApplicationRecord
 
   validates :postal_code, presence: true
   validates :address, length: {minimum: 2, maximum: 100}, presence: true
-	validates :name, length: {minimum: 1}, presence: true
+	
 
   enum payment_method: {Creditcard:0, Paypal:1},  _prefix: true
   #enum shipping_method: {Includes_tracking:0, DHL_FedEx:1},  _prefix: true

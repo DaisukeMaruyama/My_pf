@@ -2,7 +2,7 @@
 	<div class="row mx-2">
 		<div class="ec-cart-index-main col-md-12">
 			<h2 class="ec-cart-index-title">Order Confirmation</h2>
-			
+
 			        <table class="table table-bordered mb-5">
           <tr>
             <th class="active">Delivery Days</th>
@@ -69,11 +69,43 @@
               </tr>
             </tbody>
           </table>
+
+ <%= form_tag pay_orders_path, method: :post do |f| %>
+
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $ <%= number_with_precision(@order.total_payment, precision: 2) %></span>
+      </label>
+    </article>
+      <%= hidden_field_tag(:amount, @order.total_payment) %>
+      <%= hidden_field_tag(:postal_code, @order.postal_code) %>
+      
+      <%= hidden_field_tag(:address, @order.address) %>
+      <%= hidden_field_tag(:last_name, @order.last_name) %>
+      <%= hidden_field_tag(:first_name, @order.first_name) %>
+      <%= hidden_field_tag(:city, @order.city) %>
+      <%= hidden_field_tag(:country, @order.country) %>
+      <%= hidden_field_tag(:payment_method, @order.payment_method) %>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Payment"
+            data-locale="en"
+            >
+
+    </script>
+  <% end %>
+
+
         </div>
       </div>
     </div>
   </div>
-
 
 
       <div class="comfirmation-btn-wrap text-center mb-5">
@@ -88,8 +120,9 @@
           <%= f.hidden_field :payment_method, value: @order.payment_method %>
           <%= f.submit "Procced to payment", class:"btn btn-primary" %>
         <% end %>
-        
+
       </div>
 
-</div>
+
+  </div>
 </div>

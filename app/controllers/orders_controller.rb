@@ -4,9 +4,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    #@Delivery = Delivery.new
     @user = User.find(current_user.id)
-    #@registered_addresses = Delivery.where(user_id: current_user.id)
+
   end
 
   def show
@@ -36,36 +35,82 @@ class OrdersController < ApplicationController
       end
     when "2"
     end
+
   end
 
   def create
     @order = current_user.order.build(set_order)
-    @shipping_cost = 800
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + shipping_cost
 
-    unless @order.valid?
-      @delivery = Delivery.new
-      render :new
-    end
+    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_i
 
      @order.save
+
       current_user.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
         @order_detail.order_id = @order.id
         @order_detail.item_id = cart_item.item.id
-        @order_detail.price = cart_item.item.price_with_tax
+        @order_detail.price = cart_item.item.price
         @order_detail.amount = cart_item.amount
         @order_detail.making_status = 0
         @order_detail.save
       end
-      #Addressに登録する処理
-    #Delivery.create(customer_id: current_user.id, postal_code: @order.postal_code, address: @order.address, name: @order.name)
-    #current_user.cart_items.destroy_all
-   # redirect_to orders_thanks_path
-   
-   
-   
+
+    current_customer.cart_items.destroy_all
+    redirect_to orders_thanks_path
+
+
   end
+
+  def pay
+    
+    
+    total = ( params[:amount].to_d * 100).to_i
+    #hidden_field_tagで受け取った値を計算。stripeは小数点の値を受け取れない。ドル換算の場合は１００をかける。.to_iは整数を数字に変える。
+      customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+
+      charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => total,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+  
+    @order = Order.new
+    @order.total_payment = params[:amount].to_d
+    @order.address = params[:address]
+    @order.postal_code = params[:postal_code]
+    @order.last_name = params[:last_name]
+    @order.first_name = params[:first_name]
+    @order.city = params[:city]
+    @order.country = params[:country]
+     @order.save
+
+      current_user.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item.id
+        @order_detail.price = cart_item.item.price
+        @order_detail.amount = cart_item.amount
+        @order_detail.making_status = 0
+        @order_detail.save
+      end
+
+    current_user.cart_items.destroy_all
+    redirect_to orders_thanks_path
+    
+    
+
+  rescue Stripe::CardError => e
+  flash[:error] = e.message
+  redirect_to orders_thanks_path
+
+
+  end
+
 
   def thanks
   end
@@ -75,7 +120,7 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-    params.require(:order).permit(:total_payment, :payment_method, :address, :postal_code, :last_name, :first_name, :city, :country, :shipping_method)
+    params.require(:order).permit(:payment_method, :address, :postal_code, :last_name, :first_name, :city, :country)
   end
 
 end
