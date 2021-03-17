@@ -83,10 +83,12 @@
           <%= f.hidden_field :address, value: @order.address %>
           <%= f.hidden_field :last_name, value: @order.last_name %>
           <%= f.hidden_field :first_name, value: @order.first_name %>
+          <%= f.hidden_field :city, value: @order.city %>
+          <%= f.hidden_field :country, value: @order.country %>
           <%= f.hidden_field :payment_method, value: @order.payment_method %>
           <%= f.submit "Procced to payment", class:"btn btn-primary" %>
         <% end %>
-        <%#= link_to "購入を確定する", orders_path(@order), method: :post, class:"btn btn-primary" %>
+        
       </div>
 
 </div>
