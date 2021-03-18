@@ -38,29 +38,6 @@ class OrdersController < ApplicationController
 
   end
 
-  def create
-    @order = current_user.order.build(set_order)
-
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_i
-
-     @order.save
-
-      current_user.cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new
-        @order_detail.order_id = @order.id
-        @order_detail.item_id = cart_item.item.id
-        @order_detail.price = cart_item.item.price
-        @order_detail.amount = cart_item.amount
-        @order_detail.making_status = 0
-        @order_detail.save
-      end
-
-    current_customer.cart_items.destroy_all
-    redirect_to orders_thanks_path
-
-
-  end
-
   def pay
     
     
@@ -80,16 +57,16 @@ class OrdersController < ApplicationController
     )
   
     @order = Order.new
-    @order.total_payment = params[:amount].to_d
-    @order.address = params[:address]
-    @order.postal_code = params[:postal_code]
-    @order.last_name = params[:last_name]
-    @order.first_name = params[:first_name]
-    @order.city = params[:city]
-    @order.country = params[:country]
-     @order.save
+      @order.total_payment = params[:amount].to_d
+      @order.address = params[:address]
+      @order.postal_code = params[:postal_code]
+      @order.last_name = params[:last_name]
+      @order.first_name = params[:first_name]
+      @order.city = params[:city]
+      @order.country = params[:country]
+      @order.save
 
-      current_user.cart_items.each do |cart_item|
+    current_user.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
         @order_detail.order_id = @order.id
         @order_detail.item_id = cart_item.item.id
@@ -97,16 +74,15 @@ class OrdersController < ApplicationController
         @order_detail.amount = cart_item.amount
         @order_detail.making_status = 0
         @order_detail.save
-      end
+    end
 
     current_user.cart_items.destroy_all
     redirect_to orders_thanks_path
-    
-    
+  
 
   rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to orders_thanks_path
+    flash[:error] = e.message
+    redirect_to orders_confirm_path
 
 
   end
@@ -114,7 +90,6 @@ class OrdersController < ApplicationController
 
   def thanks
   end
-
 
 
   private
