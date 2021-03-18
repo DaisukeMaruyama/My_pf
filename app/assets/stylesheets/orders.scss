@@ -2,3 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.thanks-top-section {
+  background-image: image-url("cherry-blossom.jpg");
+	background-size: cover;
+	background-position: center;
+  height: 170px; 
+  width:  100%;
+	max-width:  auto;
+}
+
+.thanks-main-section {
+  font-family: 'Chango', cursive;
+  
+}
+
+.thanks-main-section-text {
+  margin: 100px 100px;
+  border: 1px solid #000033;
+  padding: 10px 10px;
+  background-color: white;
+}
+
