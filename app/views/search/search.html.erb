@@ -1,0 +1,35 @@
+<body style="background-color: #EBE9DE;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="pt-4 col-12 text-center" style="border-bottom: 2px dashed #EBE9DE; background-color: #101626; color:white;">
+        <p>Your search results for:</p>
+        <h2 style="font-family: 'Chango', cursive;"><%= @value %></h2>
+        <p><%= @datas.count %> snacks found</p>
+      </div>
+        
+      <div class="items col-md-10 col-sm-9 col-xs-10 mx-auto mt-4" style="padding-bottom: 50px;">
+        <div>
+          
+        <% if @datas.empty? %>
+            <h2>No result</h2>
+        <% end %>
+        </div>
+  
+        <% @datas.each do |data| %>
+        <div class="card" style="width: 18rem; min-height: 340px;">
+          <span><%= attachment_image_tag data, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+          <div class="card-body">
+            <h5 class="card-title" style="height: 40%;"><%= data.item_name %></h5>
+            <p class="card-text">$ <%= number_with_precision(data.price, precision: 2) %></p>
+            <%= link_to 'Explore', item_path(data.id), class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <% end %>
+  
+    
+  
+      </div>
+  
+    </div>
+  </div>
+</body>

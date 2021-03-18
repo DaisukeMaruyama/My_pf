@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :charges
-
+  get 'search/search'
   root to: 'homes#top'
   get '/about' => 'homes#about'
   
