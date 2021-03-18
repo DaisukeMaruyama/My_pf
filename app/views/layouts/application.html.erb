@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   </head>
 
-  <body>
+  <body class="body-background-color">
     <header class="sticky-top" style="z-index: 10;">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26110F;">
         <div class="container">
@@ -30,14 +30,19 @@
             <li class="nav-item">
               <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Snacks
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
+
+                  <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+                  <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+                  <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+              </div>
             </li>
             <li class="nav-item">
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"nav-link", style:"color: #EBE9DE;" %>
@@ -55,14 +60,19 @@
             <li class="nav-item">
               <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Snacks
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
+
+                  <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+                  <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+                  <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+
+              </div>
             </li>
             <li class="nav-item">
               <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
@@ -72,9 +82,10 @@
             </li>
             <% end %>
           </ul>
-          <%= form_tag(root_path, method: :get, class:"d-flex flex-row form-inline my-lg-0") do %>
-            <%= text_field_tag 'search[content]','', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
-            <%= submit_tag 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
+          <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
+            <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
+            <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+            <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
           <% end %>
         </div>
         </div>
