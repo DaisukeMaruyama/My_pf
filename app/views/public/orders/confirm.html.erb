@@ -90,14 +90,16 @@
                 <span>Payment: $ <%= number_with_precision(@order.total_payment, precision: 2) %></span>
               </label>
             </article>
-                <%= hidden_field_tag(:amount, @order.total_payment) %>
-                <%= hidden_field_tag(:postal_code, @order.postal_code) %>
-                <%= hidden_field_tag(:address, @order.address) %>
-                <%= hidden_field_tag(:last_name, @order.last_name) %>
-                <%= hidden_field_tag(:first_name, @order.first_name) %>
-                <%= hidden_field_tag(:city, @order.city) %>
-                <%= hidden_field_tag(:country, @order.country) %>
-                <%= hidden_field_tag(:payment_method, @order.payment_method) %>
+              <% current_user.order.each do |order| %>
+                <%= hidden_field_tag(:amount, order.total_payment) %>
+                <%= hidden_field_tag(:postal_code, order.postal_code) %>
+                <%= hidden_field_tag(:address, order.address) %>
+                <%= hidden_field_tag(:last_name, order.last_name) %>
+                <%= hidden_field_tag(:first_name, order.first_name) %>
+                <%= hidden_field_tag(:city, order.city) %>
+                <%= hidden_field_tag(:country, order.country) %>
+                <%= hidden_field_tag(:payment_method, order.payment_method) %>
+              <% end %>  
 
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

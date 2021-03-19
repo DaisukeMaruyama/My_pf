@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
 
 
 
@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
       :currency    => 'usd'
     )
   
-    @order = Order.new
+    @order = current_user.order.new
       @order.total_payment = params[:amount].to_d
       @order.address = params[:address]
       @order.postal_code = params[:postal_code]

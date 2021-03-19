@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Public::ItemsController < ApplicationController
   
   def index
     @items = Item.all.order(created_at: :desc)

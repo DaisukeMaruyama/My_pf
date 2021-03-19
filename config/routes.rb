@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'search/search'
-  root to: 'homes#top'
-  get '/about' => 'homes#about'
-  
-  devise_for :users, :controllers => {
-  :registrations => 'users/registrations',
-  :sessions => 'users/sessions',
-  :passwords => 'users/passwords'
+#devise関連  
+devise_for :users, :controllers => {
+  :registrations => 'devise/users/registrations',
+  :sessions => 'devise/users/sessions',
+  :passwords => 'devise/users/passwords'
 } 
 
 devise_scope :user do
@@ -18,19 +15,38 @@ devise_scope :user do
   get "password", :to => "users/passwords#new" 
 end
 
-resources :items, only: [:index, :show]
-
-delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
 
 
-get 'orders/thanks' => 'orders#thanks'
-resources :orders, only: [:show, :index, :new, :create] do
-  collection do
-    post :confirm
-    post :pay
+#Top画面
+root to: 'public/homes#top'
+get '/about' => 'public/homes#about'
+
+#scope module: :public doでpublicフォルダへまとめる。※URLにpublicがつくことはない
+scope module: :public do
+  
+  get 'search/search'
+  
+  resources :items, only: [:index, :show]
+  
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  
+  
+  get 'orders/thanks' => 'orders#thanks'
+  resources :orders, only: [:show, :index, :new, :create] do
+    collection do
+      post :confirm
+      post :pay
+    end
   end
+  
+  get 'users/unsubscribe' => 'users#unsubscribe'
+  patch 'users/withdraw' => 'users#withdraw'
+  resources :users, only: [:update, :show, :edit]
+  
 end
+
+#adminを下にまとめる
 
 namespace :admin do
   resources :items, only: [:index, :create, :new, :update, :destroy, :show]

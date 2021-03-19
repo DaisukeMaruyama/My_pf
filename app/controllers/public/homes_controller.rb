@@ -1,4 +1,4 @@
-class HomesController < ApplicationController
+class Public::HomesController < ApplicationController
   
   def top
     @items = Item.all.order(created_at: :desc)

@@ -1,4 +1,4 @@
-class CartItemsController < ApplicationController
+class Public::CartItemsController < ApplicationController
   
   before_action :correct_user, only: [:update, :destroy]
   

@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class Public::SearchController < ApplicationController
     
   def search
     @value = params["search"]["value"]         
