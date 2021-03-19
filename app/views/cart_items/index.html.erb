@@ -10,7 +10,7 @@
 			<!-- カート商品一覧 -->
 			<div class="cart-item-table row">
 				<table class="table01 table table-sm">
-    <thead>
+    <thead class="active">
       <tr>
         <th colspan="2">Product name</th>
         <th class="text-center">Unit price</th>
@@ -19,7 +19,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="background-color: #F0F3EF;">
       <% @user.cart_items.each do |cart_item| %>
       <tr>
         <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
@@ -43,10 +43,10 @@
 
 			<!-- 合計金額 -->
 			<div class="cart-total-table row">
-				<div class="col-md-8 return-shopping-btn-wrapper"><%= link_to "Continue Shopping", items_path, class:"btn btn-default" %></div>
+				<div class="col-md-8 return-shopping-btn-wrapper"><%= link_to "Continue Shopping", items_path, class:"btn btn-outline-success mb-3" %></div>
 				<div class="col-md-4 ">
 					<table class="table">
-						<tbody class="active-grand-total">
+						<tbody class="active-grand-total active">
 							<th>Grand total</th><!-- クラス名を後ほど作成。とりあえずの名前 -->
 							<td class="text-right">$ <%= number_with_precision(@user.cart_item_sum, precision: 2) %></td><!-- cart_item_sumはuserモデルに定義あり -->
 						</tbody>

@@ -3,7 +3,7 @@
 		<div class="ec-cart-index-main col-md-12">
 			<h2 class="ec-cart-index-title">Order Confirmation</h2>
 
-			 <table class="table table-bordered mb-5">
+			 <table class="table table-bordered mb-5 order-shipdelivery-table">
           <tr>
             <th class="active">Delivery Days</th>
             <td class="text-left">
@@ -36,10 +36,9 @@
               <th class="text-center">Unit price</th>
               <th class="text-center">Amount</th>
               <th class="text-center">Subtotal</th>
-              <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="background-color: #F0F3EF;">
           	<% current_user.cart_items.each do |cart_item| %>
             	<tr>
                 <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
@@ -53,7 +52,7 @@
         </table>
 
         <div class="confirm-prise col-md-5 offset-md-7 mt-3">
-          <table class="table table-bordered">
+          <table class="table table-bordered order-confirm-table">
             <tbody>
               <tr>
                 <th class="active">Shipping Cost</th>

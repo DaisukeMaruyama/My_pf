@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.order-shipdelivery-table td {
+  background-color: #F0F3EF;
+}
+
+
+.order-confirm-table td {
+  background-color: #F0F3EF;
+}
+
 .thanks-top-section {
   background-image: image-url("cherry-blossom.jpg");
 	background-size: cover;
