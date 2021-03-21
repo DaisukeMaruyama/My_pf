@@ -88,9 +88,17 @@
             <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
           <% end %>
         </div>
+
         </div>
       </nav>
     </header>
+      <% if user_signed_in? %>
+      <div class="mypage-header py-1 pl-3" style="height: 32px; background-color: #101626; color: #EBE9DE;">
+        <div class="container" >
+        <li style="display: inline-block; margin-right: 5px;">Hello, here's your account page =></li><span><%= link_to 'Your account', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
+        </div>
+      </div>
+      <% end %>
     <main>
     <% if flash[:notice] %>
       <div class="flash">

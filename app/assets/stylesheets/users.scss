@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile-top {
+  background-image: image-url("profile.jpg");
+	background-size: cover;
+	background-position: center;
+  height: 140px; 
+  width:  100%;
+  font-family: 'Ranchers', cursive;
+  padding-top: 60px;
+  color: #EBE9DE;
+}
+
+.user-edit-link {
+  border: 2px solid #AEB2AD;
+  box-shadow: 10px 10px 10px;
+  border-radius: 15px;
+  padding: 20px;
+}

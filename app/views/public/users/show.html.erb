@@ -1,23 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6" style="margin-top: 20px;">
-      <h2 class="my-page-title">Your page</h2>
-
-      <div class="mypage-flex-group mypage-register-info-header mt-4">
-          <span>Your registered information</span>
-          <%= link_to 'Edit',edit_user_path, class: "btn btn-success" %>
-      </div>
-    </div>
+<div class="profile-top">
+  <div class="container">
+  <h2 class="my-page-title">Profile</h2>
   </div>
+</div>
 
+<div class="container">
+  <div class="row mb-5">
+    
+    <div class="ml-2 col-md-7 mt-5">
+      <h3 class="mb-4" style="color: #D98E04;">Personal Information</h3>
       <div class="form-group row mt-2">
         <label class="col-md-3"><strong>Name</strong></label>
         <div class="col-md-9">
           <%= @user.first_name %> <%= @user.last_name %>
         </div>
       </div>
-      
-      <div class="form-group row mt-2">
+
+      <div class="form-group row">
         <label class="col-md-3"><strong>Email</strong></label>
         <div class="col-md-9">
           <%= @user.email %>
@@ -27,34 +26,76 @@
       <div class="form-group row mt-2">
          <label class="col-md-3"><strong>Address</strong></label>
         <div class="col-md-9">
-          <%= @user.address %>
+          <% if @user.address %>
+            <%= @user.address %>
+          <% else %>
+            Unregistered
+          <% end %>
         </div>
       </div>
-      
+
       <div class="form-group row mt-2">
          <label class="col-md-3"><strong>City</strong></label>
         <div class="col-md-9">
-          <%= @user.city %>
+          <% if @user.city %>
+            <%= @user.city %>
+          <% else %>
+            Unregistered
+          <% end %>
         </div>
       </div>
-      
+
+      <div class="form-group row mt-2">
+         <label class="col-md-3"><strong>Zip/Postal Code</strong></label>
+        <div class="col-md-9">
+          <% if @user.postal_code %>
+            <%= @user.postal_code %>
+          <% else %>
+            Unregistered
+          <% end %>
+        </div>
+      </div>
+
       <div class="form-group row mt-2">
          <label class="col-md-3"><strong>Country</strong></label>
         <div class="col-md-9">
-          <%= @user.country %>
+          <% if @user.country %>
+            <%= @user.country %>
+          <% else %>
+            Unregistered
+          <% end %>
         </div>
       </div>
-      
+      <div class="text-center">
+      <%= link_to 'Edit your profile',edit_user_path, class: "btn btn-success mb-3", style:"border-radius: 15px;" %>
+      </div>
+    </div>
+
+    <div class="col-md-4 mt-5">
+
+      <div class="form-group user-edit-link">
+        <div class="d-flex justify-content-center">
+          <%= link_to 'Change Your Password', root_path, class: "btn btn-primary", style:"border-radius: 15px;" %>
+        </div>
+      </div>
+
+      <div class="user-edit-link">
+        <div class="form-group">
+          <label class="d-flex justify-content-center" style="color: #D98E04;"><strong>Shipping Address</strong></label>
+          <div class="d-flex justify-content-center">
+            <%= link_to 'The list of registered shipping address', root_path, class: "btn btn-primary", style:"border-radius: 15px;" %>
+          </div>
+        </div>
 
 
-      <div class="mypage-flex-group">
-        <span>配送先</span>
-        <%= link_to '一覧を見る', root_path, class: "btn btn-primary" %>
+        <div class="form-group">
+          <label class="d-flex justify-content-center" style="color: #D98E04;"><strong>Order History</strong></label>
+          <div class="d-flex justify-content-center">
+            <%= link_to 'Cheak your order history', root_path, class: "btn btn-primary", style:"border-radius: 15px;" %>
+          </div>
+        </div>
       </div>
-      <div class="mypage-flex-group">
-        <span>注文履歴</span>
-        <td><%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %></td>
-      </div>
+
     </div>
   </div>
 </div>
