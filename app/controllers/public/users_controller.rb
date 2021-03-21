@@ -20,9 +20,15 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(current_user.id)
   end
 
   def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: "Deleted")
+    reset_session
+    flash[:notice] = "Thank you very much for using SnackBen! We hope to serving you again."
+    redirect_to root_path
   end
   
   def newpassword

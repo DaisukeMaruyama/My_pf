@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  
+  
+  enum is_deleted:{Deleted: true, Nondeleted: false}
+
+  #is_deletedされていない（false）ならログイン可能
+  def active_for_authentication?
+    super && (self.is_deleted == "Nondeleted")
+  end
+  
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,6 +16,7 @@ class User < ApplicationRecord
          
   has_many :cart_items, dependent: :destroy
   has_many :order
+  
   
      # カートアイテム金額合計
   def cart_item_sum

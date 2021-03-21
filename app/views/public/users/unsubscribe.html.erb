@@ -1,2 +1,9 @@
-<h1>Users#unsubscribe</h1>
-<p>Find me in app/views/users/unsubscribe.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="unsubscribe-screen text-center mx-auto mt-5">
+      <h1>We are sorry to see you go!</h1>
+      <h4 class="mt-4">Would you really like to unsubscribe?</h4>
+      <%= link_to 'Unsubscribe', users_withdraw_path, method: :patch, class:"btn btn-danger mt-3" %>
+    </div>
+  </div>
+</div>

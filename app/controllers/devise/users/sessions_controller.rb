@@ -2,6 +2,20 @@
 
 class Devise::Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  
+  before_action :user_reject, only: [:create]
+  
+  def user_reject
+    @user = User.find_by(email: params[:user][:email].downcase)
+    if @user
+      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+        flash[:alert] = "This account is already unsubscribed"
+        redirect_to new_user_session_path
+      end
+    else
+      flash[:alert] = "Please fill in Email or Password"
+    end
+  end
 
   # GET /resource/sign_in
   # def new

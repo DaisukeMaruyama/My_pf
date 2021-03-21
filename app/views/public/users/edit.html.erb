@@ -58,8 +58,13 @@
           "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { style: 'width: 65%; height: 100%;', data: { attribute: "value" } } %>
         </div>
       </div>
-      <div class="text-center">
-      <%= f.submit 'Save' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+      <div class="d-flex">
+      <div class="text-center col-md-11">
+        <%= f.submit 'Save' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+      </div>
+      <div class="col-md-1">
+      <%= link_to 'Unsubscribe', users_unsubscribe_path, class: "btn btn-danger mb-3 mt-3", style:"border-radius: 15px; " %>
+      </div>
       </div>
     </div>
     <% end %>
