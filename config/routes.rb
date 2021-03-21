@@ -40,6 +40,7 @@ scope module: :public do
     end
   end
   
+  get 'users/:id/newpassword' => 'users#newpassword'
   get 'users/unsubscribe' => 'users#unsubscribe'
   patch 'users/withdraw' => 'users#withdraw'
   resources :users, only: [:update, :show, :edit]

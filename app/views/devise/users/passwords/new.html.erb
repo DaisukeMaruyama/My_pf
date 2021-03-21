@@ -1,10 +1,10 @@
 <div class="container">
-  
+
   <h2 class="signup-heading mb-4" style="margin-top: 60px;">Forgot your password?</h2>
-  
+
   <div class="Signup-section col-12">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    
+  <%= form_with model: @user, url: user_password_path, method: :post, local:true do |f| %>
+
     <% if @user.errors.any? %>
       <div class="error-explanation">
         <h3><%= @user.errors.count %>errors from being saved.</h3>
@@ -15,22 +15,22 @@
         <% end %>
       </div>
     <% end %>
-    <p class="row">Please enter your email address below. You will receive a link to reset your password.</p> 
+    <p class="row">Please enter your email address below. You will receive a link to reset your password.</p>
     <div class="form-group row mt-2">
       <label class=><strong>Email</strong></label>
       <div class="ml-3">
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
-  
+
     <div class="form-group row mt-2">
       <%= f.submit "Send me reset password instructions", class:"btn btn-primary" %>
     </div>
   <% end %>
   </div>
   <div class="mb-5">
-    <%= link_to '⇦Back to Sign in', login_path, style:"color: #D98E04;" %>
+    <%= link_to '⇦Back to Sign in', new_user_session_path, style:"color: #D98E04;" %>
   </div>
-  
-</div>  
-  
+
+</div>
+
