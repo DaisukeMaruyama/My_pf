@@ -1,2 +1,67 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row mb-5">
+    
+    <%= form_with model: @user, url: user_path, local:true do |f| %>
+    
+      <% if @user.errors.any? %>
+        <div class="error-explanation">
+          <h3><%= @user.errors.count %> errors from being saved.</h3>
+          <% @user.errors.full_messages.each do |message| %>
+            <ul>
+              <li><%= message %></li>
+            </ul>
+          <% end %>  
+        </div>
+      <% end %>
+    
+    <div class="ml-2 col-md-12 mt-5">
+      <h3 class="mb-4" style="color: #D98E04;">Edit Personal Information</h3>
+      <div class="form-group row mt-2">
+        <label class="col-md-5"><strong>Name</strong></label>
+        <div class="col-md-7 d-flex">
+          <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-5"><strong>Email</strong></label>
+        <div class="col-md-7">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-2">
+         <label class="col-md-5"><strong>Address</strong></label>
+        <div class="col-md-7">
+          <%= f.text_field :address, size:"45" %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-2">
+         <label class="col-md-5"><strong>City</strong></label>
+        <div class="col-md-7">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-2">
+         <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
+        <div class="col-md-7">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-2">
+         <label class="col-md-5"><strong>Country</strong></label>
+        <div class="col-md-7">
+          <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+          "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { style: 'width: 65%; height: 100%;', data: { attribute: "value" } } %>
+        </div>
+      </div>
+      <div class="text-center">
+      <%= f.submit 'Save' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>  

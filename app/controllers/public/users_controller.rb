@@ -5,10 +5,12 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
-    if @user.save
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       flash[:notice] = "You have updated your information"
-    redirect_to 
+      redirect_to user_path
+    else
+      render :edit
     end
   end
 
@@ -20,6 +22,12 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+  end
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :country, :postal_code)
   end
   
 end
