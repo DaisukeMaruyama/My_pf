@@ -9,7 +9,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.create(delivery_params)
     if @delivery.save
       flash[:notice] = "You have registered delivery address"
-      redirect_to deliveies_path
+      redirect_to deliveries_path
     end
   end
 
@@ -21,14 +21,14 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
       flash[:notice] = "You have updated delivery address"
-      redirect_to deliveies_path
+      redirect_to deliveries_path
     end 
   end
 
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to deliveies_path
+    redirect_to deliveries_path
   end
   
   private
