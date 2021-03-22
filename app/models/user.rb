@@ -16,6 +16,7 @@ class User < ApplicationRecord
          
   has_many :cart_items, dependent: :destroy
   has_many :order
+  has_many :deliveries, dependent: :destroy
   
   
      # カートアイテム金額合計
