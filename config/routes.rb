@@ -45,6 +45,8 @@ scope module: :public do
   patch 'users/withdraw' => 'users#withdraw'
   resources :users, only: [:update, :show, :edit]
   
+  resources :deliveries, only: [:update, :index, :create, :destroy, :edit]
+  
 end
 
 #adminを下にまとめる
