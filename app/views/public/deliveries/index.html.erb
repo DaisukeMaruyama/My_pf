@@ -1,2 +1,84 @@
-<h1>Deliveries#index</h1>
-<p>Find me in app/views/deliveries/index.html.erb</p>
+<div class="container">
+  <h2 class="shipping-address-title ml-3 mt-5">Shipping Address List/Registration</h2>
+
+  <div class="mt-5">
+    <%= form_with model: @delivery, url: deliveries_path, method: :post, local:true do |f| %>
+      
+      <% if @delivery.errors.any? %>
+      <div class="error-explanation">
+        <h3><%= @delivery.errors.count %>errors from being saved.</h3>
+        <% @delivery.errors.full_messages.each do |message| %>
+          <ul>
+            <li><%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+      <% end %>
+      
+      <div class="col-8"> 
+        <div class="form-group row mt-2">
+          <label class="col-md-5"><strong>Recipient</strong></label>
+          <div class="col-md-7 d-flex">
+            <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Address</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_address, size:"45" %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>City</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_city %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_postal_code %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Country</strong></label>
+          <div class="col-md-7">
+            <%= f.country_select :delivery_country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { style: 'width: 65%; height: 100%;', data: { attribute: "value" } } %>
+          </div>
+        </div>
+  
+        <div class="text-center col-md-11">
+          <%= f.submit 'Register' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+        </div>
+      </div>
+    <% end %>  
+  </div> 
+
+  <table class="table table-sm table-bordered" style="margin-bottom: 110px;">
+    <thead>
+      <tr style="background-color: #F0EDEC;">
+        <th scope="col">Recipient</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody style="background-color: #F0F3EF;">
+      <% current_user.deliveries.each do |delivery| %>
+      <tr>
+        <td><%= delivery.first_name %> <%= delivery.last_name %></td>
+        <td><%= delivery.delivery_address %> <%= delivery.delivery_city %> <%= delivery.delivery_postal_code %> <%= delivery.delivery_country %></td>
+        <td class="d-flex" style="border-bottom: none;">
+          <%= link_to 'Edit', edit_delivery_path(delivery.id), class: "btn btn-success" %>
+          <%= link_to 'Delete', delivery_path(delivery.id), method: :delete, class: "btn btn-danger ml-1" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>
