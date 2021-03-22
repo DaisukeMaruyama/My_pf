@@ -7,6 +7,7 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.create(delivery_params)
+    @delivery.user_id = current_user.id
     if @delivery.save
       flash[:notice] = "You have registered delivery address"
       redirect_to deliveries_path
