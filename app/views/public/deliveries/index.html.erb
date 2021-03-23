@@ -74,7 +74,7 @@
         <td><%= delivery.delivery_address %> <%= delivery.delivery_city %> <%= delivery.delivery_postal_code %> <%= delivery.delivery_country %></td>
         <td class="d-flex" style="border-bottom: none;">
           <%= link_to 'Edit', edit_delivery_path(delivery.id), class: "btn btn-success" %>
-          <%= link_to 'Delete', delivery_path(delivery.id), method: :delete, class: "btn btn-danger ml-1" %>
+          <%= link_to 'Delete', delivery_path(delivery.id), method: :delete, data: {confirm: "Are you sure that you want to delete?"}, class: "btn btn-danger ml-1" %>
         </td>
       </tr>
       <% end %>
