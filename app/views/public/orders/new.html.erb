@@ -22,8 +22,8 @@
           <div class="field mt-3 ml-3">
             <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
             <%= f.label :oaddress, "Your address" %><br>
-            <p class="ml-4">〒<%= @user.postal_code %> <%= @user.address %></p>
-            <p class="ml-4"><%= @user.first_name %>+" "+<%= @user.last_name %></p>
+            <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> <%= @user.country %></p>
+            <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
           </div>
         <% end %>
     
@@ -32,7 +32,8 @@
           <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
           <%= f.label :address, "Ship to registered addresses" %><br>
           <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
-          <%#<%= f.collection_select(:address, @registered_addresses, :id, :full_shipping_address,{prompt: "選択してください"}, {class: "ml-4 registered-address"} ) %>
+          
+          <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Pick one from these"}, {class: "ml-4 registered-address"} ) %>
         </div>
     
         
@@ -50,7 +51,7 @@
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Address</strong></label>
             <div class="col-sm-9">
-              <%= f.text_field :address, size:"45" %>
+              <%= f.text_field :address, size:"43" %>
             </div>
           </div>
           

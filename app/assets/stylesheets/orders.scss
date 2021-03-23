@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/*order new*/
+.registered-address {
+  font-size: 18px;
+  width: 80%;
+}
+
+/*order confirm*/
 .order-shipdelivery-table td {
   background-color: #F0F3EF;
 }
@@ -11,6 +19,7 @@
   background-color: #F0F3EF;
 }
 
+/*order thanks*/
 .thanks-top-section {
   background-image: image-url("cherry-blossom.jpg");
 	background-size: cover;

@@ -87,7 +87,7 @@
                 </div>
               <% end %>
               <label class="amount">
-                <span>Payment: $ <%= number_with_precision(@order.total_payment, precision: 2) %></span>
+                <%#<span>Payment: $ <%= number_with_precision(@order.total_payment, precision: 2) %></span>
               </label>
             </article>
               <% current_user.orders.each do |order| %>

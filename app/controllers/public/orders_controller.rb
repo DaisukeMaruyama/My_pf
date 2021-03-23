@@ -5,7 +5,8 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @user = User.find(current_user.id)
-
+    @registered_addresses = Delivery.where(user_id: current_user.id)
+    @Delivery = Delivery.new
   end
 
   def show
@@ -26,13 +27,18 @@ class Public::OrdersController < ApplicationController
     when "0"
       @order.postal_code = current_user.postal_code
       @order.address = current_user.address
-      @order.name = current_user.last_name + current_user.first_name
+      @order.last_name = current_user.last_name 
+      @order.first_name = current_user.first_name
+      @order.city = current_user.city
+      @order.country = current_user.country
     when "1"
-      current_user.deliveries.each do |delivery|
-        @order.postal_code = delivery.postal_code
-        @order.address = delivery.address
-        @order.name = delivery.name
-      end
+      delivery = Delivery.find(params[:order][:delivery_id])
+        @order.postal_code = delivery.delivery_postal_code
+        @order.address = delivery.delivery_address
+        @order.last_name = delivery.last_name
+        @order.first_name = delivery.first_name
+        @order.city = delivery.delivery_city
+        @order.country = delivery.delivery_country
     when "2"
     end
 
@@ -55,6 +61,11 @@ class Public::OrdersController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+    
+    unless @order.valid?
+      @delivery = Delivery.new
+      render :new
+    end
   
     @order = current_user.orders.new
       @order.total_payment = params[:amount].to_d
@@ -75,6 +86,17 @@ class Public::OrdersController < ApplicationController
         @order_detail.making_status = 0
         @order_detail.save
     end
+    
+    #Addressに登録する処理
+    Delivery.create(
+      user_id: current_user.id, 
+      delivery_postal_code: @order.postal_code,
+      delivery_address: @order.address,
+      delivery_city: @order.city,
+      delivery_country: @order.country,
+      last_name: @order.last_name,
+      first_name: @order.first_name
+      )
 
     current_user.cart_items.destroy_all
     redirect_to orders_thanks_path
