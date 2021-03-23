@@ -1,2 +1,37 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div class="container">
+  <h2 class="ml-3 mt-5 mb-4">Order History</h2>
+  <% current_user.orders.each do |order| %>
+  <table class="tbl-r05 table table-sm table-bordered mt-3">
+    <tr class="thead" style="background-color: #F0EDEC;">
+      <th>Order Date</th>
+      <th>Shipping Address</th>
+      <th>Order Products</th>
+      <th>Payment</th>
+      <th>Status</th>
+      <th>Order Detail</th>
+    </tr>
+    <tr style="background-color: #F0F3EF;">
+      <td data-label="Order Date"><%= order.created_at.strftime("%d/%m/%Y").to_s  %></td>
+      <td data-label="Shipping Address">
+        <%= order.first_name %> <%= order.last_name %><br>
+        <%= order.address %><br>
+        <%= order.city %>
+        <%= order.postal_code %>
+        <%= order.country %>
+      </td>
+      <td data-label="Order Products">
+        <% order.order_details.each do |order_detail| %>
+          <%= order_detail.item.item_name %><br>
+        <% end %>
+      </td>
+      <td data-label="Payment">$ <%= number_with_precision(order.total_payment.to_s(:delimited), precision: 2) %></td>
+      <td data-label="Status"><%= order.order_status %></td>
+      <td data-label="Order Detail"><%= link_to 'Detail',order_path(order.id), class:"btn btn-success" %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>  
+  
+  
+  
+
