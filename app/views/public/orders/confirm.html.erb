@@ -90,7 +90,7 @@
                 <span>Payment: $ <%= number_with_precision(@order.total_payment, precision: 2) %></span>
               </label>
             </article>
-              <% current_user.order.each do |order| %>
+              <% current_user.orders.each do |order| %>
                 <%= hidden_field_tag(:amount, order.total_payment) %>
                 <%= hidden_field_tag(:postal_code, order.postal_code) %>
                 <%= hidden_field_tag(:address, order.address) %>

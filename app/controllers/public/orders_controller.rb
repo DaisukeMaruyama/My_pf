@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
 
-    @order = current_user.order.build(set_order)
+    @order = current_user.orders.build(set_order)
 
     @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_i
 
@@ -56,7 +56,7 @@ class Public::OrdersController < ApplicationController
       :currency    => 'usd'
     )
   
-    @order = current_user.order.new
+    @order = current_user.orders.new
       @order.total_payment = params[:amount].to_d
       @order.address = params[:address]
       @order.postal_code = params[:postal_code]
