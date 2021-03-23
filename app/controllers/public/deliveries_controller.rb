@@ -29,7 +29,8 @@ class Public::DeliveriesController < ApplicationController
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to deliveries_path
+      flash[:notice] = "You have deleted delivery address"
+      redirect_to deliveries_path
   end
   
   private
