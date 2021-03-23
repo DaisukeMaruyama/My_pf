@@ -1,2 +1,61 @@
-<h1>Deliveries#edit</h1>
-<p>Find me in app/views/deliveries/edit.html.erb</p>
+<div class="container">
+  <h2 class="shipping-address-title ml-3 mt-5">Edit Shipping Address</h2>
+
+  <div class="mt-5">
+    <%= form_with model: @delivery, url: delivery_path, method: :patch, local:true do |f| %>
+      
+      <% if @delivery.errors.any? %>
+      <div class="error-explanation">
+        <h3><%= @delivery.errors.count %>errors from being saved.</h3>
+        <% @delivery.errors.full_messages.each do |message| %>
+          <ul>
+            <li><%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+      <% end %>
+      
+      <div class="col-8"> 
+        <div class="form-group row mt-2">
+          <label class="col-md-5"><strong>Recipient</strong></label>
+          <div class="col-md-7 d-flex">
+            <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Address</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_address, size:"45" %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>City</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_city %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :delivery_postal_code %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Country</strong></label>
+          <div class="col-md-7">
+            <%= f.country_select :delivery_country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { style: 'width: 65%; height: 100%;', data: { attribute: "value" } } %>
+          </div>
+        </div>
+  
+        <div class="text-center col-md-11">
+          <%= f.submit 'Save' , class: "btn btn-success mb-5 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+        </div>
+      </div>
+    <% end %>  
+  </div> 
+</div>  
