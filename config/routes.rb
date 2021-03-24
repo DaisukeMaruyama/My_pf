@@ -19,7 +19,7 @@ end
 #Adminのdevise
 devise_for :admins, :controllers => {
   :registrations => 'devise/admins/registrations',
-  sessions: 'devise/admins/sessions',
+  :sessions => 'devise/admins/sessions',
   :passwords => 'devise/admins/passwords'
 }
 
