@@ -1,2 +1,68 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container-fluid">
+  <h2 class="mt-3 mb-3" style="margin: 50px;">Order Detail</h2>
+  <div class="row">
+    
+    <div class="col-md-5 col-lg-6 mx-5">
+      <label class="ml-1">Order Product</label>
+      <table class="table table-sm table-bordered">
+        <tr>
+          <th class="active" scope="col">Order Date</td>
+          <td scope="col" style="background-color: #F0F3EF;"><%= @order.created_at.strftime("%d/%m/%Y").to_s %></td>
+        </tr>
+        <tr>
+          <th class="active">Shipping Address</th>
+          <td style="background-color: #F0F3EF;"><%= @order.address %> <%= @order.city %> <%= @order.postal_code %> <%= @order.country %></td>
+        </tr>
+        <tr>
+          <th class="active">Payment Method</th>
+          <td style="background-color: #F0F3EF;"><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th class="active">Status</th>
+          <td style="background-color: #F0F3EF;"><%= @order.order_status %></td>
+        </tr>
+      </table>
+    </div>
+    
+    
+    <div class="col-md-4 col-xs-3 col-lg-3 mx-5">
+      <label class="ml-1">Payment Information</label>
+      <table class="table table-sm table-bordered">
+        <tr>
+          <th class="active" scope="col">Total Price</td>
+          <td scope="col" style="background-color: #F0F3EF;">$ <%= number_with_precision(@order.total_price, precision: 2) %></td><%# total_priceはorderモデルに記載%>
+        </tr>
+        <tr>
+          <th class="active">Shipping Cost</th>
+          <td style="background-color: #F0F3EF;">$ <%= number_with_precision(@order.shipping_cost, precision: 2) %></td>
+        </tr>
+        <tr>
+          <th class="active"><strong>Total Payment</strong></th>
+          <td style="background-color: #F0F3EF;">$ <%= number_with_precision(@order.total_payment, precision: 2) %></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="col-md-7 col-lg-7 mx-5">
+      <label class="ml-1">Details</label>
+      <table class="table table-sm table-bordered">
+        <tr>
+          <th scope="col" class="active">Product</th>
+          <th scope="col" class="active">Unit price</th>
+          <th scope="col" class="active">Amount</th>
+          <th scope="col" class="active">Subtotal</th>
+        </tr>
+        <% @order.order_details.each do |order_detail| %>
+          <tr style="background-color: #F0F3EF;">
+            <td><%= order_detail.item.item_name %></td>
+            <td>$ <%= number_with_precision(order_detail.item.price, precision: 2) %></td>
+            <td><%= order_detail.amount %></td>
+            <td>$ <%= number_with_precision(order_detail.subtotal_price.to_s(:delimited), precision: 2)  %></td><!-- order_dtailモデルに記載-->
+          </tr>
+        <% end %>
+      </table>
+    </div>  
+    
+    
+  </div>
+</div>
