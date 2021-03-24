@@ -45,7 +45,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: {confirm: "Are you sure that you want to sign out?"}, class:"nav-link", style:"color: #EBE9DE;" %>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
             </li>
             <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
               <li class="d-flex flex-row">

@@ -19,5 +19,5 @@
 //= require turbolinks
 //= require_tree .
 
-
+//= require data-confirm-modal
 
