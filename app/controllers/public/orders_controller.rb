@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
 
     @order = current_user.orders.build(set_order)
 
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_i
+    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
 
     case params[:address_type]
     when "0"
@@ -62,10 +62,6 @@ class Public::OrdersController < ApplicationController
       :currency    => 'usd'
     )
     
-    unless @order.valid?
-      @delivery = Delivery.new
-      render :new
-    end
   
     @order = current_user.orders.new
       @order.total_payment = params[:amount].to_d
@@ -75,6 +71,7 @@ class Public::OrdersController < ApplicationController
       @order.first_name = params[:first_name]
       @order.city = params[:city]
       @order.country = params[:country]
+      @order.shipping_cost = @order.international_shipping_fee.to_d
       @order.save
 
     current_user.cart_items.each do |cart_item|
