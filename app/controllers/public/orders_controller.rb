@@ -19,27 +19,31 @@ class Public::OrdersController < ApplicationController
 
   def confirm
 
-    @order = current_user.orders.build(set_order)
-
-    @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
-
     case params[:address_type]
     when "0"
+      @order = current_user.orders.new
       @order.postal_code = current_user.postal_code
       @order.address = current_user.address
       @order.last_name = current_user.last_name 
       @order.first_name = current_user.first_name
       @order.city = current_user.city
       @order.country = current_user.country
+      @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
+
     when "1"
       delivery = Delivery.find(params[:order][:delivery_id])
+        @order = current_user.orders.new
         @order.postal_code = delivery.delivery_postal_code
         @order.address = delivery.delivery_address
         @order.last_name = delivery.last_name
         @order.first_name = delivery.first_name
         @order.city = delivery.delivery_city
         @order.country = delivery.delivery_country
+        @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
+
     when "2"
+      @order = current_user.orders.build(set_order)
+      @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
     end
 
   end
