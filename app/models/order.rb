@@ -25,17 +25,17 @@ class Order < ApplicationRecord
   
   def international_shipping_fee
     international_shipping_fee = 0
-    case country
-    when "GB","FR","DE","IT","ES","SE"
-      international_shipping_fee += 20.00
-    when "IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH"
-      international_shipping_fee += 17.00
-    when "US","CA", "MX","AU","PE"
-      international_shipping_fee += 15.00
-    when "PH","RU", "TW","CN","VN", "MY", "KR"
-      international_shipping_fee += 12.00  
-    when "JP"
-      international_shipping_fee += 9.00    
+    case country 
+      when "GB","FR","DE","IT","ES","SE" 
+        international_shipping_fee += 20.00
+      when "IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH"
+        international_shipping_fee += 17.00
+      when "US","CA", "MX","AU","PE"
+        international_shipping_fee += 15.00
+      when "PH","RU", "TW","CN","VN", "MY", "KR"
+        international_shipping_fee += 12.00  
+      when "JP" 
+        international_shipping_fee += 9.00    
     end
   end
   
@@ -53,5 +53,14 @@ class Order < ApplicationRecord
       p "1-2 working days"
     end
   end
-    
+  
+    # 小計記載
+  def total_price
+    total = 0
+    order_details.each do |order_detail|
+    	total += order_detail.price * order_detail.amount
+    end
+    total
+  end
+  
 end
