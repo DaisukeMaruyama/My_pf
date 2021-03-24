@@ -73,7 +73,7 @@
             <label class="col-sm-3"><strong>Country</strong></label>
             <div class="col-sm-9">
               <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"], selected: "US"  }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
+              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
             </div>
           </div>
         </div>  
