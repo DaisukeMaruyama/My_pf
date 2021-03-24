@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-#devise関連  
+
+#devise関連
 devise_for :users, :controllers => {
   :registrations => 'devise/users/registrations',
   :sessions => 'devise/users/sessions',
@@ -14,6 +15,13 @@ devise_scope :user do
   get "logout", :to => "users/sessions#destroy"
   get "password", :to => "users/passwords#new" 
 end
+
+#Adminのdevise
+devise_for :admins, :controllers => {
+  :registrations => 'devise/admins/registrations',
+  sessions: 'devise/admins/sessions',
+  :passwords => 'devise/admins/passwords'
+}
 
 
 
@@ -49,7 +57,7 @@ scope module: :public do
   
 end
 
-#adminを下にまとめる
+#devise以外のadminを下にまとめる
 
 namespace :admin do
   resources :items, only: [:index, :create, :new, :update, :destroy, :show]
