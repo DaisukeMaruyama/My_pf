@@ -33,6 +33,7 @@ get '/about' => 'public/homes#about'
 scope module: :public do
   
   get 'search/search'
+  get 'search/genre_search'
   
   resources :items, only: [:index, :show]
   
