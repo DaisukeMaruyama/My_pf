@@ -35,13 +35,9 @@
                 Snacks
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
-
-                  <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
-                  <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
-                  <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
+                <%  @genres.each do |genre| %>
+                  <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
+                <% end %>
               </div>
             </li>
             <li class="nav-item">
@@ -52,7 +48,7 @@
                 Cart<i class="fas fa-shopping-cart my-auto mr-2"></i>
               </li>
             <% end %>
-            
+
             <% elsif admin_signed_in? %>
             <li class="nav-item">
               <%= link_to '商品⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
@@ -82,13 +78,9 @@
                 Snacks
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
-
-                  <%= link_to 'Sweets', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
-                  <%= link_to 'Ramen', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
-                  <%= link_to 'Drinks', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-
+                <%  @genres.each do |genre| %>
+                  <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
+                <% end %>
               </div>
             </li>
             <li class="nav-item">
