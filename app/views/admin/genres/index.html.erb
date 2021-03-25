@@ -1,2 +1,45 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<div class="container">
+  <h3 class="headline mt-5 mb-4">ジャンル⼀覧・追加</h3>
+    
+    <%= form_with model: @genre, url: admin_genres_path, method: :post, local:true do |f| %>
+    
+    <% if @genre.errors.any? %>
+      <div class="error-explanation">
+        <h3><%= @genre.errors.count %>件のエラーが発生しております。</h3>
+        <% @genre.errors.full_messages.each do |message| %>
+          <ul>
+            <li><%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+    
+    <div class="form-group row">
+      <label class="col-md-2 col-sm-3 col-xs-3 mt-2">ジャンル名</label>
+      <div class="col-lg-3 col-md-5 col-sm-10 col-xs-3 mt-2">
+        <%= f.text_field :genre_name %>
+      </div>
+      <div class="mt-2 col-sm-10 col-md-2 mb-5">
+        <%= f.submit '新規登録', class:"btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+    
+    <div class="row">
+      <table class="table table-sm col-lg-4 col-md-5 mx-1">
+        <thead>
+        <tr class="active">
+          <th colspan="2" class="py-2 pl-5">ジャンル</th>
+        </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody style="border-bottom: 2px solid #F0EDEC; background-color: #F4F8F3;">
+          <tr>
+            <td class="py-2"><%= genre.genre_name %></td>
+            <td class="py-1 pr-5 text-right"><%= link_to '編集する', edit_admin_genre_path(genre.id) , class:"btn btn-success px-2" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+</div>

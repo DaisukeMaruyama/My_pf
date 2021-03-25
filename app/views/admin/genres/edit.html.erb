@@ -1,2 +1,31 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container">
+  <h3 class="headline mt-5 mb-4">ジャンル⼀覧・追加</h3>
+
+  <%= form_with model: @genre,url: admin_genre_path, local:true do |f| %>
+  
+  <% if @genre.errors.any? %>
+      <div class="error-explanation">
+        <h3><%= @genre.errors.count %>件のエラーが発生しております。</h3>
+        <% @genre.errors.full_messages.each do |message| %>
+          <ul>
+            <li><%= message %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+  
+    <div class="form-group row">
+      <label class="col-md-2 col-sm-3 col-xs-3 mt-2">ジャンル名</label>
+      <div class="col-lg-3 col-md-5 col-sm-10 col-xs-3 mt-2">
+        <%= f.text_field :genre_name %>
+      </div>
+      <div class="mt-2 col-sm-10 col-md-2">
+        <%= f.submit '変更を保存', class:"btn btn-success" %>
+      </div>
+      <!-- 個人的な追加機能-->
+      <div class="mt-2 col-sm-10 col-md-2">
+        <%= link_to '削除', admin_genre_path(@genre), method: :delete, data:{confirm: "本当に削除しますか？",cancel: 'Back',commit: 'Delete'}, title: '確認画面', class:"btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
