@@ -11,7 +11,7 @@
       <% @genres.each do |genre| %>
         <tr>
           <td>
-            <%= link_to genre.genre_name, search_search_path('search[value]': genre.id, 'search[how]': "match"), style:"color: black;" %>
+            <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: black;" %>
           </td>
         </tr>
       <% end %>
