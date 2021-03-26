@@ -61,7 +61,7 @@ end
 #devise以外のadminを下にまとめる
 
 namespace :admin do
-  resources :items, only: [:index, :create, :new, :update, :destroy, :show]
+  resources :items, only: [:index, :create, :new, :update, :destroy, :show, :edit]
 end
 
 namespace :admin do
