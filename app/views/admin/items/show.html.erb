@@ -1,2 +1,43 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+	<h3 class="mt-4 mb-5">製品詳細</h3>
+  <div class="row">
+    <div class="col-xs-3 mx-auto">
+      <%= attachment_image_tag @item, :image, size: "350x350", fallback: "no-image.jpeg", format: "jpeg", class: "card" %>
+    </div>
+    <div class="col-xs-5 col-md-6">
+      <table class="table table-sm table-borderless mx-auto" style="border-collapse: separate; border-spacing: 5px;">
+        <tr>
+          <td scope="col">商品名</td>
+          <td scope="col"><%= @item.item_name %></td>
+        </tr>
+        <tr>
+          <td>紹介説明</td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @item.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td>$ <%= number_with_precision(@item.price.to_s(:delimited), precision: 2) %></td>
+        </tr>
+        <tr>
+          <td style="width: 40%;">販売ステータス</td>
+          <td>
+            <% if @item.is_active == "販売中" %>
+              <span style="color:#49C918;"><%= @item.is_active %></sapn>
+            <% else %>
+              <span style="color:#C0C2BF;"><%= @item.is_active %></sapn>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+        
+    <div class="actions text-center col-12 mr-5 mb-5 mt-3">
+      <%= link_to '編集する', edit_admin_item_path(@item.id), class:"btn btn-success px-5 py-2" %>
+    </div>
+    
+  </div>  
+</div>
