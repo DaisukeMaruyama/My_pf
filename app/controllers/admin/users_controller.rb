@@ -1,0 +1,18 @@
+class Admin::UsersController < ApplicationController
+  
+  def index
+    @users = User.all
+  end
+  
+  def update
+  
+  end
+  
+  def edit
+    
+  end
+  
+  def show
+  end
+  
+end

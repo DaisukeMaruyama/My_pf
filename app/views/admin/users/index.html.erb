@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <h2 class = "mt-4 mb-3 ml-3">会員一覧</div>
+	
+	<div class="sc-table">
+  	<table class="table table-hover px-2">
+  		<thead  class="active">
+  				<tr>
+  					<th>会員ID</th>
+  					<th>商品名</th>
+  					<th>メールアドレス</th>
+  					<th>会員ステータス</th>
+  				</tr>
+  		</thead>
+  		<tbody style="background-color: #F4F8F3;">
+  			<% @users.each do |user| %>
+  				<tr>
+  					<td><%= user.id %></td>
+  					<td>
+  						<%= link_to admin_user_path(user.id) do %>
+  							<%= user.first_name %> <%= user.last_name %>
+  						<% end %>
+  					</td>
+  					<td><%= user.email %></td>
+  					<td>
+  						<% if user.is_deleted == "Nondeleted" %>
+  			      	<span style="color:#49C918;">有効</sapn>
+  			      <% else %>
+  			      	<span style="color:grey;">退会</sapn>
+  			      <% end %>
+  					</td>
+  				</tr>
+  			<% end %>
+  		</tbody>
+  	</table>
+	</div>	
+	<%#<%= paginate @items %>
+</div>

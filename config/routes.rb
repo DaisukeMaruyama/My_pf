@@ -68,5 +68,9 @@ namespace :admin do
   resources :genres, only: [:index, :create, :new, :update, :destroy, :show, :edit]
 end
 
+namespace :admin do
+  resources :users, only: [:index, :edit, :update, :show]
+end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
