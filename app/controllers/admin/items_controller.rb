@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-  
+
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -11,8 +11,8 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "You have created the item"
-    redirect_to items_path
+      flash[:notice] = "製品の登録をしました。"
+    redirect_to admin_items_path
     else
       render :new
     end
@@ -22,12 +22,16 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
     if @item.save
-      flash[:notice] = "You have updated the item"
-      redirect_to items_path
+      flash[:notice] = "製品の編集を保存しました。"
+      redirect_to admin_items_path
     else
       render :new
     end
@@ -36,14 +40,14 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    flash[:notice] = "You have deleted the item"
-    redirect_to items_path
+    flash[:notice] = "製品を削除しました。"
+    redirect_to admin_items_path
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:genre_id, :item_name, :image, :introduction, :price, :is_active)
   end
-  
+
 end
