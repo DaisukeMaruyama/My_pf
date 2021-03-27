@@ -1,0 +1,76 @@
+<div class="container">
+  <h4 class="mt-5 mb-4"><%= @user.first_name %> <%= @user.last_name %>様の会員詳細</h4>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>会員ID</strong></label>
+    <div class="col-sm-10">
+      <%= @user.id %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>Name</strong></label>
+    <div class="col-sm-10">
+      <%= @user.first_name %> <%= @user.last_name %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>Email</strong></label>
+    <div class="col-sm-10">
+      <%= @user.email %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>Address</strong></label>
+    <div class="col-sm-10">
+      <%= @user.address %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>City</strong></label>
+    <div class="col-sm-10">
+      <%= @user.city %>
+    </div>
+  </div>
+  
+    
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>Zip/Postal Code</strong></label>
+    <div class="col-sm-10">
+      <%= @user.postal_code %>
+    </div>
+  </div>
+  
+    
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>Country</strong></label>
+    <div class="col-sm-10">
+      <%= @user.country %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"><strong>会員ステータス</strong></label>
+    <div class="col-sm-10">
+      <% if @user.is_deleted == "Nondeleted" %>
+        <span style="color:#49C918;">有効</sapn>
+      <% else %>
+        <span style="color:#C0C2BF;">退会</sapn>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="form-group row mt-2">
+    <label class="col-sm-2"></label>
+    <div class="col-sm-2 mt-2">
+      <%= link_to "編集する", edit_admin_user_path, class:"btn btn-success" %>
+    </div>
+    <div class="col-sm-6 mt-2">
+      <%= link_to "注文履歴一覧を見る", admin_users_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+  
+</div>
