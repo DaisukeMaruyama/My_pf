@@ -1,0 +1,45 @@
+
+    
+<%= form_with(model: [@item, @item.reviews.build], local:true) do |f| %>
+
+  <!--商品コードの送信-->
+  <%= f.hidden_field :item_id, { value: @item.id} %>
+
+  <!-- 評価 -->
+  <div class="form-group row" id="star">
+    <div class="col-3">
+      <strong><%= f.label :rate,'Rating' %></strong>
+    </div>
+    <%= f.hidden_field :rate, id: :review_star, class:"col-8" %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>  
+
+  <!-- 口コミ -->
+  <div class="form-group row">
+    <div class="col-3">
+      <strong><%= f.label :comment, 'Comment' %></strong>
+    </div>
+    <%= f.text_area :comment, class: "form-control", rows: "8",
+    placeholder:'Comment about this snack!', class:"col-8 form-control" %>
+  </div>
+
+  <!-- 確認ボタン -->
+  <div class="form-group row">
+    <div class="col-3"></div>
+      <%= f.submit 'Submit', class:"btn btn-success mb-5" %>
+  </div>
+
+<% end %>
+<!-- /口コミ入力フォーム -->
+

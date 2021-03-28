@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rate: 1.5
+  comment: MyText
+  user: one
+  item: one
+  email: MyString
+
+two:
+  rate: 1.5
+  comment: MyText
+  user: two
+  item: two
+  email: MyString

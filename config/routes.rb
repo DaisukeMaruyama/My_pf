@@ -35,7 +35,9 @@ scope module: :public do
   get 'search/search'
   get 'search/genre_search'
   
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+    resources :reviews
+  end
   
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
