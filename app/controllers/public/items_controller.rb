@@ -7,6 +7,11 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    if @item.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @item.reviews.average(:rate).round(2)
+    end
   end
   
 end
