@@ -27,7 +27,7 @@
     <%= render @item.reviews.order(created_at: :desc) %>
     
     <div>
-      <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5" %>
+      <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5 mt-2" %>
     </div>
   
     <script>
