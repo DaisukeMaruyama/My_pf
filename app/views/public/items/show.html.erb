@@ -1,14 +1,15 @@
 <div class="container">
   <h2 class="mt-4 mb-4">Product detail</h2>
-  <div class="row"  style="padding-bottom: 70px;">
+  <div class="row"  style="padding-bottom: 50px;">
     <div class="col-lg-5 col-sm-12">
       <%= attachment_image_tag @item, :image, size: "450x450", fallback: "no-image.jpeg", format: "jpeg", class: "card" %>
     </div>
     <div class="col-lg-5 offset-lg-1 col-sm-11 col-md-10">
-      <h2>Brand name</h2>
-      <h3 style="margin-bottom: 30px;"><%= @item.item_name %></h3>
+      <h1 style="margin-bottom: 30px;"><%= @item.item_name %></h1>
       <h5 style="margin-bottom: 30px;"><%= @item.introduction %></h5>
-      <h2 style="margin-bottom: 30px;">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
+      <div class="average-review-rating" data-score=<%= @average_review %>></div>
+      <span>Based on <%= @item.reviews.count %> reviews</span>
+      <h2 class="mt-2" style="margin-bottom: 30px;">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
 
       <% if current_user %>
         <%= form_with model: @cart_items,url: cart_items_path, local:true, scope: :cart_item do |f|  %>
@@ -19,4 +20,27 @@
       <% end %>  
     </div>
   </div>
+  
+  <div class="item-review-section">
+    <h2 class="mb-3">Reviews</h2>
+    
+    <%= render @item.reviews.order(created_at: :desc) %>
+    
+    <div>
+      <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5" %>
+    </div>
+  
+    <script>
+      $('.average-review-rating').raty({
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        score: function() {
+          return $(this).attr('data-score')
+        }
+      });
+    </script>
+  </div>
+
 </div>
