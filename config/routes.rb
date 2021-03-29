@@ -60,6 +60,12 @@ scope module: :public do
   
 end
 
+#お問い合わせのルーティング
+post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+post 'contacts/back', to: 'contacts#back', as: 'back'
+get 'done', to: 'contacts#done', as: 'done'
+resources :contacts, only: [:new, :create]
+
 #devise以外のadminを下にまとめる
 
 namespace :admin do
