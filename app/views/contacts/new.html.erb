@@ -19,14 +19,14 @@
       <%= f.text_field :name, autofocus: true, class: 'form-control' %>
     </div>
     
-     <div class="form-group col-md-8">
+    <div class="form-group col-md-8">
       <%= f.label :email, 'Email*' %>
       <%= f.text_field :email, autofocus: true, class: 'form-control' %>
     </div>
     
-     <div class="form-group col-md-8">
+    <div class="form-group col-md-8">
       <%= f.label :subject, 'Subject*' %>
-      <%= f.text_field :subject, autofocus: true, class: 'form-control' %>
+      <%= f.select :subject, Contact.subjects.keys.to_a,{} , autofocus: true, class: 'form-control' %>
     </div>
   
     <div class="form-group col-md-8">
