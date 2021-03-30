@@ -1,27 +1,21 @@
 <div class="container-fluid">
   <div class="row">
-    <h2 class="py-3 col-12 text-center" style="border-bottom: 2px dashed #EBE9DE; background-color: #101626; color:white;">Snacks</h2>
-    <table class="table table-bordered genre-table mt-4 col-md-2 col-sm-3 col-xs-2 px-1">
-      <thead>
-        <tr>
-          <th>Categories</th>
-        </tr>
-      </thead>
-      <tbody>
+    <h2 class="py-3 col-12 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">All Snacks</h2>
+    
+    <div class="d-flex col-12 pt-2"  style="border: 2px dashed #EBE9DE; background-color: #101626; color:white;">
+      <h5 class="ml-4" style="font-family: 'Lobster', cursive;">Categories Search</h5>
+   
       <% @genres.each do |genre| %>
-        <tr>
-          <td>
-            <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: black;" %>
-          </td>
-        </tr>
+ 
+        <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: white;", class:"ml-3" %>
+
       <% end %>
-      </tbody>
-    </table>
+    </div>  
+  </div>
+  <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
 
-    <div class="items col-md-10 col-sm-9 col-xs-10 mx-auto mt-4" style="padding-bottom: 50px;">
-
-      <% @items.each do |item| %>
-      <div class="card" style="width: 18rem; min-height: 340px;">
+    <% @items.each do |item| %>
+      <div class="card" style="width: 20rem; min-height: 350px;">
         <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
         <div class="card-body">
           <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
@@ -29,9 +23,7 @@
           <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
         </div>
       </div>
-      <% end %>
-
-    </div>
+    <% end %>
 
   </div>
 </div>

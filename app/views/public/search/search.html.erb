@@ -1,7 +1,7 @@
 <body style="background-color: #EBE9DE;">
   <div class="container-fluid">
     <div class="row">
-      <div class="pt-4 col-12 text-center" style="border-bottom: 2px dashed #EBE9DE; background-color: #101626; color:white;">
+      <div class="pt-4 col-12 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">
         <p>Your search results for:</p>
         <h2 style="font-family: 'Chango', cursive;">
           <%= @value %>
@@ -18,7 +18,7 @@
         </div>
   
         <% @datas.each do |data| %>
-        <div class="card" style="width: 18rem; min-height: 340px;">
+        <div class="card" style="width: 20rem; min-height: 350px;">
           <span><%= attachment_image_tag data, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
           <div class="card-body">
             <h5 class="card-title" style="height: 40%;"><%= data.item_name %></h5>
