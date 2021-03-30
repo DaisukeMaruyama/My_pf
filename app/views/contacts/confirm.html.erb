@@ -1,37 +1,42 @@
-<div class="container"> 
-  <table>
-    <tbody>
-      <tr>
-        <td class="text-center" style="width: 30%;">Name</td>
-        <td><%= @contact.name %></td>
-      </tr>
-      <tr>
-        <td class="text-center" style="width: 30%;">Email</td>
-        <td><%= @contact.email %></td>
-      </tr>
-      <tr>
-        <td class="text-center" style="width: 30%;">Subject</td>
-        <td><%= @contact.subject %></td>
-      </tr>
-      <tr>
-        <td class="text-center">Message</td>
-        <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  
+  <h2 class="mt-4 mb-4">Confirmation</h2>
+  
+  <div class="form-group col-md-8">
+    <label>Name</label> 
+      <span class="form-control"><%= @contact.name %></span>
+    </div>
+    
+  <div class="form-group col-md-8">
+    <label>Email</label> 
+    <span class="form-control"><%= @contact.email %></span>
+  </div>
+    
+  <div class="form-group col-md-8">
+    <label>Subject</label> 
+    <span class="form-control"><%= @contact.subject %></span>
+  </div>
+  
+  <div class="form-group col-md-8">
+    <label>Message</label> 
+    <textarea class="form-control" style="overflow-wrap: break-word; background-color: white; 
+    box-shadow: none; outline: 0; border-color: #ced4da;" readonly><%= @contact.message %></textarea>
+  </div>
   
   <%= form_for(@contact) do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :email %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :message %>
-    <div><%= f.submit '送信' %></div>
+    <div class="form-group col-md-8 mb-4"><%= f.submit 'Send', class:"p-1" %></div>
   <% end %>
+  
   <%= form_for @contact, url: back_path do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :email %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :message %>
-    <div><%= f.submit '入力画面に戻る' %></div>
+    <div class="form-group col-md-8 mb-4"><%= f.submit 'Back To Input Screen', class:"p-1" %></div>
   <% end %>
-</div> 
+  
+</div>
