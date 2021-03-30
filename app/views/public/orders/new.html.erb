@@ -33,7 +33,7 @@
           <%= f.label :address, "Ship to registered addresses" %><br>
           <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
           
-          <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Pick one from these"}, {class: "ml-4 registered-address"} ) %>
+          <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Select one of your registered addresses"}, {class: "ml-4 registered-address"} ) %>
         </div>
     
         
