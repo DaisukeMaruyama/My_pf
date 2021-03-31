@@ -13,15 +13,15 @@
           <th>注文ステータス</th>
         </tr>
       </thead>
-      <% @orders.each do |order| %>
-      <tbody style="background-color: #F4F8F3;">
-        <tr>
-          <td><%= link_to order.created_at.strftime("%Y年%m月%d日 %H:%M:%S"), admin_order_path(order.id) %></td>
-          <td><%= order.user.first_name %> <%= order.user.last_name %></td>
-          <td><%= order.total_count %></td><!-- total_countはorderモデルに記載 -->
-          <td><%= order.order_status %></td>
-        </tr>
-      </tbody>
+      <% @orders.order(created_at: :desc).each do |order| %>
+        <tbody style="background-color: #F4F8F3;">
+          <tr>
+            <td><%= link_to order.created_at.strftime("%Y年%m月%d日 %H:%M:%S"), admin_order_path(order.id) %></td>
+            <td><%= order.user.first_name %> <%= order.user.last_name %></td>
+            <td><%= order.total_count %></td><!-- total_countはorderモデルに記載 -->
+            <td><%= order.order_status %></td>
+          </tr>
+        </tbody>
       <% end %>
     </table>
   </div> 
