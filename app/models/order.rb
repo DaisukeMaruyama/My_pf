@@ -63,4 +63,13 @@ class Order < ApplicationRecord
     total
   end
   
+  # 個数小計
+	def total_count
+		total = 0
+		order_details.each do |order_detail|
+			total += order_detail.amount
+		end
+		total
+	end
+  
 end

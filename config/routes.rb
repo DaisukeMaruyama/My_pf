@@ -80,5 +80,13 @@ namespace :admin do
   resources :users, only: [:index, :edit, :update, :show]
 end
 
+namespace :admin do
+  resources :orders, only: [:index, :show, :update]
+end
+
+namespace :admin do
+  resources :order_details, only: [:update]
+end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
