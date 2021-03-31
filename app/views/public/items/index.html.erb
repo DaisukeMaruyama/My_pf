@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <div class="row">
-    <h2 class="py-3 col-12 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">All Snacks</h2>
-    
+    <h2 class="py-3 col-12 text-center items-all-top">All Snacks</h2>
+
     <div class="d-flex col-12 pt-2"  style="border: 2px dashed #EBE9DE; background-color: #101626; color:white;">
       <h5 class="ml-4" style="font-family: 'Lobster', cursive;">Categories Search</h5>
-   
+
       <% @genres.each do |genre| %>
- 
+
         <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: white;", class:"ml-3" %>
 
       <% end %>
-    </div>  
+    </div>
   </div>
   <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
 
