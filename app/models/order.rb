@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   enum payment_method: {Creditcard:0, Paypal:1},  _prefix: true
   #enum shipping_method: {Includes_tracking:0, DHL_FedEx:1},  _prefix: true
   enum address_type: {"Your address":0, "Ship to registered addresses":1, "Ship to this address":2}
-  enum order_status: {"Waiting for shipping":0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4},  _prefix: true
+  enum order_status: {"Waiting for shipping":0, "Already shipped out":1},  _prefix: true
 
   belongs_to :user
   has_many :order_details, dependent: :destroy

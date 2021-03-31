@@ -16,10 +16,10 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if@order.update(admin_order_params)
-      if @order.order_status == "入金確認"
+    if @order.update(admin_order_params)
+      if @order.order_status == "Already shipped out"
         @order.order_details.each do |order_detail|
-      		order_detail.update(making_status: "制作待ち")
+      		order_detail.update(making_status: "出荷完了")
         end
       end
       flash[:notice] = "編集を保存しました。"
