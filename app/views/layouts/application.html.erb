@@ -38,6 +38,7 @@
                 <%  @genres.each do |genre| %>
                   <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                 <% end %>
+                <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
               </div>
             </li>
             <li class="nav-item">
@@ -57,7 +58,7 @@
               <%= link_to '会員⼀覧', admin_users_path, class: " nav-link", style:"color: #EBE9DE;" %>
             </li>
             <li class="nav-item">
-              <%= link_to '注⽂履歴⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
+              <%= link_to '注⽂履歴⼀覧', admin_orders_path, class: " nav-link", style:"color: #EBE9DE;" %>
             </li>
             <li class="nav-item">
               <%= link_to 'ジャンル⼀覧', admin_genres_path , class: " nav-link", style:"color: #EBE9DE;" %>
@@ -81,6 +82,7 @@
                 <%  @genres.each do |genre| %>
                   <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                 <% end %>
+                <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
               </div>
             </li>
             <li class="nav-item">
