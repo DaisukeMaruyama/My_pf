@@ -1,6 +1,6 @@
 <div class="container">
 
-	<h2 class="ec-cart-index-title mt-3">Cheak Out</h2>
+	<h2 class="ec-cart-index-title mt-4">Cheak Out</h2>
 
 
   <%= form_with model: @order,url: confirm_orders_path, method: :post, local: true do |f| %>
@@ -16,30 +16,36 @@
     <% end %>
 
   <div class="row">
-    <div class="col-lg-8">
-      <h4><strong><%= f.label :address, "Shipping Information" %></strong></h4>
-        <% if current_user.postal_code && current_user.address %>
+    <div class="col-lg-7 mb-3">
+      <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Information" %></strong></h4>
+        
           <div class="field mt-3 ml-3">
             <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
-            <%= f.label :oaddress, "Your address" %><br>
-            <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> <%= @user.country %></p>
-            <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
+            
+            <%= f.label :oaddress, "Ship to your address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
+            <% if current_user.postal_code && current_user.address %>
+              <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> <%= @user.country %></p>
+              <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
+            <% else %>
+              <p class="ml-4" style="font-size: 14px;">You want us to ship to your address, but you haven't created your profile yet?</p>
+              <div class="d-flex">
+              <p class="ml-4">Create your profile to enjoy faster checkout!<br>=><%= link_to 'Create the profile', edit_user_path(current_user), style:"color: black; background-color: #FF9872; border-radius: 25px;" ,class:"ml-1 btn btn-sm mt-1" %></p>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-    
+        
     
         <div class="field ml-3">
           <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
-          <%= f.label :address, "Ship to registered addresses" %><br>
+          <%= f.label :address, "Ship to registered addresses", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
           <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
           
           <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Select one of your registered addresses"}, {class: "ml-4 registered-address"} ) %>
         </div>
-    
         
         <div class="field mt-3 ml-3">
             <%= radio_button_tag :address_type, 2 ,class:"ml-3"%>
-            <%= f.label :address, "Ship to this address" %><br>
+            <%= f.label :address, "Ship to this address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
             
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Name</strong></label>
@@ -73,14 +79,14 @@
             <label class="col-sm-3"><strong>Country</strong></label>
             <div class="col-sm-9">
               <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 36%; height: 100%;', data: { attribute: "value" } } %>
+              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 55%; height: 100%;', data: { attribute: "value" } } %>
             </div>
           </div>
         </div>  
         
       </div>    
       
-      <div class="col-lg-4">
+      <div class="col-lg-4 offset-lg-1">
       
       <%#<%= f.label :shipping_method, "Shipping Method" %>
         <div class="field mb-5">
@@ -91,7 +97,7 @@
             <%#<%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
             <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %> 
 
-          <h4><strong><%= f.label :payment_method, "Payment Method" %></strong></h4>
+          <h4 style="color:  #D98E04;"><strong><%= f.label :payment_method, "Payment Method" %></strong></h4>
           <div class="field mb-5">
               <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
               <%= f.label :payment_method, "Credit Card" %><br>

@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
       @order = current_user.orders.new
       @order.postal_code = current_user.postal_code
       @order.address = current_user.address
-      @order.last_name = current_user.last_name 
+      @order.last_name = current_user.last_name
       @order.first_name = current_user.first_name
       @order.city = current_user.city
       @order.country = current_user.country
@@ -50,7 +50,6 @@ class Public::OrdersController < ApplicationController
 
   def pay
     
-    
     total = ( params[:amount].to_d * 100).to_i
     #hidden_field_tagで受け取った値を計算。stripeは小数点の値を受け取れない。ドル換算の場合は１００をかける。.to_iは整数を数字に変える。
       customer = Stripe::Customer.create(
@@ -65,8 +64,8 @@ class Public::OrdersController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
-    
-  
+
+
     @order = current_user.orders.new
       @order.total_payment = params[:amount].to_d
       @order.address = params[:address]
@@ -87,10 +86,12 @@ class Public::OrdersController < ApplicationController
         @order_detail.making_status = 0
         @order_detail.save
     end
-    
+
     #Addressに登録する処理
+    
+
     Delivery.create(
-      user_id: current_user.id, 
+      user_id: current_user.id,
       delivery_postal_code: @order.postal_code,
       delivery_address: @order.address,
       delivery_city: @order.city,
@@ -98,10 +99,10 @@ class Public::OrdersController < ApplicationController
       last_name: @order.last_name,
       first_name: @order.first_name
       )
-
+      
     current_user.cart_items.destroy_all
     redirect_to orders_thanks_path
-  
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
