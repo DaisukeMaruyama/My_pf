@@ -42,7 +42,7 @@ Rails.application.configure do
         password: ENV['SMTP_PASSWORD'],
         enable_starttls_auto: true
     }
-  
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://9be7b2a8558e4e51a750954f6be6cac9.vfs.cloud9.us-east-1.amazonaws.com/'}
 
   config.action_mailer.perform_caching = true
 
