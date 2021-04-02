@@ -1,7 +1,9 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    #@items = Item.all.order(created_at: :desc)
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def show
