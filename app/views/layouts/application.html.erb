@@ -93,10 +93,12 @@
             </li>
             <% end %>
           </ul>
-          <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
-            <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
-            <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
-            <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
+          <% unless admin_signed_in? %>
+            <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
+              <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
+              <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+              <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
+            <% end %>
           <% end %>
         </div>
 
