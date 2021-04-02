@@ -42,6 +42,7 @@ gem 'stripe'
 # gem 'capistrano-rails', group: :development
 gem 'data-confirm-modal'
 gem "dotenv-rails"
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

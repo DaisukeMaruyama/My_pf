@@ -2,7 +2,22 @@
   <div style="box-shadow: 10px 10px 10px 10px gray;">
     <h2 class="mt-4 mb-3 ml-3 py-2">注文履歴一覧</h2>
   </div>
-  
+
+  <div class="my-2">
+    <%= search_form_for(@q, url: admin_orders_path) do |f| %>
+      <%= f.label :id, "注文ID" %>
+      <%= f.search_field :id_eq %><br>
+      <%= f.label :first_name, "名前　" %>
+      <%= f.search_field :first_name_cont, placeholder:"First name" %>
+      <%= f.search_field :last_name_cont, placeholder:"Last name" %><br>
+      <%= f.label :created_at, "購入日" %>
+      <%= f.date_field :created_at_gteq  %>
+      〜
+      <%= f.date_field :created_at_lteq_end_of_day %>
+      <%= f.submit "検索", class:"btn-info px-3" %>
+    <% end %>
+  </div>
+
   <div class="sc-table mb-5" style="box-shadow: 10px 10px 10px 10px gray;">
     <table class="table-hover table col-12">
       <thead class="active">
@@ -26,6 +41,6 @@
         </tbody>
       <% end %>
     </table>
-  </div> 
-  
+  </div>
+
 </div>
