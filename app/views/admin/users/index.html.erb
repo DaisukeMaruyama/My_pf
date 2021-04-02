@@ -1,12 +1,27 @@
 <div class="container-fluid">
-  <h2 class="mt-4 mb-3 ml-3">会員一覧</div>
 	
-	<div class="sc-table">
+  <h2 class="mt-4 mb-3 text-center">会員一覧</div>
+  <div class="row">
+		<div class="col-lg-12 col-md-8 sc-table my-3 mx-3 text-center">
+		  <%= search_form_for(@q, url: admin_users_path) do |f| %>
+		    <%= f.label :id, "会員ID" %>
+		    <%= f.search_field :id_eq %>
+		    <%= f.label :item_name, "名前" %>
+      	<%= f.search_field :first_name_cont, placeholder:"First name" %>
+      	<%= f.search_field :last_name_cont, placeholder:"Last name" %>
+      	<%= f.label :item_name, "Email" %>
+      	<%= f.search_field :email_cont %>
+		    <%= f.submit "検索", class:"btn-info px-3" %>
+		  <% end %>
+		</div>
+	</div>
+	
+	<div class="sc-table mx-3">
   	<table class="table table-hover px-2">
   		<thead  class="active">
   				<tr>
   					<th>会員ID</th>
-  					<th>商品名</th>
+  					<th>名前</th>
   					<th>メールアドレス</th>
   					<th>会員ステータス</th>
   				</tr>
