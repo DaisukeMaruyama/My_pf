@@ -38,9 +38,11 @@
     
     <%= render @item.reviews.order(created_at: :desc) %>
     
-    <div>
-      <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5 mt-2" %>
-    </div>
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5 mt-2" %>
+      </div>
+    <% end %>
   
     <script>
       $('.average-review-rating').raty({
