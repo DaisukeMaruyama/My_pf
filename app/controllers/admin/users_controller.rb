@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   def index
     #@users = User.all
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).order(created_at: :desc)
+    @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(8)
   end
   
   def update

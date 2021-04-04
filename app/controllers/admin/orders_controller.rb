@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   
   def index
     @q = Order.ransack(params[:q])
-    @orders = @q.result(distinct: true)
+    @orders = @q.result(distinct: true).page(params[:page]).per(8)
   end
 
   def show

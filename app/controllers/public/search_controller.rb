@@ -3,12 +3,12 @@ class Public::SearchController < ApplicationController
   def search
     @value = params["search"]["value"]
     @how = params["search"]["how"]
-    @datas = search_for(@how, @value)
+    @datas = search_for(@how, @value).page(params[:page]).per(8)
   end
   
   def genre_search
     @content = params["search"]["content"]
-    @datas = search_for_genre(@content)
+    @datas = search_for_genre(@content).page(params[:page]).per(8)
     params[:id] = @content
     @genre = Genre.find(params[:id])
   end

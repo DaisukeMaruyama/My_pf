@@ -11,6 +11,12 @@
         
       <div class="items col-md-10 col-sm-9 col-xs-10 mx-auto mt-4" style="padding-bottom: 50px;">
 
+        <div class="text-center mt-5">
+          <% if @datas.empty? %>
+              <h2>NOTHING MATCHES YOUR SEARCH</h2>
+              <p>But don't give up – check the spelling or try less specific search terms.</p>
+          <% end %>
+        </div>
   
         <% @datas.each do |data| %>
         <div class="card" style="width: 20rem; min-height: 350px;">
@@ -22,11 +28,8 @@
           </div>
         </div>
         <% end %>
-  
-    
-  
       </div>
-  
     </div>
+    <%= paginate @datas %>
   </div>
 </body>
