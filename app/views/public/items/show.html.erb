@@ -17,11 +17,11 @@
             <%= f.select :amount,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit 'Add to cart', class: "btn btn-success btn-new-register btn-lg mt-4"%>
-          <% end %>  
+          <% end %>
         <% else %>
           <h4 style="color: red;">Out of stock</h4>
         <% end %>
-      <% else %> 
+      <% else %>
         <h5>You are required to sign in to purchase.</h5>
         <div class="d-flex">
           <p>Returning customer?=></p> <%= link_to 'Go To Sign In Page', new_user_session_path , style:"color: #D98E04;", class:"ml-1" %>
@@ -29,21 +29,21 @@
         <div class="d-flex">
           <p>New customer?=></p> <%= link_to 'Create New Account', new_user_registration_path , style:"color: #D98E04;", class:"ml-1"  %>
         </div>
-      <% end %>  
+      <% end %>
     </div>
   </div>
-  
+
   <div class="item-review-section">
     <h2 class="mb-3">Reviews</h2>
-    
+
     <%= render @item.reviews.order(created_at: :desc) %>
-    
+
     <% if user_signed_in? %>
       <div>
         <%= link_to 'Add Review', new_item_review_path(@item), class:"btn btn-info mb-5 mt-2" %>
       </div>
     <% end %>
-  
+
     <script>
       $('.average-review-rating').raty({
         readOnly: true,

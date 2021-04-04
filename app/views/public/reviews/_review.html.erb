@@ -29,8 +29,8 @@
         <p>
             Date：<%= review.created_at.strftime('%Y/%m/%d') %>
             <% if user_signed_in? %> 
-                <span>|</span>
                 <% if review.user == current_user %>
+                    <span>|</span>
                     <%= link_to 'Edit', edit_item_review_path(review.item, review), method: :get, class:'btn btn-default' %>
                     <span>|</span>
                     <%= link_to item_review_path(review.item, review), method: :delete, class: "btn btn-sm btn-danger" do %>
