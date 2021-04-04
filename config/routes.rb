@@ -35,6 +35,7 @@ scope module: :public do
   get 'search/search'
   get 'search/genre_search'
   
+  get 'items/condition_search' => 'items#condition_search'
   resources :items, only: [:index, :show] do
     resources :reviews
   end

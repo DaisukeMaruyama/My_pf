@@ -13,3 +13,21 @@
 .item-review-section {
   margin-bottom: 40px;
 }
+
+.condition-search-botton{
+  cursor: pointer;
+  color: white; 
+  font-family: 'Lobster', cursive;
+  background-color: #FFAD90;
+  border-radius: 7px;
+}
+
+.condition-search-botton:hover {
+  opacity: 0.8;
+}
+
+.genre-select {
+  width: 61%;
+  height: 100%;
+  border: 2px solid grey;
+}

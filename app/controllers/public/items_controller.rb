@@ -6,6 +6,11 @@ class Public::ItemsController < ApplicationController
     @items = @q.result(distinct: true).order(created_at: :desc)
     @genres = Genre.all
   end
+  
+  def condition_search
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true).order(created_at: :desc)
+  end
 
   def show
     @item = Item.find(params[:id])

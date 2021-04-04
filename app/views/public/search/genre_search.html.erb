@@ -10,11 +10,11 @@
       </div>
         
       <div class="items col-md-10 col-sm-9 col-xs-10 mx-auto mt-4" style="padding-bottom: 50px;">
-        <div>
-          
-        <% if @datas.empty? %>
-            <h2>No result</h2>
-        <% end %>
+        <div class="text-center mt-5">
+          <% if @items.empty? %>
+              <h1>NOTHING MATCHES YOUR SEARCH</h1>
+              <p>But don't give up – check the spelling or try less specific search terms.</p>
+          <% end %>
         </div>
   
         <% @datas.each do |data| %>
