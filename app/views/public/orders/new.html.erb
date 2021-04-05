@@ -17,7 +17,7 @@
 
   <div class="row">
     <div class="col-lg-7 mb-3">
-      <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Information" %></strong></h4>
+      <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Address" %></strong></h4>
         
           <div class="field mt-3 ml-3">
             <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
@@ -40,7 +40,7 @@
           <%= f.label :address, "Ship to registered addresses", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
           <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
           
-          <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Select one of your registered addresses"}, {class: "ml-4 registered-address"} ) %>
+          <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Select one of your registered addresses"}, {class: "ml-4 registered-address my-2"} ) %>
         </div>
         
         <div class="field mt-3 ml-3">
@@ -98,21 +98,70 @@
             <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %> 
 
           <h4 style="color:  #D98E04;"><strong><%= f.label :payment_method, "Payment Method" %></strong></h4>
-          <div class="field mb-5">
+          <div class="field mt-3 mb-5">
               <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
               <%= f.label :payment_method, "Credit Card" %><br>
               <%= f.radio_button :payment_method, :Paypal ,class:"ml-3 mt-2" %>
               <%= f.label :payment_method, "Paypal" %>
           </div>
         </div>
-        <div class="field" style="background-color: #F0F3EF;">
-          <h6 class="px-1 py-1" style="background-color: #26110F; color: #EBE9DE;"><strong>Delivery Time & Shipping Cost</strong></h6>
-        <p class="text-justify px-2 py-2" style="font-size: 15px;">Depending on the country.Plese cheak it out on the next page.<br>We try our best to get deliveries out to you on time, but sometimes international deliveries can take longer than expected.</p>
-        </div>  
+        
+        <h4 style="color:  #D98E04;"><strong>Other Infomation</strong></h4>
+        <div class="accordion mt-4" id="myAccordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" , style="color: #26110F; box-shadow:none;"><i class="fas fa-truck mr-2"></i>DELIVERY INFO</button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#myAccordion">
+              <div class="card-body">
+                <p>All our international deliveries are handled by UPS and FedEx.<br>
+                  <br>
+                    You will need to make sure that you cover any ingoing customs or taxes costs should any be incurred when shipping to your destination. <br>
+                    At SnackBen we do our best to deliver within the stated time, however we cannot be held responsible for any delays caused by the customs clearance of the destination country.<br>
+                    <br>
+                    We try our best to get deliveries out to you on time, but sometimes international deliveries can take longer than expected.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo", style="color: #26110F; box-shadow:none;"><i class="fas fa-globe mr-2"></i>OUR POLICY</button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#myAccordion">
+              <div class="card-body">
+                <p>We take pride of our SnackBen, so anything returned should be new, unused and with all our security garment tags still attached. Returns that are damaged, soiled or altered may not be accepted and may be sent back to the customer.<br>
+                    If you’re returning something faulty, damaged or soiled please <%= link_to 'Contact Us', new_contact_path, style:"color: #D98E04;" %> prior to sending any return.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                  <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree", style="color: #26110F; box-shadow:none;"><i class="far fa-lightbulb mr-2"></i>SOME USEFUL TIPS</button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#myAccordion">
+              <div class="card-body">
+                <p>We’d hate for you to not receive your order. Please make sure that the shipping address is correct as we’re unable to redirect orders once they’re on their way to you.<br>
+                  <br>
+                  Our delivery time starts from the moment an order is accepted. This includes a 24 period where your items will be processed and dispatched by our warehouse.
+                  Please note this can take longer during our sale periods, when it may take up to 48 hours for shipments to be dispatched.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>  
         
-    <div class="actions text-center mb-5 mt-3">
+    <div class="actions text-center mb-5 mt-4">
       <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
     </div>
   

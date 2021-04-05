@@ -27,15 +27,15 @@ class Order < ApplicationRecord
     international_shipping_fee = 0
     case country 
       when "GB","FR","DE","IT","ES","SE" 
-        international_shipping_fee += 20.00
-      when "IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH"
-        international_shipping_fee += 17.00
-      when "US","CA", "MX","AU","PE"
         international_shipping_fee += 15.00
+      when "IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH"
+        international_shipping_fee += 12.00
+      when "US","CA", "MX","AU","PE"
+        international_shipping_fee += 9.00
       when "PH","RU", "TW","CN","VN", "MY", "KR"
-        international_shipping_fee += 12.00  
+        international_shipping_fee += 7.00  
       when "JP" 
-        international_shipping_fee += 9.00    
+        international_shipping_fee += 4.00    
     end
   end
   
