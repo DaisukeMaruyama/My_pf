@@ -1,34 +1,90 @@
-
   <div class="container-fluid">
     <div class="row">
-      <div class="pt-4 col-12 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">
+      <div class="pt-4 col-12 text-center mb-2" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">
         <h3 style="font-family: 'Chango', cursive;">Your search results</h3>
-        <p><%= @items.count %> snacks found</p>
+        <p><%= @items.total_count %> snacks found</p>
       </div>
-        
-      <div class="items col-md-10 col-sm-9 col-xs-10 mx-auto mt-4" style="padding-bottom: 50px;">
-        <div class="text-center mt-5">
-          <% if @items.empty? %>
-              <h2>NOTHING MATCHES YOUR SEARCH</h2>
-              <p>But don't give up – check the spelling or try less specific search terms.</p>
-          <% end %>
-        </div>
-  
-        <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
       
-          <% @items.each do |item| %>
-            <div class="card" style="width: 20rem; min-height: 350px;">
-              <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
-              <div class="card-body">
-                <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
-                <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
-                <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
+      <div class="d-flex col-12 pt-2"  style="border: 2px dashed #EBE9DE; background-color: #101626; color:white;">
+        <h5 class="ml-4 col-2" style="font-family: 'Lobster', cursive;">Categories Search</h5>
+        <div class="col-9">
+          <% @genres.each do |genre| %>
+  
+            <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: white;", class:"ml-3" %>
+  
+          <% end %>
+  
+        </div>
+      </div>
+    <div class="col-9 mt-3">
+            <!-- Large modal -->
+      <span class="condition-search-botton ml-5 p-1" data-toggle="modal" data-target=".bd-example-modal-lg">Condition Search<i class="fas fa-search-plus ml-1"></i></span>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="d-flex col-12 pt-2"  style="border: 2px double #EBE9DE; background-color: #101626; color:white;">
+
+                <%= search_form_for(@q, url: items_condition_search_path) do |f| %>
+                  <form>
+                    <div class="row ml-3 mt-1">
+                      <label class="col-sm-4">Product Name</label>
+                      <div class="col-sm-8">
+                        <%= f.search_field :item_name_cont %>
+                      </div>
+                    </div>
+
+                    <div class="row ml-3 mt-1">
+                      <label class="col-sm-4">Price</label>
+                      <div class="col-sm-8">
+                        <%= f.search_field :price_gteq, placeholder:"$ Min"  %> 〜 <%= f.search_field :price_lteq, placeholder:"$ Max" %>
+                      </div>
+                    </div>
+
+                    <div class="row ml-3 mt-1">
+                      <label class="col-sm-4">Genre</label>
+                      <div class="col-sm-8">
+                       <%# <%= f.select :genre_id_eq, options_from_collection_for_select(Genre.all, :id, :genre_name, include_blank: "--Select a genre--", class:"form-contorl") %>
+                        <%= f.collection_select(:genre_id_eq, Genre.all, :id, :genre_name,{prompt: "--Select a genre--"},{class: "genre-select"}) %>
+                      </div>
+                    </div>
+
+                    <div class="row ml-3 mt-2">
+                      <label class="col-sm-4"></label>
+                      <div class="col-sm-8">
+                        <%= f.submit "Search", class:"btn-info px-3 mb-3" %>
+                      </div>
+                    </div>
+
+                  </form>
+                <% end %>
               </div>
             </div>
-          <% end %>
-      
+          </div>
         </div>
-      </div>  
+<!-- Large modalケツ -->
+      </div>
     </div>
-    <%= paginate @items %>
-  </div>  
+        
+    <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
+      <div class="text-center mt-5">
+        <% if @items.empty? %>
+            <h2>NOTHING MATCHES YOUR SEARCH</h2>
+            <p>But don't give up – check the spelling or try less specific search terms.</p>
+        <% end %>
+      </div>
+      
+      <% @items.each do |item| %>
+        <div class="card" style="width: 20rem; min-height: 350px;">
+          <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+          <div class="card-body">
+            <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
+            <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
+            <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+          
+    </div>  
+  </div>
+  <%= paginate @items %>
+</div>  

@@ -66,7 +66,7 @@
 
     <% @items.each do |item| %>
       <div class="card" style="width: 20rem; min-height: 350px;">
-        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
         <div class="card-body">
           <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
           <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>

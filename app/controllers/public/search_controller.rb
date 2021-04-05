@@ -4,6 +4,7 @@ class Public::SearchController < ApplicationController
     @value = params["search"]["value"]
     @how = params["search"]["how"]
     @datas = search_for(@how, @value).page(params[:page]).per(8)
+    @q = Item.ransack(params[:q])
   end
   
   def genre_search
@@ -11,6 +12,7 @@ class Public::SearchController < ApplicationController
     @datas = search_for_genre(@content).page(params[:page]).per(8)
     params[:id] = @content
     @genre = Genre.find(params[:id])
+    @q = Item.ransack(params[:q])
   end
   
   private
