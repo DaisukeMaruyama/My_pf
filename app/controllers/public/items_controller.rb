@@ -19,6 +19,7 @@ class Public::ItemsController < ApplicationController
     else
       @average_review = @item.reviews.average(:rate).round(2)
     end
+    @items_review = @item.reviews.order(created_at: :desc).page(params[:page]).per(5)
   end
   
 end

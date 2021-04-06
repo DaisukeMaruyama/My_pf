@@ -32,13 +32,18 @@
       <% end %>
     </div>
   </div>
-  
-  
+
+
 
   <div class="item-review-section">
     <h2 class="mb-3">Reviews</h2>
 
-    <%= render @item.reviews.order(created_at: :desc) %>
+    <%#<%= render @item.reviews.order(created_at: :desc) %>
+    <%# 上の書き方はkaminariが使えない。下はコントローラーに代入（@items_review）する事でkaminariを使える様にする。%>
+    <%= render @items_review %>
+    <div class="mt-2">
+      <%= paginate @items_review %>
+    </div>
 
     <% if user_signed_in? %>
       <div>
@@ -47,7 +52,7 @@
     <% end %>
 
     <script>
-    $('.average-review-rating').empty(); 
+    $('.average-review-rating').empty();
       $('.average-review-rating').raty({
         readOnly: true,
         starOn: "<%= asset_path('star-on.png') %>",
