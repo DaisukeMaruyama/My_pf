@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-4 mb-4">Product detail</h2>
+  <h1 class="mt-4 mb-4" style="font-family: 'Chango', cursive;">Product detail</h1>
   <div class="row"  style="padding-bottom: 50px;">
     <div class="col-lg-5 col-sm-12">
       <%= attachment_image_tag @item, :image, size: "450x450", fallback: "no-image.jpeg", format: "jpeg", class: "card", style:"border: 2px solid grey;" %>
@@ -44,6 +44,10 @@
     <div class="mt-2">
       <%= paginate @items_review %>
     </div>
+    <% if @item.reviews.empty? %>
+      <p>There is no reviews for this snack yet.<p>
+    <% end %>
+
 
     <% if user_signed_in? %>
       <div>
@@ -63,6 +67,22 @@
         }
       });
     </script>
+  </div>
+  
+  <h2>Related snacks</h2>
+  <div class="items col-12 mx-auto mt-3" style="padding-bottom: 50px;">
+    
+    <% @related_items.each do |item| %>
+      <div class="card" style="width: 20rem; min-height: 350px;">
+        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
+        <div class="card-body">
+          <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
+          <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
+          <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 
 </div>

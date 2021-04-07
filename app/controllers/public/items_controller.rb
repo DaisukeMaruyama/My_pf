@@ -19,7 +19,10 @@ class Public::ItemsController < ApplicationController
     else
       @average_review = @item.reviews.average(:rate).round(2)
     end
+    #レビューrenderの代入、ページネーションさせるため
     @items_review = @item.reviews.order(created_at: :desc).page(params[:page]).per(5)
+    #関連商品の代入(詳細ページの製品は除く為にwhere.not)
+    @related_items = Item.where(genre_id: @item.genre_id).where.not(id: @item.id)
   end
   
 end
