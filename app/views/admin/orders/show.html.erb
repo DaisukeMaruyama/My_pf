@@ -1,33 +1,33 @@
 <div class="container">
   <h2 class="mt-4 mb-5">注⽂履歴詳細</h2>
-  
+
   <div class="form-group row mt-2">
-    <label class="col-sm-4 col-lg-2"><strong>注文No</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>注文No</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.id %></div>
   </div>
 
   <div class="form-group row mt-2">
-    <label class="col-sm-4 col-lg-2"><strong>購入者</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>購入者</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.user.first_name %> <%= @order.user.last_name %></div>
   </div>
   
   <div class="form-group row">
-    <label class="col-sm-4 col-lg-2"><strong>注文日</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>注文日</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.created_at.strftime("%Y年%m月%d日") %></div>
   </div>
   
   <div class="form-group row">
-    <label class="col-sm-4 col-lg-2"><strong>配送先</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>配送先</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.address %>, <%= @order.city %>, <%= @order.postal_code %>, <%= @order.country%><br><%= @order.first_name %> <%= @order.last_name %></div>
   </div>
   
   <div class="form-group row">
-    <label class="col-sm-4 col-lg-2"><strong>支払い方法</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>支払い方法</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.payment_method %></div>
   </div>
   
   <div class="form-group row">
-    <label class="col-sm-4 col-lg-2"><strong>注文ステータス</strong></label>
+    <label class="col-sm-4 col-lg-2"><h5><strong>注文ステータス</strong></h5></label>
     <div class="col-sm-8 col-lg-10">
       <%= form_with model: @order,url: admin_order_path, method: :patch, local:true do |f| %>
       <%= f.select :order_status, {"Waiting for shipping":"Waiting for shipping", "Already shipped out":"Already shipped out"} %>
@@ -47,7 +47,7 @@
           <th scope="col">制作ステータス</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="background-color: #F4F8F3;">
         <% @order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.item_name %></td>
@@ -68,16 +68,16 @@
     <div class="col-lg-3 offset-lg-1 mb-5 mt-3">
       <table class="table table-sm">
         <tr>
-          <th scope="col">商品合計</th>
-          <td scope="col">$ <%= number_with_precision(@payment_without_shipping.to_s(:delimited), precision: 2) %></td>
+          <th scope="col" class="active">商品合計</th>
+          <td scope="col" style="background-color: #F4F8F3;">$ <%= number_with_precision(@payment_without_shipping.to_s(:delimited), precision: 2) %></td>
         </tr>
         <tr>
-          <th>送料</th>
-          <td>$ <%= number_with_precision(@order.shipping_cost, precision: 2) %></td>
+          <th class="active">送料</th>
+          <td style="background-color: #F4F8F3;">$ <%= number_with_precision(@order.shipping_cost, precision: 2) %></td>
         </tr>
         <tr style="border-bottom: 2px solid grey;">
-          <th>請求額合計</th>
-          <td><strong>$ <%= number_with_precision(@order.total_payment.to_s(:delimited), precision: 2) %></strong></td>
+          <th class="active">請求額合計</th>
+          <td style="background-color: #F4F8F3;"><strong>$ <%= number_with_precision(@order.total_payment.to_s(:delimited), precision: 2) %></strong></td>
         </tr>
       </table>
     </div>
