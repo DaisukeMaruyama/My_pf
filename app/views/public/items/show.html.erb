@@ -68,14 +68,14 @@
       });
     </script>
   </div>
-  
+
   <h2>Related snacks</h2>
-  <div class="items col-12 mx-auto mt-3" style="padding-bottom: 50px;">
-    
+  <div class="items col-12 mx-auto mt-3" id="slider" style="padding-bottom: 50px;">
+
     <% @related_items.each do |item| %>
-      <div class="card" style="width: 20rem; min-height: 350px;">
+      <div class="related-card card" style="width: 18rem; min-height: 380px;">
         <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
-        <div class="card-body">
+        <div class="card-body" style="border-top: 1px solid #F1A244;">
           <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
           <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
           <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
@@ -83,6 +83,8 @@
       </div>
     <% end %>
 
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+     
   </div>
 
 </div>
