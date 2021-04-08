@@ -192,3 +192,22 @@ $slick-opacity-not-active: 0.25 !default;
         }
     }
 }
+
+/*デフォルトを下記で上書き*/
+
+.slick-next {
+    right: 1px!important;
+    z-index: 100;
+ }
+
+.slick-prev {
+    left: 1px!important;
+    z-index: 100;
+ }
+ 
+.slick-prev:before,
+.slick-next:before {
+  color: black!important;
+　line-height: 1;
+　opacity: 0.8;
+}
