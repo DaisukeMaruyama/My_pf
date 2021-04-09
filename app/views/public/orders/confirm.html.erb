@@ -2,9 +2,9 @@
 	<div class="row mx-2">
 		<div class="ec-cart-index-main col-md-12">
 			<h2 class="ec-cart-index-title">Order Confirmation</h2>
-			
+
 			<div class="cart-item-table row">
-			  
+
 				<table class="table01 table table-sm col-12" style="border-bottom: 2px solid  #F0EDEC;">
           <thead>
             <tr class="active">
@@ -26,22 +26,12 @@
             <% end %>
           </tbody>
         </table>
-
-			  <table class="table table-bordered mb-3 order-shipdelivery-table">
+      
+			  <table class="table table-bordered order-shipdelivery-table col-lg-8">
           <tr>
-            <th class="active">Delivery Days</th>
+            <th class="active">Delivery Time</th>
             <td class="text-left">
               <%= @order.delivery_time %>
-            </td>
-          </tr>
-          <tr>
-            <th class="active">Payment Method</th>
-            <td class="text-left">
-              <% if @order.payment_method == "Creditcard" %>
-                 Credit Card
-              <% else %>
-                 Paypal
-              <% end %>
             </td>
           </tr>
           <tr>
@@ -52,31 +42,33 @@
           </tr>
         </table>
 
-        <div class="confirm-prise col-md-5 offset-md-7 mt-3">
-          <table class="table table-bordered order-confirm-table">
-            <tbody>
-              <tr>
-                <th class="active">Shipping Cost</th>
-                <td class="text-right">$ <%= number_with_precision(@order.international_shipping_fee, precision: 2) %></td>
-              </tr>
-              <tr>
-                <th class="active">Total Price</th>
-                <td class="text-right">$ <%= number_with_precision(current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum}, precision: 2)  %></td>
-              </tr>
-              <tr>
-                <th class="active">Grand Total</th>
-                <td class="text-right">$ <%= number_with_precision(@order.total_payment, precision: 2) %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         
+        <table class="table table-bordered order-confirm-table col-lg-4">
+          <tbody>
+            <tr>
+              <th class="active">Shipping Cost</th>
+              <td class="text-right">$ <%= number_with_precision(@order.international_shipping_fee, precision: 2) %></td>
+            </tr>
+            <tr>
+              <th class="active">Total Price</th>
+              <td class="text-right">$ <%= number_with_precision(current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum}, precision: 2)  %></td>
+            </tr>
+            <tr>
+              <th class="active">Grand Total</th>
+              <td class="text-right">$ <%= number_with_precision(@order.total_payment, precision: 2) %></td>
+            </tr>
+          </tbody>
+        </table>
+       
+
       </div>
-      
+
     </div>
   </div>
+  
+  
 
-
+　<%# Stripe決済ボタン↓ %>
   <div class="comfirmation-btn-wrap text-center mb-5">
 
     <%= form_tag pay_orders_path, method: :post do |f| %>
@@ -99,8 +91,8 @@
         <%= hidden_field_tag(:first_name, order.first_name) %>
         <%= hidden_field_tag(:city, order.city) %>
         <%= hidden_field_tag(:country, order.country) %>
-        <%= hidden_field_tag(:payment_method, order.payment_method) %>
-      <% end %>  
+        <%= hidden_field_tag(:delivery_time, order.delivery_time) %>
+      <% end %>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -113,7 +105,7 @@
         data-panel-label="Pay now"
        >
       </script>
-      <button type="submit" class="yourCustomClass btn btn-primary btn-lg">Place order with credit card<i class="fas fa-check ml-2"></i></button>
+      <button type="submit" class="yourCustomClass btn btn-primary btn-lg" style="border-radius: 15px;">Place order with credit card<i class="fas fa-check ml-2"></i></button>
       <style type="text/css">
                 <%#<!--
                 button.stripe-button-el,
@@ -121,7 +113,7 @@
                   background-color: primary !important;
                   background-image: none;
                   width: 300px;
-              
+
                 }
               -->       コメントアウトの方法もあり  %>
           .stripe-button-el { display: none }
@@ -129,4 +121,6 @@
     <% end %>
 
   </div>
+  <%# Stripe決済ボタン終わり %>
+
 </div>

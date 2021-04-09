@@ -88,23 +88,15 @@
       
       <div class="col-lg-4 offset-lg-1">
       
+      <%#後学のため残す。
       <%#<%= f.label :shipping_method, "Shipping Method" %>
-        <div class="field mb-5">
-  
-            <%#後学のため残す。
+        <%#<div class="field mb-5">
+            
             <%#<%= f.radio_button :shipping_method, :Includes_tracking ,  checked: "checked" ,class:"ml-3" %>
             <%#<%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %>
             <%#<%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
             <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %> 
-
-          <h4 style="color:  #D98E04;"><strong><%= f.label :payment_method, "Payment Method" %></strong></h4>
-          <div class="field mt-3 mb-5">
-              <%= f.radio_button :payment_method,:Creditcard,  checked: "checked" ,class:"ml-3" %>
-              <%= f.label :payment_method, "Credit Card" %><br>
-              <%= f.radio_button :payment_method, :Paypal ,class:"ml-3 mt-2" %>
-              <%= f.label :payment_method, "Paypal" %>
-          </div>
-        </div>
+        <%#</div>  %>
         
         <h4 style="color:  #D98E04;"><strong>Other Infomation</strong></h4>
         <div class="accordion mt-4" id="myAccordion">

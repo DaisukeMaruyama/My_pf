@@ -1,7 +1,6 @@
 class Public::OrdersController < ApplicationController
 
 
-
   def new
     @order = Order.new
     @user = User.find(current_user.id)
@@ -49,7 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def pay
-    
+
     total = ( params[:amount].to_d * 100).to_i
     #hidden_field_tagで受け取った値を計算。stripeは小数点の値を受け取れない。ドル換算の場合は１００をかける。.to_iは整数を数字に変える。
       customer = Stripe::Customer.create(
@@ -74,6 +73,7 @@ class Public::OrdersController < ApplicationController
       @order.first_name = params[:first_name]
       @order.city = params[:city]
       @order.country = params[:country]
+      @order.delivery_time = @order.delivery_time
       @order.shipping_cost = @order.international_shipping_fee.to_d
       @order.save
 
@@ -88,18 +88,18 @@ class Public::OrdersController < ApplicationController
     end
 
     #Addressに登録する処理
-    
 
-    Delivery.create(
-      user_id: current_user.id,
-      delivery_postal_code: @order.postal_code,
-      delivery_address: @order.address,
-      delivery_city: @order.city,
-      delivery_country: @order.country,
-      last_name: @order.last_name,
-      first_name: @order.first_name
-      )
-      
+
+    #Delivery.create(
+      #user_id: current_user.id,
+      #delivery_postal_code: @order.postal_code,
+      #delivery_address: @order.address,
+      #delivery_city: @order.city,
+      #delivery_country: @order.country,
+      #last_name: @order.last_name,
+      #first_name: @order.first_name
+      #)
+
     current_user.cart_items.destroy_all
     redirect_to orders_thanks_path
 
@@ -108,9 +108,7 @@ class Public::OrdersController < ApplicationController
     flash[:error] = e.message
     redirect_to orders_confirm_path
 
-
   end
-
 
   def thanks
   end
@@ -119,7 +117,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def set_order
-    params.require(:order).permit(:payment_method, :address, :postal_code, :last_name, :first_name, :city, :country)
+    params.require(:order).permit(:delivery_time, :address, :postal_code, :last_name, :first_name, :city, :country)
   end
-
 end

@@ -6,14 +6,14 @@ devise_for :users, :controllers => {
   :registrations => 'devise/users/registrations',
   :sessions => 'devise/users/sessions',
   :passwords => 'devise/users/passwords'
-} 
+}
 
 devise_scope :user do
   get "user/:id", :to => "users/registrations#detail"
   get "signup", :to => "users/registrations#new"
   get "login", :to => "users/sessions#new"
   get "logout", :to => "users/sessions#destroy"
-  get "password", :to => "users/passwords#new" 
+  get "password", :to => "users/passwords#new"
 end
 
 #Adminのdevise
@@ -31,19 +31,19 @@ get '/about' => 'public/homes#about'
 
 #scope module: :public doでpublicフォルダへまとめる。※URLにpublicがつくことはない
 scope module: :public do
-  
+
   get 'search/search'
   get 'search/genre_search'
-  
+
   get 'items/condition_search' => 'items#condition_search'
   resources :items, only: [:index, :show] do
     resources :reviews
   end
-  
+
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
-  
-  
+
+
   get 'orders/thanks' => 'orders#thanks'
   resources :orders, only: [:show, :index, :new, :create] do
     collection do
@@ -52,13 +52,14 @@ scope module: :public do
     end
   end
   
+  
   get 'users/:id/newpassword' => 'users#newpassword'
   get 'users/unsubscribe' => 'users#unsubscribe'
   patch 'users/withdraw' => 'users#withdraw'
   resources :users, only: [:update, :show, :edit]
-  
+
   resources :deliveries, only: [:update, :index, :create, :destroy, :edit]
-  
+
 end
 
 #お問い合わせのルーティング
