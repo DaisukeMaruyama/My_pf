@@ -33,6 +33,12 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
   
+  def shipping_confirm
+    @cart_item = current_user.cart_items.new(country: params[:country])
+  end
+  
+  private
+  
   def correct_user
 		@cart_item = CartItem.find(params[:id])
 		if current_user.id != @cart_item.user_id
@@ -44,6 +50,5 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id)
   end
-  
   
 end

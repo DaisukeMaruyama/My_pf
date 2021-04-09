@@ -39,9 +39,13 @@ scope module: :public do
   resources :items, only: [:index, :show] do
     resources :reviews
   end
-
+  
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update] do
+    collection do 
+      post :shipping_confirm
+    end
+  end  
 
 
   get 'orders/thanks' => 'orders#thanks'
