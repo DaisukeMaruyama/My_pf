@@ -5,7 +5,13 @@
       <table class="table table-sm mt-1" style="background-color: #F0F3EF;">
         <tr>
           <th class="text-left active">Country</th>
-          <td><%= @cart_item.country %></td>
+          <td>
+            <% if @cart_item.country == "KR" %>
+              Korea
+            <% else %>
+              <%= @cart_item.country_name %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th class="text-left active">Shipping Cost</th>

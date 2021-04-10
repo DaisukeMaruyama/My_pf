@@ -11,7 +11,13 @@
         </tr>
         <tr>
           <th class="active">Shipping Address</th>
-          <td style="background-color: #F0F3EF;"><%= @order.address %> <%= @order.city %> <%= @order.postal_code %> <%= @order.country %></td>
+          <td style="background-color: #F0F3EF;"><%= @order.address %> <%= @order.city %> <%= @order.postal_code %> 
+          <% if @order.country == "KR" %>
+            Korea
+          <% else %>
+            <%= @order.country_name %>
+          <% end %>
+          </td>
         </tr>
         <tr>
           <th class="active">Delivery Time</th>

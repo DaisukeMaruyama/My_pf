@@ -71,7 +71,13 @@
       <% current_user.deliveries.each do |delivery| %>
       <tr>
         <td><%= delivery.first_name %> <%= delivery.last_name %></td>
-        <td><%= delivery.delivery_address %> <%= delivery.delivery_city %> <%= delivery.delivery_postal_code %> <%= delivery.delivery_country %></td>
+        <td><%= delivery.delivery_address %> <%= delivery.delivery_city %> <%= delivery.delivery_postal_code %> 
+        <% if delivery.delivery_country == "KR" %>
+          Korea
+        <% else %>
+          <%= delivery.country_name %>
+        <% end %>
+        </td>
         <td class="d-flex" style="border-bottom: none;">
           <%= link_to 'Edit', edit_delivery_path(delivery.id), class: "btn btn-success" %>
           <%= link_to 'Delete', delivery_path(delivery.id), method: :delete, data: {confirm: "Are you sure that you want to delete?"}, class: "btn btn-danger ml-1" %>

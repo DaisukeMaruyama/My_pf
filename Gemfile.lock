@@ -310,6 +310,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  countries
   country_select
   data-confirm-modal
   devise

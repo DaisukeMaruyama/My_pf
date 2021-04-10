@@ -37,7 +37,12 @@
           <tr>
             <th class="col-xs-4 active">Shipping Address</th>
             <td class="col-xs-8">
-              <%= @order.first_name %> <%= @order.last_name %> <%= @order.address %> <%= @order.city %> <%= @order.postal_code %> <%= @order.country %><br>
+              <%= @order.first_name %> <%= @order.last_name %> <%= @order.address %> <%= @order.city %> <%= @order.postal_code %> 
+              <% if @order.country == "KR" %>
+                Korea
+              <% else %>
+                <%= @order.country_name %>
+              <% end %><br>
             </td>
           </tr>
         </table>

@@ -48,7 +48,7 @@
 					
 					<div class="mb-1">
 						<thead class="active" style="float: right;">
-							<th>Shipping Cost & Delivery Time</th>
+							<th>※Shipping Cost & Delivery Time</th>
 							<%= form_with url: shipping_confirm_cart_items_path, method: :post, local:true do |f| %>
 							<td><%= f.country_select :country , { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
               "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 55%; height: 100%;', data: { attribute: "value" } } %>

@@ -60,7 +60,11 @@
          <label class="col-md-3"><strong>Country</strong></label>
         <div class="col-md-9">
           <% if @user.country %>
-            <%= @user.country %>
+            <% if @user.country == "KR" %>
+              Korea
+            <% else %>
+              <%= @user.country_name %>
+            <% end %>
           <% else %>
             Unregistered
           <% end %>

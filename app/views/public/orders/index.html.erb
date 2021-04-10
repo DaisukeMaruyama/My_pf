@@ -18,7 +18,11 @@
         <%= order.address %><br>
         <%= order.city %>
         <%= order.postal_code %>
-        <%= order.country %>
+        <% if order.country == "KR" %>
+          Korea
+        <% else %>
+          <%= order.country_name %>
+        <% end %>
       </td>
       <td data-label="Order Products">
         <% order.order_details.each do |order_detail| %>
