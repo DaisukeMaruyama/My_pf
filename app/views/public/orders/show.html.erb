@@ -6,6 +6,10 @@
       <label class="ml-1">Order Product</label>
       <table class="table table-sm table-bordered">
         <tr>
+          <th class="active" scope="col">Order Number</td>
+          <td scope="col" style="background-color: #F0F3EF;"><%= @order.id %></td>
+        </tr>
+        <tr>
           <th class="active" scope="col">Order Date</td>
           <td scope="col" style="background-color: #F0F3EF;"><%= @order.created_at.strftime("%d/%m/%Y").to_s %></td>
         </tr>
