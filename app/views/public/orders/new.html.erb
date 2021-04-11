@@ -24,6 +24,7 @@
             
             <%= f.label :oaddress, "Ship to your address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
             <% if current_user.postal_code && current_user.address %>
+              <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
               <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> 
               <% if @user.country == "KR" %>
                 Korea
@@ -31,7 +32,6 @@
                 <%= @user.country_name %>
               <% end %>
               </p>
-              <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
             <% else %>
               <p class="ml-4" style="font-size: 14px;">You want us to ship to your address, but you haven't created your profile yet?</p>
               <div class="d-flex">
