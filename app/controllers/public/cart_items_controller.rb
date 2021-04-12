@@ -1,13 +1,14 @@
 class Public::CartItemsController < ApplicationController
-  
+
   before_action :correct_user, only: [:update, :destroy]
-  
+
   def index
     @cart_items = CartItem.all
     @user = User.find(current_user.id)
+    @cart_item = current_user.cart_items.new(country: params[:country])
   end
 
-  def create 
+  def create
     @cart_item = current_user.cart_items.new(cart_item_params)
     @cart_item.save!
     redirect_to cart_items_path
@@ -32,13 +33,18 @@ class Public::CartItemsController < ApplicationController
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
-  
+
   def shipping_confirm
+    @cart_items = CartItem.all
+    @user = User.find(current_user.id)
     @cart_item = current_user.cart_items.new(country: params[:country])
+    if params[:country].empty?
+      logger.warn("shipping_confirm : error")
+    end
   end
-  
+
   private
-  
+
   def correct_user
 		@cart_item = CartItem.find(params[:id])
 		if current_user.id != @cart_item.user_id
@@ -46,9 +52,9 @@ class Public::CartItemsController < ApplicationController
 			redirect_to cart_items_path
 		end
   end
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id)
   end
-  
+
 end

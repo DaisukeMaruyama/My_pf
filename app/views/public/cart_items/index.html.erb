@@ -45,19 +45,20 @@
 			<div class="cart-total-table row">
 				<div class="col-md-8 return-shopping-btn-wrapper"><%= link_to "Continue Shopping", items_path, class:"btn btn-outline-success mb-3" %></div>
 				<div class="col-md-4">
-					
+
 					<div class="mb-1">
 						<thead class="active" style="float: right;">
 							<th>※Shipping Cost & Delivery Time</th>
-							<%= form_with url: shipping_confirm_cart_items_path, method: :post, local:true do |f| %>
+							<%= form_with url: shipping_confirm_cart_items_path, method: :post, remote: true do |f| %>
 							<td><%= f.country_select :country , { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
               "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 55%; height: 100%;', data: { attribute: "value" } } %>
               <%= f.submit 'Cheak', class:"btn btn-sm btn-outline-info" %>
               </td>
+              <%= render 'cart_items', cart_items: @cart_item %>
             	<% end %>
 						</thead>
-					</div>	
-					
+					</div>
+
 					<table class="table">
 						<tbody class="active-grand-total active">
 							<th>Grand total</th><!-- クラス名を後ほど作成。とりあえずの名前 -->
