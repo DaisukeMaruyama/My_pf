@@ -10,14 +10,6 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
       end
-      it 'Sign Upリンクが表示される: 左上から5番目のリンクが「Sign Up」である' do
-        sign_up_link = find_all('a')[5].native.inner_text
-        expect(sign_up_link).to match(/sign up/i)
-      end
-      it 'Sign Upリンクの内容が正しい' do
-        sign_up_link = find_all('a')[5].native.inner_text
-        expect(page).to have_link sign_up_link, href: new_user_registration_path
-      end
       it 'Sign inリンクが表示される: 左上から4番目のリンクが「Sign in」である' do
         sign_in_link = find_all('a')[6].native.inner_text
         expect(sign_in_link).to match(/Sign in/i)
@@ -25,6 +17,14 @@ describe 'ユーザログイン前のテスト' do
       it 'Sign inリンクの内容が正しい' do
         log_in_link = find_all('a')[6].native.inner_text
         expect(page).to have_link log_in_link, href: new_user_session_path
+      end
+      it 'Sign Upリンクが表示される: 左上から5番目のリンクが「Sign Up」である' do
+        sign_up_link = find_all('a')[5].native.inner_text
+        expect(sign_up_link).to match(/sign up/i)
+      end
+      it 'Sign Upリンクの内容が正しい' do
+        sign_up_link = find_all('a')[5].native.inner_text
+        expect(page).to have_link sign_up_link, href: new_user_registration_path
       end
     end
   end
@@ -52,19 +52,27 @@ describe 'ユーザログイン前のテスト' do
       end
       it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
         home_link = find_all('a')[1].native.inner_text
-        expect(home_link).to match(/home/i)
+        expect(home_link).to match(/Home/i)
       end
       it 'Aboutリンクが表示される: 左上から2番目のリンクが「About」である' do
         about_link = find_all('a')[2].native.inner_text
-        expect(about_link).to match(/about/i)
+        expect(about_link).to match(/About/i)
       end
-      it 'sign upリンクが表示される: 左上から4番目のリンクが「sign up」である' do
-        signup_link = find_all('a')[5].native.inner_text
-        expect(signup_link).to match(/Sign up/i)
+      it 'Aboutリンクが表示される: 左上から3番目のリンクが「Snacks」である' do
+        genre_name_link = find_all('a')[3].native.inner_text
+        expect(genre_name_link).to match(/Snacks/i)
       end
-      it 'loginリンクが表示される: 左上から5番目のリンクが「Sign in」である' do
-        login_link = find_all('a')[6].native.inner_text
-        expect(login_link).to match(/Sign in/i)
+      it 'Aboutリンクが表示される: 左上から4番目のリンクが「View all」である' do
+        view_all_link = find_all('a')[4].native.inner_text
+        expect(view_all_link).to match(/View all/i)
+      end
+      it 'sign upリンクが表示される: 左上から5番目のリンクが「Sign up」である' do
+        sign_up_link = find_all('a')[5].native.inner_text
+        expect(sign_up_link).to match(/Sign up/i)
+      end
+      it 'sign inリンクが表示される: 左上から6番目のリンクが「Sign in」である' do
+        sign_in_link = find_all('a')[6].native.inner_text
+        expect(sign_in_link).to match(/Sign in/i)
       end
     end
 
@@ -220,6 +228,14 @@ describe 'ユーザログイン前のテスト' do
       it 'Aboutリンクが表示される: 左上から2番目のリンクが「About」である' do
         about_link = find_all('a')[2].native.inner_text
         expect(about_link).to match(/about/i)
+      end
+      it 'Aboutリンクが表示される: 左上から3番目のリンクが「Snacks」である' do
+        genre_name_link = find_all('a')[3].native.inner_text
+        expect(genre_name_link).to match(/Snacks/i)
+      end
+      it 'Aboutリンクが表示される: 左上から4番目のリンクが「View all」である' do
+        view_all_link = find_all('a')[4].native.inner_text
+        expect(view_all_link).to match(/View all/i)
       end
       it 'Sign outリンクが表示される: 左上から5番目のリンクが「Sign out」である' do
         sign_out_link = find_all('a')[5].native.inner_text
