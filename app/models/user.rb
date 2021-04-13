@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  
+  validates :email, presence: true, uniqueness: true
+  validates :last_name, presence: true, length: {minimum: 2, maximum: 20}
+  validates :first_name, presence: true, length: {minimum: 2, maximum: 20}
   
   enum is_deleted:{Deleted: true, Nondeleted: false}
 
