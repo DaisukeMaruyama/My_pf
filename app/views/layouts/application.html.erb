@@ -14,121 +14,168 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Ranchers&display=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   </head>
-
-  <body class="body-background-color">
-    <header class="sticky-top" style="z-index: 10;">
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26110F;">
-        <div class="container">
-        <a class="navbar-brand" href="#" style="color: #EBE9DE;">SnackBen</a>
-        <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            <% if user_signed_in? %>
-            <li class="nav-item">
-              <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Snacks
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
-                <%  @genres.each do |genre| %>
-                  <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
-                <% end %>
-                <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
-              <li class="d-flex flex-row">
-                Cart<i class="fas fa-shopping-cart my-auto mr-2"></i>
-              </li>
+    <body class="body-background-color">
+    <div style="background-color:#F2B705; height: 30px;"></div>
+    <div style="background-color:#EBE9DE; height: 40px;">
+      <div class="d-flex justify-content-between mx-4">
+        <p class="pt-2">A Taste of Japan</p>
+        <div class="d-flex justify-content-start">
+          <p class="pt-1">
+            <%= link_to '/about', class:"nav-link", style:"color: black; font-size: 12px;" do %>
+              <i class="fas fa-question mr-2"></i>FAQS
             <% end %>
-
-            <% elsif admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to '商品⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '会員⼀覧', admin_users_path, class: " nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '注⽂履歴⼀覧', admin_orders_path, class: " nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ジャンル⼀覧', admin_genres_path , class: " nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data:{ confirm: '本当にログアウトしますか?',cancel: 'Back',commit: 'Logout'}, title: '確認画面', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-
-            <% else %>
-            <li class="nav-item">
-              <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Snacks
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
-                <%  @genres.each do |genre| %>
-                  <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
-                <% end %>
-                <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign in', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
-            </li>
+          </p>
+          <span class="pt-2" style="color: #D6D6D5;">|</span>
+          <p class="pt-1">
+            <%= link_to new_contact_path, class:"nav-link", style:"color:black; font-size: 12px;" do %>
+              <i class="fas fa-envelope mr-2"></i>CONTACT US
             <% end %>
-          </ul>
-          <% unless admin_signed_in? %>
-            <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
-              <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
-              <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
-              <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
-            <% end %>
-          <% end %>
+            </p>
         </div>
+      </div>
+    </div>
+    <header class="sticky-top" style="z-index: 10; opacity: 0.9;">
+      <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: #26110F;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h2 class="pt-2 brand-center"style="color: #EBE9DE;">SnackBen</h2>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
+              <% if user_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Snacks
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
+                  <%  @genres.each do |genre| %>
+                    <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
+                  <% end %>
+                  <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
+                </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
+                <li class="d-flex flex-row">
+                  Cart<i class="fas fa-shopping-cart my-auto mr-2"></i>
+                </li>
+              <% end %>
+              <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '商品⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '会員⼀覧', admin_users_path, class: " nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '注⽂履歴⼀覧', admin_orders_path, class: " nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ジャンル⼀覧', admin_genres_path , class: " nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data:{ confirm: '本当にログアウトしますか?',cancel: 'Back',commit: 'Logout'}, title: '確認画面', class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+
+              <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Snacks
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
+                  <%  @genres.each do |genre| %>
+                    <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
+                  <% end %>
+                  <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
+                </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign in', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <% end %>
+            </ul>
+
+            <!-- ↓SearchModal -->
+            <span style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+              Search<i class="fas fa-search ml-1"></i>
+            </span>
+            <!-- ↑SearchModal 終わり-->
+
+          </div>
         </div>
       </nav>
     </header>
-      <% if user_signed_in? %>
+    
+      <!-- ↓SearchModalの中身。headerの外に出さないと起動しない -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog mobile-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Search Snacks</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <% unless admin_signed_in? %>
+                <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
+                  <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
+                  <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+                  <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- ↑SearchModal中身 終わり-->
+        
+      <div style="background-color:#EBE9DE; height: 40px;">
+      <div class="d-flex justify-content-around">
+        <p>Text1</p>
+        <p>Text2</p>
+      </div>
+    </div>
+    <% if user_signed_in? %>
       <div class="mypage-header py-1 pl-3" style="height: 32px; background-color: #101626; color: #EBE9DE;">
         <div class="container" >
         <li style="display: inline-block; margin-right: 5px;">Hello, here's your account page =></li><span><%= link_to 'Your account', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
         </div>
       </div>
-      <% end %>
+    <% end %>
     <main>
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
-
     <% if flash[:alert] %>
       <div class="flash" style="color: red;">
         <%= flash[:alert] %>
       </div>
     <% end %>
-
     <%= yield %>
     </main>
     <div class="contact-form">
