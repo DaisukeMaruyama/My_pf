@@ -35,7 +35,7 @@ class User < ApplicationRecord
   def cart_total_count
     amount = 0
     cart_items.each do |cart_item|
-      am += cart_item.amount
+      amount += cart_item.amount.to_i
     end
     amount
   end
