@@ -11,14 +11,15 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Ranchers&display=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chango&family=Ranchers&display=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   </head>
-    <body class="body-background-color">
-    <div style="background-color:#F2B705; height: 30px;"></div>
+  <body class="body-background-color">
+    <div style="background-color:#F2B705; height: 40px;">
+      <p class="pt-2 mx-4">A taste of Japan in every box</p>
+    </div>
     <div style="background-color:#EBE9DE; height: 40px;">
-      <div class="d-flex justify-content-between mx-4">
-        <p class="pt-2">A Taste of Japan</p>
+      <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
           <p class="pt-1">
             <%= link_to '/about', class:"nav-link", style:"color: black; font-size: 12px;" do %>
@@ -34,13 +35,13 @@
         </div>
       </div>
     </div>
-    <header class="sticky-top" style="z-index: 10; opacity: 0.9;">
+    <header class="sticky-top" style="z-index: 10; opacity: 0.9; font-family: 'Abril Fatface', cursive;">
       <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: #26110F;">
         <div class="container-fluid">
           <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h2 class="pt-2 brand-center"style="color: #EBE9DE;">SnackBen</h2>
+          <h1 class="pt-1 brand-center"style="color: #EBE9DE;">SnackBen</h1>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
@@ -65,11 +66,7 @@
               <li class="nav-item">
                 <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
-              <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
-                <li class="d-flex flex-row">
-                  Cart<i class="fas fa-shopping-cart my-auto mr-2"></i>
-                </li>
-              <% end %>
+              
               <% elsif admin_signed_in? %>
               <li class="nav-item">
                 <%= link_to '商品⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
@@ -113,58 +110,56 @@
               </li>
               <% end %>
             </ul>
-
+            
+            <% if user_signed_in? %>
+              
+              <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
+              
+            <% end %>
+            
             <!-- ↓SearchModal -->
-            <span style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
-              Search<i class="fas fa-search ml-1"></i>
-            </span>
+            <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-search mr-1"></i>
+            </li>
             <!-- ↑SearchModal 終わり-->
-
+            <% if user_signed_in?  %>
+              <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
+                <li class="d-flex flex-row">
+                  <i class="fas fa-shopping-cart my-auto mr-1"></i><span><%= current_user.cart_total_count %></span><%# cart_toal_count user.rbに記述 %>
+                </li>
+              <% end %>
+            <% end %> 
           </div>
         </div>
       </nav>
     </header>
     
       <!-- ↓SearchModalの中身。headerの外に出さないと起動しない -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog mobile-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Search Snacks</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <% unless admin_signed_in? %>
-                <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
-                  <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
-                  <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
-                  <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
-                <% end %>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog mobile-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Search Snacks</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <% unless admin_signed_in? %>
+              <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
+                <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
+                <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+                <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
               <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            </div>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
-        <!-- ↑SearchModal中身 終わり-->
-        
-      <div style="background-color:#EBE9DE; height: 40px;">
-      <div class="d-flex justify-content-around">
-        <p>Text1</p>
-        <p>Text2</p>
       </div>
     </div>
-    <% if user_signed_in? %>
-      <div class="mypage-header py-1 pl-3" style="height: 32px; background-color: #101626; color: #EBE9DE;">
-        <div class="container" >
-        <li style="display: inline-block; margin-right: 5px;">Hello, here's your account page =></li><span><%= link_to 'Your account', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
-        </div>
-      </div>
-    <% end %>
+        <!-- ↑SearchModal中身 終わり-->
     <main>
     <% if flash[:notice] %>
       <div class="flash">
