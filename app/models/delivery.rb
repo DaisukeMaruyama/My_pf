@@ -1,5 +1,12 @@
 class Delivery < ApplicationRecord
   
+  validates :postal_code, presence: true
+  validates :address, length: {minimum: 2, maximum: 100}, presence: true
+  validates :city, presence: true
+  validates :country, presence: true
+	validates :last_name, length: {minimum: 1}, presence: true
+	validates :first_name, length: {minimum: 1}, presence: true
+  
   belongs_to :user
   
   def full_shipping_address
