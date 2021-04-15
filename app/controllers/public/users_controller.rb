@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :edit]
   
   def show
     @user = User.find(params[:id])
@@ -36,6 +38,13 @@ class Public::UsersController < ApplicationController
   end
   
   private
+  
+  def ensure_correct_customer
+    if params[:id].to_i != current_customer.id
+      flash[:alert] = "You are not autholized."
+      redirect_to customer_path(current_customer)
+    end  
+  end
   
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :country, :postal_code, :password, :password_confirmation)

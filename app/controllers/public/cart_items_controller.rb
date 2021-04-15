@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :correct_user, only: [:update, :destroy]
 
   def index

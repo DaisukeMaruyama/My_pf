@@ -1,4 +1,6 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     @deliveries = Delivery.all
@@ -34,6 +36,14 @@ class Public::DeliveriesController < ApplicationController
   end
   
   private
+  
+  def correct_user
+    @delivery = Delivery.find(params[:id])
+    if @delivery.user_id != current_user.id
+       flash[:alert] = "You are not autholized."
+       redirect_to deliveries_path
+    end
+  end
   
   def delivery_params
     params.require(:delivery).permit(

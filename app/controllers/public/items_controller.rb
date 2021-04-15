@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   
   def index
     #@items = Item.all.order(created_at: :desc)

@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @order = Order.new
@@ -115,6 +116,14 @@ class Public::OrdersController < ApplicationController
 
 
   private
+  
+  def correct_user
+    @order = Order.find(params[:id])
+    if current_user.id != @order.user_id
+      flash[:alert] = "You are not autholized."
+      redirect_to orders_path
+    end
+  end
 
   def set_order
     params.require(:order).permit(:delivery_time, :address, :postal_code, :last_name, :first_name, :city, :country)
