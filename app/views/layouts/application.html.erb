@@ -66,7 +66,7 @@
               <li class="nav-item">
                 <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
-              
+
               <% elsif admin_signed_in? %>
               <li class="nav-item">
                 <%= link_to '商品⼀覧', admin_items_path, class: " nav-link", style:"color: #EBE9DE;" %>
@@ -110,13 +110,13 @@
               </li>
               <% end %>
             </ul>
-            
+
             <% if user_signed_in? %>
-              
+
               <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
-              
+
             <% end %>
-            
+
             <!-- ↓SearchModal -->
             <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
               <i class="fas fa-search mr-1"></i>
@@ -124,16 +124,16 @@
             <!-- ↑SearchModal 終わり-->
             <% if user_signed_in?  %>
               <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
-                <li class="d-flex flex-row">
-                  <i class="fas fa-shopping-cart my-auto mr-1"></i><span><%= current_user.cart_total_count %></span><%# cart_toal_count user.rbに記述 %>
+                <li class="d-flex flex-row cart-circle-relative">
+                  <i class="fas fa-shopping-cart my-auto mr-1"></i><div class="cart-circle"><span><%= current_user.cart_total_count %></span></div><%# cart_toal_count user.rbに記述 %>
                 </li>
               <% end %>
-            <% end %> 
+            <% end %>
           </div>
         </div>
       </nav>
     </header>
-    
+
       <!-- ↓SearchModalの中身。headerの外に出さないと起動しない -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog mobile-lg" role="document">

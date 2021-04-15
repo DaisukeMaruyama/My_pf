@@ -82,6 +82,22 @@
   color: #EBE9DE;
 }
 
+.cart-circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+  background-color: #F2B705;
+  font-size: 9px;
+  position: absolute;
+  left: 15px;
+  bottom: 13px;
+}
+
+.cart-circle-relative {
+  position: relative;
+}
 
 /* kaminari */
 .pagination {
