@@ -39,8 +39,8 @@ class Public::UsersController < ApplicationController
   
   private
   
-  def ensure_correct_customer
-    if params[:id].to_i != current_customer.id
+  def ensure_correct_user
+    if params[:id].to_i != current_user.id
       flash[:alert] = "You are not autholized."
       redirect_to customer_path(current_customer)
     end  

@@ -8,7 +8,7 @@
         <h3><%= @genre.errors.count %>件のエラーが発生しております。</h3>
         <% @genre.errors.full_messages.each do |message| %>
           <ul>
-            <li><%= message %></li>
+            <li>・<%= message %></li>
           </ul>
         <% end %>
       </div>

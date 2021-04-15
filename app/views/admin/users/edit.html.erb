@@ -5,10 +5,10 @@
     
       <% if @user.errors.any? %>
         <div class="error-explanation">
-          <h3><%= @user.errors.count %> errors from being saved.</h3>
+          <h3><%= @user.errors.count %>件のエラーが発生しております。</h3>
           <% @user.errors.full_messages.each do |message| %>
             <ul>
-              <li><%= message %></li>
+              <li>・<%= message %></li>
             </ul>
           <% end %>  
         </div>

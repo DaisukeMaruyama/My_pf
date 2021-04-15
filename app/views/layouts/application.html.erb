@@ -115,9 +115,11 @@
               <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
             <% end %>
             <!-- ↓SearchModal -->
-            <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
-              <i class="fas fa-search mr-1"></i>
-            </li>
+            <% unless admin_signed_in? %>
+              <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-search mr-1"></i>
+              </li>
+            <% end %>
             <!-- ↑SearchModal 終わり-->
 
           </div>

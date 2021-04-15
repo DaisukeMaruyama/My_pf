@@ -8,10 +8,10 @@
       
       <% if @item.errors.any? %>
       <div class="error-explanation">
-        <h3><%= @item.errors.count %>errors from being saved.</h3>
+        <h3><%= @item.errors.count %>件のエラーが発生しております。</h3>
         <% @item.errors.full_messages.each do |message| %>
           <ul>
-            <li><%= message %></li>
+            <li>・<%= message %></li>
           </ul>
         <% end %>
       </div>

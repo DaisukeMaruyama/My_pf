@@ -9,7 +9,7 @@
           <h3><%= @user.errors.count %>errors from being saved.</h3>
           <% @user.errors.full_messages.each do |message| %>
             <ul>
-              <li><%= message %></li>
+              <li>・<%= message %></li>
             </ul>
           <% end %>
         </div>

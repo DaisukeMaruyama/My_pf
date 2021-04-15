@@ -3,6 +3,17 @@
 
 <h1 class="col-12 mt-4 mb-4">New Review</h1>
 
+<% if @review.errors.any? %>
+  <div class="error-explanation mt-4">
+    <h3><%= @review.errors.count %> errors from being saved.</h3>
+    <% @review.errors.full_messages.each do |message| %>
+      <ul>
+        <li>・<%= message %></li>
+      </ul>
+    <% end %>  
+  </div>
+<% end %>
+
 <%= render 'form' %>
 
  
