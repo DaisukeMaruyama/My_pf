@@ -112,24 +112,22 @@
             </ul>
 
             <% if user_signed_in? %>
-
               <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
-
             <% end %>
-
             <!-- ↓SearchModal -->
             <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
               <i class="fas fa-search mr-1"></i>
             </li>
             <!-- ↑SearchModal 終わり-->
-            <% if user_signed_in?  %>
-              <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
-                <li class="d-flex flex-row cart-circle-relative">
-                  <i class="fas fa-shopping-cart my-auto mr-1"></i><div class="cart-circle"><span><%= current_user.cart_total_count %></span></div><%# cart_toal_count user.rbに記述 %>
-                </li>
-              <% end %>
-            <% end %>
+
           </div>
+          <% if user_signed_in?  %>
+            <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
+              <li class="d-flex flex-row cart-circle-relative">
+              <i class="fas fa-shopping-cart my-auto mr-1"></i><div class="cart-circle"><span><%= current_user.cart_total_count %></span></div><%# cart_toal_count user.rbに記述 %>
+              </li>
+            <% end %>
+          <% end %>
         </div>
       </nav>
     </header>

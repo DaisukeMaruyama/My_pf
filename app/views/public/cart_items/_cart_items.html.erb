@@ -1,12 +1,31 @@
 <%# cart__items/index 非同期通信先 %%>
-<table class="table table-sm mt-1" style="background-color: #F0F3EF;">
-  <tr>
-    <th class="text-left active">Shipping Cost</th>
-    <td id="shipping_cost"><%# shipping_confirm.js.erbでテキストを非同期通信 %></td>
-  </tr>
-  <tr>
-    <th class="text-left active">Delivery Time</th>
-    <td id="delivery_time"><%# shipping_confirm.js.erbでテキストを非同期通信 %></td>
-  </tr>
+<div class="mb-2">
+	<thead class="active" style="float: right;">
+		<th>※Shipping Cost & Delivery Time</th>
+		<%= form_with url: shipping_confirm_cart_items_path, method: :post, remote: true do |f| %>
+			<td><%= f.country_select :country , { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+        "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'height: 100%;', data: { attribute: "value" } } %>
+        <%= f.submit 'Cheak', class:"btn btn-sm btn-outline-info" %>
+      </td>
+      
+      <table class="table table-sm mt-1" style="background-color: #F0F3EF;">
+        <tr>
+          <th class="text-left active">Delivery Time</th>
+          <td id="delivery_time"><%# shipping_confirm.js.erbでテキストを非同期通信 %></td>
+        </tr>
+        <tr>
+          <th class="text-left active">Shipping Cost</th>
+          <td id="shipping_cost"><%# shipping_confirm.js.erbでテキストを非同期通信 %></td>
+        </tr>
+      </table>
+    
+	</thead>
+	<span>＋</span>
+</div>
+<table class="table">
+	<tbody class="active-grand-total active">
+		<th>Total price</th>
+		<td class="text-right" id="cart_total_with_shipping">$ <%= number_with_precision(@user.cart_item_sum, precision: 2) %></td><!-- cart_item_sumはuserモデルに定義あり -->
+	</tbody>
 </table>
-
+<% end %>

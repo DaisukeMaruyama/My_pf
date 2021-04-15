@@ -21,6 +21,14 @@ class User < ApplicationRecord
   has_many :deliveries, dependent: :destroy
   has_many :reviews
   
+  def cart_total_with_shipping
+    total = 0
+    cart_items.each do |cart_item|
+      total += cart_item.subtotal_price 
+      total += cart_item.international_shipping_fee.to_d  #ここにデータが渡ってない。@cart_item.countryが来なければいけない
+    end
+    total
+  end 
   
      # カートアイテム金額合計
   def cart_item_sum

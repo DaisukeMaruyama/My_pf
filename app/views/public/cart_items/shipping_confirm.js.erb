@@ -1,2 +1,3 @@
 $("#shipping_cost").html("$ <%= number_with_precision(@cart_item.international_shipping_fee, precision: 2)  %>");
 $("#delivery_time").html("<%= @cart_item.delivery_time %>");
+$("#cart_total_with_shipping").html("$ <%= number_with_precision(@user.cart_total_with_shipping, precision: 2) %>");
