@@ -9,7 +9,6 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      sign_in(@user, :bypass => true)#パスワードを変えたときにログインキープ
       flash[:notice] = "You have updated your information"
       redirect_to user_path
     else
@@ -37,6 +36,17 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def update_password
+    @user = User.find(params[:id])
+    if @user.update(user_update_password)
+      sign_in(@user, :bypass => true) #パスワードを変えたときにログインキープ
+      flash[:notice] = "You have updated your password"
+      redirect_to user_path
+    else
+      render :newpassword
+    end  
+  end
+  
   private
   
   def ensure_correct_user
@@ -48,6 +58,10 @@ class Public::UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :country, :postal_code, :password, :password_confirmation)
+  end
+  
+  def user_update_password
+    params.require(:user).permit(:password, :password_confirmation)
   end
   
 end

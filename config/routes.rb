@@ -56,7 +56,7 @@ scope module: :public do
     end
   end
   
-  
+  patch 'users/:id/update_password' => 'users#update_password', as: 'update_password'
   get 'users/:id/newpassword' => 'users#newpassword'
   get 'users/unsubscribe' => 'users#unsubscribe'
   patch 'users/withdraw' => 'users#withdraw'
