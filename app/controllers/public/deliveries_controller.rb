@@ -13,6 +13,8 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.save
       flash[:notice] = "You have registered delivery address"
       redirect_to deliveries_path
+    else
+      render :index
     end
   end
 
@@ -25,6 +27,8 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.update(delivery_params)
       flash[:notice] = "You have updated delivery address"
       redirect_to deliveries_path
+    else
+      render :index
     end 
   end
 

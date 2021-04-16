@@ -45,7 +45,11 @@ class Public::OrdersController < ApplicationController
       @order = current_user.orders.build(set_order)
       @order.total_payment = current_user.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.international_shipping_fee.to_d
     end
-
+   
+    unless @order.valid?
+      redirect_to new_order_path, alert: 'Please fill in all relevant information in the area below.'
+    end
+     
   end
 
   def pay

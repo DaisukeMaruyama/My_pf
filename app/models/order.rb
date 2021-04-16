@@ -1,14 +1,12 @@
 class Order < ApplicationRecord
-
+  
+  validates :first_name, length: {minimum: 1}, presence: true
+  validates :last_name, length: {minimum: 1}, presence: true
   validates :postal_code, presence: true
   validates :address, length: {minimum: 2, maximum: 100}, presence: true
   validates :city, presence: true
   validates :country, presence: true
-	validates :last_name, length: {minimum: 1}, presence: true
-	validates :first_name, length: {minimum: 1}, presence: true
 	
-
-  enum payment_method: {Creditcard:0, Paypal:1},  _prefix: true
   #enum shipping_method: {Includes_tracking:0, DHL_FedEx:1},  _prefix: true
   enum address_type: {"Your address":0, "Ship to registered addresses":1, "Ship to this address":2}
   enum order_status: {"Waiting for shipping":0, "Already shipped out":1},  _prefix: true
