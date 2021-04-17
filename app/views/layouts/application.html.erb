@@ -99,21 +99,26 @@
                   <%  @genres.each do |genre| %>
                     <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                   <% end %>
-                  <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
                 </div>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              <li>
+                <%= link_to 'All Snacks', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Sign in', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
-              </li>
+
               <% end %>
             </ul>
-
+            <%# ここからheaderブランド名の右側 %>
             <% if user_signed_in? %>
               <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
             <% end %>
+            <% unless user_signed_in? || admin_signed_in?  %>
+              <%#<li class="nav-item">
+                <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              <%#</li>  下でサインイン・サインアップ一つのボタンにまとめる %>
+              <li class="nav-item">
+                <%= link_to 'Sign in / Sign up', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+            <% end %>  
             <!-- ↓SearchModal -->
             <% unless admin_signed_in? %>
               <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
