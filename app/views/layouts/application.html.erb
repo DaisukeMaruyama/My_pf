@@ -11,60 +11,60 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chango&family=Ranchers&display=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Abril+Fatface&family=Chango&family=Ranchers&display=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   </head>
   <body class="body-background-color">
     <div style="background-color:#F2B705; height: 40px;">
-      <p class="pt-2 mx-4">A taste of Japan in every box</p>
+      <p class="pt-2 mx-4 text-center" style="font-family: 'Noto Sans JP', sans-serif; font-weight: bold;">Authentic Japanese snacks packed with care and delivered to your door</p>
     </div>
     <div style="background-color:#EBE9DE; height: 40px;">
       <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
           <p class="pt-1">
-            <%= link_to '/about', class:"nav-link", style:"color: black; font-size: 12px;" do %>
+            <%= link_to '/about', class:"nav-link", style:"color: black; font-size: 12px; font-family: 'Noto Sans JP', sans-serif;" do %>
               <i class="fas fa-question mr-2"></i>FAQS
             <% end %>
           </p>
           <span class="pt-2" style="color: #D6D6D5;">|</span>
           <p class="pt-1">
-            <%= link_to new_contact_path, class:"nav-link", style:"color:black; font-size: 12px;" do %>
+            <%= link_to new_contact_path, class:"nav-link", style:"color:black; font-size: 12px; font-family: 'Noto Sans JP', sans-serif;" do %>
               <i class="fas fa-envelope mr-2"></i>CONTACT US
             <% end %>
             </p>
         </div>
       </div>
     </div>
-    <header class="sticky-top" style="z-index: 10; opacity: 0.9; font-family: 'Abril Fatface', cursive;">
-      <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: #26110F;">
+    <header class="sticky-top" style="z-index: 10; opacity: 0.9; font-family: 'Noto Sans JP', sans-serif;">
+      <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: black;">
         <div class="container-fluid">
           <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h1 class="pt-1 brand-center"style="color: #EBE9DE;">SnackBen</h1>
+          <h1 class="pt-1 brand-center"style="color: #EBE9DE; font-family: 'Abril Fatface', cursive;">SNACKBEN</h1>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
               <% if user_signed_in? %>
               <li class="nav-item">
-                <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+                <a class="nav-link" href="/" style="color: #EBE9DE;">HOME <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Snacks
+                  SHOP
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
                   <%  @genres.each do |genre| %>
                     <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                   <% end %>
-                  <%= link_to 'View All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
+                  <%= link_to 'All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
                 </div>
               </li>
               <li class="nav-item">
-                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
+                <%= link_to 'ABOUT', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
 
               <% elsif admin_signed_in? %>
@@ -86,23 +86,21 @@
 
               <% else %>
               <li class="nav-item">
-                <a class="nav-link" href="/" style="color: #EBE9DE;">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'About', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+                <a class="nav-link" href="/" style="color: #EBE9DE;">HOME <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Snacks
+                  SHOP
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
                   <%  @genres.each do |genre| %>
                     <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                   <% end %>
+                  <%= link_to 'All', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
                 </div>
               </li>
-              <li>
-                <%= link_to 'All Snacks', items_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              <li class="nav-item">
+                <%= link_to 'ABOUT', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
 
               <% end %>
@@ -115,13 +113,13 @@
               <%#<li class="nav-item">
                 <%= link_to 'Sign up', new_user_registration_path, class:"nav-link", style:"color: #EBE9DE;" %>
               <%#</li>  下でサインイン・サインアップ一つのボタンにまとめる %>
-              <li class="nav-item">
-                <%= link_to 'Sign in / Sign up', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
+              <li class="nav-item" style="margin-left: 3px;"><%# レスポンシブの時、他のリストとインデント合わせるマージン %>
+                <%= link_to 'LOG IN / REGISTER', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
             <% end %>  
             <!-- ↓SearchModal -->
             <% unless admin_signed_in? %>
-              <li class="nav-link" style="color: #EBE9DE; cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+              <li class="nav-link" style="color: #EBE9DE; cursor: pointer; margin-left: 3px;" data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-search mr-1"></i>
               </li>
             <% end %>
