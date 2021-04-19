@@ -3,15 +3,9 @@ class Public::ItemsController < ApplicationController
 
   
   def index
-    #@items = Item.all.order(created_at: :desc)
+    @items = Item.all.order(created_at: :desc).order(created_at: :desc).page(params[:page]).per(8)
     @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(8)
     @genres = Genre.all
-  end
-  
-  def condition_search
-    @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
@@ -26,5 +20,11 @@ class Public::ItemsController < ApplicationController
     #関連商品の代入(詳細ページの製品は除く為にwhere.not)
     @related_items = Item.where(genre_id: @item.genre_id).where.not(id: @item.id)
   end
+  
+  #ransackを使用した場合。今回は不使用のためコメントアウト
+  #def condition_search
+  #  @q = Item.ransack(params[:q])
+  #  @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(8)
+  #end
   
 end

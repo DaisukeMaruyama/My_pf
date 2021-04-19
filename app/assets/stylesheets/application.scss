@@ -34,6 +34,8 @@
   main {
   flex: 1; //画面の高さから他の同レイヤーの要素の高さを引いた値に
   }
+  
+  /* 上の設定をすることでfooterを下部へ固定 */
 
     li {
 	list-style: none;
@@ -79,7 +81,7 @@
 }
 
 .nav-item {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .fa-shopping-cart {
@@ -150,3 +152,43 @@
   width: 220px!important;
  }
  }
+ 
+#search-modal .modal-dialog {
+  max-width: 500px;
+  margin: 0 auto 0 auto ;
+  height: 40%;
+  margin-top: 20px;
+}
+
+#search-modal .modal-content {
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+#search-modal .modal-header {
+  display: block;
+}
+#search-modal .modal-title {
+  display: inline-block;
+}
+#search-modal .modal-body {
+  overflow-y: scroll;
+}
+
+ @media screen and (max-width: 800px) {
+ #search-modal .modal-dialog {
+  max-width: 100%;
+  height: 40%;
+  margin: 0;
+}
+}
+
+
+.search-button {
+  position: absolute;
+  border: none;  
+  outline: none; 
+  background: transparent; 
+  right: 176px; 
+  height: 100%;
+}

@@ -18,14 +18,20 @@
     <div style="background-color:#F2B705; height: 40px;">
       <p class="pt-2 mx-4 text-center" style="font-family: 'Noto Sans JP', sans-serif; font-weight: bold;">Authentic Japanese snacks packed with care and delivered to your door</p>
     </div>
-    <div style="background-color:#EBE9DE; height: 40px;">
+    <div style="background-color:#EBE9DE; height: 41px;">
       <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
-          <p class="pt-1">
-            <%= link_to '/about', class:"nav-link", style:"color: black; font-size: 12px; font-family: 'Noto Sans JP', sans-serif;" do %>
-              <i class="fas fa-question mr-2"></i>FAQS
+          <li class="pt-1">
+            <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。 %>
+            <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline", local:true do |f| %>
+              <%= f.text_field 'search[value]', class:"form-control mr-3", style:"font-size: 13px; width:220px; position: relative;" %>
+              <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+              <%= button_tag :type => "submit", :class =>"search-button" do %>
+                <i class="fa fa-search"></i>
+              <% end %>
             <% end %>
-          </p>
+          </li>
+
           <span class="pt-2" style="color: #D6D6D5;">|</span>
           <p class="pt-1">
             <%= link_to new_contact_path, class:"nav-link", style:"color:black; font-size: 12px; font-family: 'Noto Sans JP', sans-serif;" do %>
@@ -116,53 +122,26 @@
               <li class="nav-item" style="margin-left: 3px;"><%# レスポンシブの時、他のリストとインデント合わせるマージン %>
                 <%= link_to 'LOG IN / REGISTER', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
-            <% end %>  
-            <!-- ↓SearchModal -->
-            <% unless admin_signed_in? %>
-              <li class="nav-link" style="color: #EBE9DE; cursor: pointer; margin-left: 3px;" data-toggle="modal" data-target="#exampleModal">
-                <i class="fas fa-search mr-1"></i>
-              </li>
             <% end %>
-            <!-- ↑SearchModal 終わり-->
 
           </div>
+
+          <!-- 携帯画面にしたときにハンバーガーアイコンに隠れないようにdivで囲む　-->
+          <div class="d-flex">
+
           <% if user_signed_in?  %>
             <%= link_to cart_items_path, class:"nav-link", style:"color: #EBE9DE;" do %>
-              <li class="d-flex flex-row cart-circle-relative">
-              <i class="fas fa-shopping-cart my-auto mr-1"></i><div class="cart-circle"><span><%= current_user.cart_total_count %></span></div><%# cart_toal_count user.rbに記述 %>
+              <li class="d-flex flex-row cart-circle-relative mt-1 remove">
+                <i class="fas fa-shopping-cart my-auto mr-1"></i><div class="cart-circle"><span><%= current_user.cart_total_count %></span></div><%# cart_toal_count user.rbに記述 %>
               </li>
             <% end %>
           <% end %>
+          </div>
+          
         </div>
       </nav>
     </header>
 
-      <!-- ↓SearchModalの中身。headerの外に出さないと起動しない -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog mobile-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Search Snacks</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <% unless admin_signed_in? %>
-              <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline my-lg-0", local:true do |f| %>
-                <%= f.text_field 'search[value]', class:"form-control mr-sm-2", style:"font-size: 14px;" %>
-                <%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
-                <%= f.submit 'Search', class: "btn btn-outline my-sm-0" , style:"color: #D98E04;" %>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-        <!-- ↑SearchModal中身 終わり-->
     <main>
     <% if flash[:notice] %>
       <div class="flash">
