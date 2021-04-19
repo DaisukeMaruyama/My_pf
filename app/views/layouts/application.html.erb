@@ -21,15 +21,17 @@
     <div style="background-color:#EBE9DE; height: 41px;">
       <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
-          <li class="pt-1">
+          <li class="pt-2">
             <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。 %>
+            <div class="search-section" style="background-color: #EBE9DE; margin-right: 18px;">
             <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline", local:true do |f| %>
-              <%= f.text_field 'search[value]', class:"form-control mr-3", style:"font-size: 13px; width:220px; position: relative;" %>
-              <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
               <%= button_tag :type => "submit", :class =>"search-button" do %>
                 <i class="fa fa-search"></i>
               <% end %>
+              <%= f.text_field 'search[value]', class:"mr-3 search-form", style:"font-size: 17px; width:220px;", autocomplete:"off" %>
+              <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
             <% end %>
+            </div>
           </li>
 
           <span class="pt-2" style="color: #D6D6D5;">|</span>
@@ -137,7 +139,7 @@
             <% end %>
           <% end %>
           </div>
-          
+
         </div>
       </nav>
     </header>

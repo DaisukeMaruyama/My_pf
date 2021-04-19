@@ -13,13 +13,13 @@
 		<div class="top-wrapper-bar">
 			<p>FREE WORLDWIDE DELIVERY</p>
 		</div>
-		<h2 class="item-heading text-center col-md-12" style="font-family: 'Chango', cursive; color: #26110F;">Featured products</h2>
+		<h2 class="item-heading text-center col-md-12" style="font-family: 'Abril Fatface', cursive; color: #26110F;">New Arrivals</h2>
 	</div>	
 	
 	<div class="items col-md-12 mx-auto">	
 		<% @items.each do |item| %>
-      <div class="card" style="width: 18rem; min-height: 340px;">
-        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", format: "jpeg" %></span>
+      <div class="card" style="width: 18rem; min-height: 340px;  background: transparent; border-radius: 7px;">
+        <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", style:"background: transparent;", format: "jpeg" %></span>
         <div class="card-body">
           <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
           <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>

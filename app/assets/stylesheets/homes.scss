@@ -27,7 +27,7 @@
 }
 
 .top-wrapper-bar {
-	background-color: #1E2340;
+	background-color: #592202;
 	width: 100%;
 	height: 40px;
 	color:#EBE9DE;
@@ -47,11 +47,15 @@
 }
 
 .card {
-	margin: 5px;
+	margin: 10px;
+}
+
+.card span {
+  border-bottom: 1px solid #F1A244;
 }
 
 .card:hover {
-	box-shadow: 10px 10px 5px grey;
+	box-shadow: 10px 10px 5px  grey;
 	transition: all 0.5s;
 }
 
