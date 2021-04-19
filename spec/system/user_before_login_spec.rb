@@ -10,12 +10,12 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
       end
-      it 'Sign inリンクが表示される: 左上から4番目のリンクが「Sign in/sign up」である' do
-        sign_in_link = find_all('a')[6].native.inner_text
-        expect(sign_in_link).to match(/Sign in/i)
+      it 'Sign inリンクが表示される: 左上から4番目のリンクが「LOG IN/REGSTER」である' do
+        sign_in_link = find_all('a')[5].native.inner_text
+        expect(sign_in_link).to match(/LOG IN/i)
       end
       it 'Sign inリンクの内容が正しい' do
-        log_in_link = find_all('a')[6].native.inner_text
+        log_in_link = find_all('a')[5].native.inner_text
         expect(page).to have_link log_in_link, href: new_user_session_path
       end
     end  
@@ -53,53 +53,64 @@ describe 'ユーザログイン前のテスト' do
       it 'タイトルが表示される' do
         expect(page).to have_content 'SnackBen'
       end
-      it 'Homeリンクが表示される: 左上から2番目のリンクが「Home」である' do
-        home_link = find_all('a')[2].native.inner_text
-        expect(home_link).to match(/Home/i)
+      it 'Homeリンクが表示される: 左上から1番目のリンクが「HOME」である' do
+        home_link = find_all('a')[1].native.inner_text
+        expect(home_link).to match(/HOME/i)
       end
-      it 'Aboutリンクが表示される: 左上から3番目のリンクが「About」である' do
-        about_link = find_all('a')[3].native.inner_text
-        expect(about_link).to match(/About/i)
+      it 'SHOPリンクが表示される: 左上から2番目のリンクが「SHOP」である' do
+        shop_link = find_all('a')[2].native.inner_text
+        expect(shop_link).to match(/SHOP/i)
       end
-      it 'Snacksリンクが表示される: 左上から4番目のリンクが「Snacks」である' do
-        genre_name_link = find_all('a')[4].native.inner_text
-        expect(genre_name_link).to match(/Snacks/i)
+      it 'SHOPの中にAllリンクが表示される' do
+        items_link = find_all('a')[3].native.inner_text
+        expect(items_link).to match(/All/i)
       end
-      it 'All snacksリンクが表示される: 左上から5番目のリンクが「All snacks」である' do
-        view_all_link = find_all('a')[5].native.inner_text
-        expect(view_all_link).to match(/All snacks/i)
+      it 'Aboutリンクが表示される: 左上から4番目のリンクが「ABOUT」である' do
+        about_link = find_all('a')[4].native.inner_text
+        expect(about_link).to match(/ABOUT/i)
       end
-      it 'Sign up/Sign inリンクが表示される: 左上から6番目のリンクが「Sign up/Sign in」である' do
-        sign_up_link = find_all('a')[6].native.inner_text
-        expect(sign_up_link).to match(/Sign up/i)
+      it 'LOG IN/REGISTERリンクが表示される: 左上から5番目のリンクが「LOG IN/REGSTER」である' do
+        login_link = find_all('a')[5].native.inner_text
+        expect(login_link).to match(/LOG IN/i)
       end
     end
 
     context 'リンクの内容を確認' do
       subject { current_path }
 
-      it 'Homeを押すと、トップ画面に遷移する' do
-        home_link = find_all('a')[2].native.inner_text
+      it 'HOMEを押すと、トップ画面に遷移する' do
+        home_link = find_all('a')[1].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
         is_expected.to eq '/'
       end
-      it 'Aboutを押すと、アバウト画面に遷移する' do
-        about_link = find_all('a')[3].native.inner_text
+      #it 'SHOPを押すと、SHOPカテゴリー別リンクがあり遷移できる' do
+      #  shop_link = find_all('a')[2].native.inner_text
+       # category_link = find_link('Sweets')
+      #  is_expected.to eq '/search/genre_search?search%5Bcontent%5D=1'
+      #end
+      it 'Allを押すと、製品一覧画面に遷移する' do
+        items_link = find_all('a')[3].native.inner_text
+        items_link = items_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link items_link
+        is_expected.to eq '/items'
+      end
+      it 'ABOUTを押すと、アバウト画面に遷移する' do
+        about_link = find_all('a')[4].native.inner_text
         about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
         is_expected.to eq '/about'
       end
-      it 'sign inを押すと、ログイン画面に遷移する' do
-        signin_link = find_all('a')[6].native.inner_text
-        signin_link = signin_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link signin_link
+      it 'LOGIN/REGISTERを押すと、ログイン画面に遷移する' do
+        login_link = find_all('a')[5].native.inner_text
+        login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link login_link
         is_expected.to eq '/users/sign_in'
       end
       before do 
         visit new_user_session_path
       end
-      it 'Sign upを押すと、 新規登録画面に遷移する' do
+      it '(画面遷移後)Sign upを押すと、 新規登録画面に遷移する' do
         click_link 'Sign up'
         is_expected.to eq '/users/sign_up'
       end
