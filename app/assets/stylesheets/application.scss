@@ -34,7 +34,7 @@
   main {
   flex: 1; //画面の高さから他の同レイヤーの要素の高さを引いた値に
   }
-  
+
   /* 上の設定をすることでfooterを下部へ固定 */
 
     li {
@@ -152,7 +152,7 @@
   width: 220px!important;
  }
  }
- 
+
 #search-modal .modal-dialog {
   max-width: 500px;
   margin: 0 auto 0 auto ;
@@ -183,12 +183,11 @@
 }
 }
 
-
 .search-button {
   position: absolute;
-  border: none;  
-  outline: none; 
-  background: transparent; 
-  right: 176px; 
+  border: none;
+  outline: none;
+  background: transparent;
+  right: 176px;
   height: 100%;
 }
