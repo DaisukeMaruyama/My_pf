@@ -147,17 +147,19 @@
 }
 
 .about-photos {
+	background-image: image-url("photo-1.jpeg");
 	background-size: cover;
 	background-position: center;
 	width:  100%;
 	max-width:  auto;
-	height: 70%;
+	padding: 200px 0;
 }
 
 .about-photos-2 {
+	background-image: image-url("shibuya.jpeg");
 	background-size: cover;
 	background-position: center;
 	width:  100%;
 	max-width:  auto;
-	height: 65%;
+	padding: 200px 0;
 }
