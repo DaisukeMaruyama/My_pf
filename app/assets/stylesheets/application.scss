@@ -74,6 +74,11 @@
   transform: translate(-50%);
 }
 
+.dropdown-menu {
+  background-color: black; 
+  opacity: 0.9;
+}
+
 @media (min-width: 768px) {
   .brand-center {
   margin-left: 0 !important;
