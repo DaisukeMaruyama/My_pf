@@ -61,7 +61,7 @@
                 <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   SHOP
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu menu-color" aria-labelledby="navbarDropdown">
                   <%  @genres.each do |genre| %>
                     <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                   <% end %>
