@@ -33,10 +33,16 @@
 	max-width:  auto;
 }
 
+.thanks-hedding {
+  color: #EBE9DE; 
+  font-family: 'Ranchers', cursive;
+}
+
 .thanks-main-section {
   font-family: 'Chango', cursive;
-  
+  background-color: #EBE9DE;
 }
+
 
 .thanks-main-section-text {
   margin: 100px 100px;
@@ -45,6 +51,9 @@
   background-color: white;
 }
 
+.thank-you {
+  font-size: 50px;
+}
 
 /*order index*/
 
@@ -86,5 +95,8 @@
   width: 300px;
   }
   
+  .thank-you {
+  font-size: 35px;
+  }
   
 }

@@ -9,7 +9,7 @@
         <h3><%= @delivery.errors.count %>errors from being saved.</h3>
         <% @delivery.errors.full_messages.each do |message| %>
           <ul>
-            <li>・%= message %></li>
+            <li>・<%= message %></li>
           </ul>
         <% end %>
       </div>
@@ -19,15 +19,15 @@
         <div class="form-group row mt-2">
           <label class="col-md-5"><strong>Recipient</strong></label>
           <div class="col-md-7 d-flex">
-            <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
-          </div>
+            <%= f.text_field :first_name, placeholder:"First Name", class:"edit-name" %>　<%= f.text_field :last_name , placeholder:"Last Name", class:"edit-name" %>
+          </div><%# classはuser.scssに記述 %>
         </div>
   
         <div class="form-group row mt-2">
            <label class="col-md-5"><strong>Address</strong></label>
           <div class="col-md-7">
-            <%= f.text_field :delivery_address, size:"45" %>
-          </div>
+            <%= f.text_field :delivery_address, class:"edit-address"  %>
+          </div><%# classはuser.scssに記述 %>
         </div>
   
         <div class="form-group row mt-2">
@@ -48,8 +48,8 @@
            <label class="col-md-5"><strong>Country</strong></label>
           <div class="col-md-7">
             <%= f.country_select :delivery_country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { style: 'width: 65%; height: 100%;', data: { attribute: "value" } } %>
-          </div>
+            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { class: 'edit-country', data: { attribute: "value" } } %>
+          </div><%# classはuser.scssに記述 %>
         </div>
   
         <div class="text-center col-md-11">

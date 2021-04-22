@@ -19,3 +19,33 @@
   border-radius: 15px;
   padding: 20px;
 }
+
+.edit-address {
+  width: 393px;
+}
+
+.edit-country {
+  width: 65%; 
+  height: 100%;
+}
+  
+
+/* 携帯レスポンシブ */
+
+@media screen and (max-width: 450px) {
+
+.edit-name {
+  width: 155px;
+}
+
+.edit-address {
+  width: 262px;
+}
+
+.edit-country {
+  width: 262px; 
+  height: 100%;
+}
+  
+  
+}

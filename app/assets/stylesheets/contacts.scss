@@ -17,3 +17,23 @@
   width:  100%;
 	max-width:  auto;
 }
+
+.done-hedding {
+  color: #EBE9DE; 
+  font-family: 'Ranchers', cursive;
+}
+
+.thank-you {
+  font-size: 50px;
+}
+
+
+/* 携帯レスポンシブ */
+
+@media screen and (max-width: 450px) {
+  
+  .thank-you {
+  font-size: 35px;
+  }
+  
+}
