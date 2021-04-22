@@ -21,31 +21,31 @@
 
  .body-background-color {
   background-color: #EBE9DE;
-  }
+}
 
  body {
 	font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
 	display: flex; //フレックスボックスに有効に
   flex-flow: column; //要素を縦に並べる
   min-height: 100vh; //最小でも画面の高さ分のbodyの高さを担保する
-  }
+}
 
 
   main {
   flex: 1; //画面の高さから他の同レイヤーの要素の高さを引いた値に
-  }
+}
 
   /* 上の設定をすることでfooterを下部へ固定 */
 
     li {
 	list-style: none;
-    }
+}
 
-    a {
+     a {
 	text-decoration: none;
-    }
+}
 
-    * {
+      * {
 	margin: 0;
 	padding: 0;
 }
@@ -55,8 +55,35 @@
 }
 
 /*header */
+.sticky-top {
+  z-index: 10;
+  opacity: 0.9;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-title {
+  color: #EBE9DE; 
+  font-family: 'Abril Fatface', cursive;
+}
+
+.header-message-section {
+  background-color:#F2B705; 
+  height: 40px;
+}
+
+.header-message {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+}
+
 .navbar-toggler-icon {
 	color: white;
+}
+
+.contact-link {
+  color:black; 
+  font-size: 12px; 
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .nav-link:hover {
@@ -67,16 +94,16 @@
   position:relative;
 }
 
+.dropdown-menu {
+  background-color: black;
+  opacity: 0.9;
+}
+
 .brand-center {
   position: absolute;
   top: 8px;
   left: 50%;
   transform: translate(-50%);
-}
-
-.dropdown-menu {
-  background-color: black;
-  opacity: 0.9;
 }
 
 @media (min-width: 768px) {
@@ -158,6 +185,8 @@
  }
  }
 
+/* search  */ 
+
 #search-modal .modal-dialog {
   max-width: 500px;
   margin: 0 auto 0 auto ;
@@ -191,6 +220,13 @@
 .search-section {
   border: 1px solid grey;
   border-radius: 7px;
+  background-color: #EBE9DE;
+  margin-right: 18px;
+}
+
+.search-form {
+  font-size: 17px; 
+  width: 220px;
 }
 
 .search-button {
@@ -210,5 +246,50 @@
   border: none;
   outline: none;
   background-color: #EBE9DE;
+}
+
+/*以下、携帯サイズ レスポンシブ*/
+  @media screen and (max-width: 465px) {
+    
+  .error-explanation {
+  width: 345px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 33px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}  
+  
+  .header-message {
+  font-size: 12px;
+  }
+  
+  .header-message-section {
+  height: 50px;  
+  }
+    
+  .search-section {
+  width: 170px;
+  height: 27px;
+  position: relative; 
+  }
+  .search-form {
+  position: absolute; 
+  width: 130px;
+  height: 25px;
+  left: 30px;
+  top: 0;
+  }
+  .search-section-list {
+    width: 170px;
+    margin-right: 15px;
+  }
+  
+  .navbar-toggler {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  
 }
 

@@ -1,15 +1,15 @@
 <div class="container">
-  <h1 class="mt-4 mb-4" style="font-family: 'Chango', cursive;">Product detail</h1>
-  <div class="row"  style="padding-bottom: 50px;">
+  <h1 class="mt-4 mb-4 show-item-title">Product detail</h1>
+  <div class="row show-item-section">
     <div class="col-lg-5 col-sm-12">
-      <%= attachment_image_tag @item, :image, size: "450x450", fallback: "no-image.jpeg", format: "jpeg", class: "card", style:"border: 2px solid grey;" %>
+      <%= attachment_image_tag @item, :image, size: "450x450", fallback: "no-image.jpeg", format: "jpeg", class: "card item-show-card", style:"border: 2px solid grey;" %>
     </div>
     <div class="col-lg-5 offset-lg-1 col-sm-11 col-md-10">
-      <h1 style="margin-bottom: 30px;"><%= @item.item_name %></h1>
-      <h5 style="margin-bottom: 30px;"><%= @item.introduction %></h5>
+      <h1 class="show-item-name"><%= @item.item_name %></h1>
+      <h5 class="show-item-introduction"><%= @item.introduction %></h5>
       <div class="average-review-rating" data-score=<%= @average_review %>></div>
       <span>Based on <%= @item.reviews.count %> reviews</span>
-      <h2 class="mt-2" style="margin-bottom: 30px;">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
+      <h2 class="mt-2 show-item-price">$ <%= number_with_precision(@item.price, precision: 2) %></h2>
 
       <% if current_user %>
         <% if @item.is_active == "販売中" %>
@@ -70,15 +70,15 @@
   </div>
 
   <h2>Related snacks</h2>
-  <div class="items col-12 mx-auto mt-3" id="slider" style="padding-bottom: 50px;">
+  <div class="col-12 mx-auto mt-3" id="slider" style="padding-bottom: 50px;">
 
     <% @related_items.each do |item| %>
-      <div class="related-card card" style="width: 18rem; min-height: 380px;">
+      <div class="card related-snacks" style="width: 18rem; min-height: 380px;">
         <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
-        <div class="card-body" style="border-top: 1px solid #F1A244;">
-          <h5 class="card-title" style="height: 40%;"><%= item.item_name %></h5>
-          <p class="card-text">$ <%= number_with_precision(item.price, precision: 2) %></p>
-          <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
+        <div class="card-body related-snacks-body">
+          <h5 class="card-title related-snacks-title"><%= item.item_name %></h5>
+          <p class="card-text related-snacks-price">$ <%= number_with_precision(item.price, precision: 2) %></p>
+          <%= link_to 'Explore', item_path(item), class: 'btn btn-primary related-snacks-button' %>
         </div>
       </div>
     <% end %>

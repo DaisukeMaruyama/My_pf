@@ -1,3 +1,16 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*以下、携帯サイズ レスポンシブ*/
+  @media screen and (max-width: 465px) {
+  
+  .review-title {
+    font-size: 30px;
+  }
+    
+  .review-comment, .review-rating{
+  font-size: 12px;
+}
+
+}

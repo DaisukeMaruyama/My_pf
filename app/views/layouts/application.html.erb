@@ -15,20 +15,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   </head>
   <body class="body-background-color">
-    <div style="background-color:#F2B705; height: 40px;">
-      <p class="pt-2 mx-4 text-center" style="font-family: 'Noto Sans JP', sans-serif; font-weight: bold;">Authentic Japanese snacks packed with care and delivered to your door</p>
+    <div class="header-message-section">
+      <p class="pt-2 mx-4 text-center header-message">Authentic Japanese snacks packed with care and delivered to your door</p>
     </div>
     <div style="background-color:#EBE9DE; height: 41px;">
       <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
-          <li class="pt-2">
-            <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。 %>
-            <div class="search-section" style="background-color: #EBE9DE; margin-right: 18px;">
+          <li class="pt-2 search-section-list">
+            <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。  ボタンを左側に置ききたい為、button_tagが先 %>
+            <div class="search-section">
             <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline", local:true do |f| %>
               <%= button_tag :type => "submit", :class =>"search-button" do %>
                 <i class="fa fa-search"></i>
               <% end %>
-              <%= f.text_field 'search[value]', class:"mr-3 search-form", style:"font-size: 17px; width:220px;", autocomplete:"off" %>
+              <%= f.text_field 'search[value]', class:"mr-3 search-form", autocomplete:"off" %>
               <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
             <% end %>
             </div>
@@ -36,20 +36,20 @@
 
           <span class="pt-2" style="color: #D6D6D5;">|</span>
           <p class="pt-1">
-            <%= link_to new_contact_path, class:"nav-link", style:"color:black; font-size: 12px; font-family: 'Noto Sans JP', sans-serif;" do %>
+            <%= link_to new_contact_path, class:"nav-link contact-link" do %>
               <i class="fas fa-envelope mr-2"></i>CONTACT US
             <% end %>
             </p>
         </div>
       </div>
     </div>
-    <header class="sticky-top" style="z-index: 10; opacity: 0.9; font-family: 'Noto Sans JP', sans-serif;">
+    <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: black;">
         <div class="container-fluid">
           <button class="navbar-toggler" style="background-color: #EBE9DE;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h1 class="pt-1 brand-center"style="color: #EBE9DE; font-family: 'Abril Fatface', cursive;">SNACKBEN</h1>
+          <h1 class="pt-1 brand-center header-title">SNACKBEN</h1>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
@@ -100,7 +100,7 @@
                 <a class="nav-link dropdown-toggle", style="color: #EBE9DE;", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   SHOP
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #26110F;">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <%  @genres.each do |genre| %>
                     <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), class:"nav-link", style:"color: #EBE9DE;"  %>
                   <% end %>
@@ -115,7 +115,7 @@
             </ul>
             <%# ここからheaderブランド名の右側 %>
             <% if user_signed_in? %>
-              <li style="margin-right: 10px;"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
+              <li class="ml-3"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
             <% end %>
             <% unless user_signed_in? || admin_signed_in?  %>
               <%#<li class="nav-item">

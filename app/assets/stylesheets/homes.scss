@@ -5,6 +5,12 @@
 
 /* top画面 */
 
+.top-screen {
+	background-color:#EBE9DE;
+	height: 40px; 
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
 .top-wrapper {
 	background-image: image-url("sakuratoppage.png");
 	background-size: cover;
@@ -65,8 +71,12 @@
 }
 
 .snack-box-description {
-	padding: 180px 0;
+	padding: 120px 0;
 	text-align: center;
+}
+
+.sweets-box-description-image-mobile {
+	display: none;
 }
 
 .sweets-box-description-image {
@@ -75,12 +85,16 @@
 	background-position: center;
 	width:  100%;
 	max-width:  auto;
-	padding: 200px 0;
+	padding: 130px 130px;
 }
 
 .sweets-box-description-image:hover {
 	box-shadow: 10px 10px 5px grey;
 	transition: all 0.5s;
+}
+
+.ramen-box-description-image-mobile {
+	display: none;
 }
 
 .ramen-box-description-image {
@@ -89,14 +103,17 @@
 	background-position: center;
 	width:  100%;
 	max-width:  auto;
-	padding: 200px 0;
+	padding: 130px 130px;
+}
+
+.ramen-box-description-image-mobile {
+	display: none;
 }
 
 .ramen-box-description-image:hover {
 	box-shadow: 10px 10px 5px grey;
 	transition: all 0.5s;
 }
-
 
 .contact-form {
 	background-color: black; /* #26110Fでもいい。コメントアウトでキープ*/
@@ -154,3 +171,52 @@
 	max-width:  auto;
 	padding: 200px 0;
 }
+
+/* TOP画像Snackbox用レスポンシブ  */
+
+@media screen and (max-width: 570px) {
+	
+	.sweets-box-image-mobile {
+	background-image: image-url("sweets-box.jpg");
+	background-size: cover;
+	background-position: center;
+	width:  100%;
+	max-width:  auto;
+	padding: 130px 130px;
+}
+
+.sweets-box-description-image {
+  display: none;
+}
+
+.ramen-box-description-image {
+	display: none;
+}
+
+.ramen-box-image-mobile {
+  background-image: image-url("ramen-box.jpg");
+	background-size: cover;
+	background-position: center;
+	width:  100%;
+	max-width:  auto;
+	padding: 130px 130px;
+}
+}
+
+/* 携帯レスポンシブ */
+
+@media screen and (max-width: 450px) {
+
+.top-screen-message {
+	font-size: 14px;
+}	
+
+.ben-kanji-pic {
+	width: 180px;
+	height: 180px;
+}
+
+.snack-box-description {
+	padding: 35px 0;
+}
+}	
