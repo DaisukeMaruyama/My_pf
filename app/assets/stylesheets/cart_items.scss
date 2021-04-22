@@ -15,9 +15,12 @@
 	margin-bottom: 30px;	
 }
 
-
+.create-order-btn-wrapper {
+  width: 50%;
+}
 
 @media screen and (max-width: 820px) {
+  
   .table01 {
     width: 80%;
   }
@@ -45,12 +48,17 @@
     color: #fff;
     font-weight: bold;
   }
+  
   .table01 td:before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     width: 30%;
     text-align: left;
+  }
+  
+  .create-order-btn-wrapper {
+  width: 90%;
   }
   
 }

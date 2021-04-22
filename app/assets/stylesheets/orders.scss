@@ -9,6 +9,10 @@
   width: 80%;
 }
 
+.order-address {
+  width: 390px;
+}
+
 /*order confirm*/
 .order-shipdelivery-table td {
   background-color: #F0F3EF;
@@ -71,4 +75,16 @@
     font-weight: bold;
     margin-right: 10px;
   }
+  
+}
+
+/* 携帯レスポンシブ */
+
+@media screen and (max-width: 450px) {
+  
+  .order-address {
+  width: 300px;
+  }
+  
+  
 }

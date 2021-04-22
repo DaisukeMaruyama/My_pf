@@ -27,7 +27,7 @@
         <td data-label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
         <td data-label="Amount" class="text-center" style="white-space: nowrap;" >
         	<%= form_with model: cart_item, class:"form-inline",local:true do |f| %>
-						<div class="mx-auto">
+						<div class="mx-auto cart_item">
 							<%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
 							<%= f.submit "Edit", class:"btn btn-primary" %>
 					  </div>
@@ -52,8 +52,8 @@
 			</div>
 			<!-- ボタン群 -->
       <% if @user.cart_items.present? %>
-				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mb-5 text-center">
-					<%= link_to "Proceed to cheakout", new_order_path, class:"btn btn-primary form-control mt-4", style:"width: 60%;" %>
+				<div class="col-xs-4 col-xs-offset-4 mb-5 text-center">
+					<%= link_to "Proceed to cheakout", new_order_path, class:"create-order-btn-wrapper btn btn-primary mt-4" %>
         </div>
       <% end %>
 		</div>

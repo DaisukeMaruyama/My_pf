@@ -63,7 +63,7 @@
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Address</strong></label>
             <div class="col-sm-9">
-              <%= f.text_field :address, size:"43" %>
+              <%= f.text_field :address, class:"order-address" %>
             </div>
           </div>
           
@@ -160,7 +160,7 @@
     </div>  
         
     <div class="actions text-center mb-5 mt-4">
-      <%= f.submit "Procced to confirmation" , class:"btn btn-primary" %>
+      <%= f.submit "Procced to confirmation" , class:"btn btn-primary create-order-btn-wrapper" %><%# create-order-btn-wrapperはcart_items.scss %>
     </div>
   
   <% end %>
