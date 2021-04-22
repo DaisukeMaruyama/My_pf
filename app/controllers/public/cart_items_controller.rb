@@ -5,7 +5,6 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     @user = User.find(current_user.id)
-    @cart_item = current_user.cart_items.new(country: params[:country])
   end
 
   def create
