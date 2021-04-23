@@ -6,7 +6,7 @@
       
       <% if @delivery.errors.any? %>
       <div class="error-explanation">
-        <h3><%= @delivery.errors.count %>errors from being saved.</h3>
+        <h3><%= @delivery.errors.count %> errors occurred. Please correct the errors below. </h3>
         <% @delivery.errors.full_messages.each do |message| %>
           <ul>
             <li>・<%= message %></li>

@@ -5,7 +5,7 @@
 
 <% if @review.errors.any? %>
   <div class="error-explanation mt-4">
-    <h3><%= @review.errors.count %> errors from being saved.</h3>
+    <h3><%= @re.errors.count %> errors occurred. Please correct the errors below. </h3>
     <% @review.errors.full_messages.each do |message| %>
       <ul>
         <li>・<%= message %></li>
