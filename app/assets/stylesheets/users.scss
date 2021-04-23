@@ -2,6 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.login-section {
+  border-right: 10px solid black;
+}
+
+.login-form {
+  width: 400px;
+  height: 37px;
+}
+
+.login-btn:hover {
+  background-color: #D9A404;
+}
+
+.login-btn {
+  background-color: #f2b705;
+  border: 1px solid black;
+  text-decoration: none!important;
+}
+
+.registration-section {
+  border-left: 4px solid #f2b705;
+  position: relative;
+}
+
+.registration-section {
+  border-left: 5px solid #f2b705;
+}
+
+.registration-heading {
+  margin-bottom: 60px;
+}
+
+.kanji-pic-login {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+
 .profile-top {
   background-image: image-url("profile.jpg");
 	background-size: cover;
@@ -29,6 +70,32 @@
   height: 100%;
 }
   
+/* ユーザー登録画面レスポンシブ */  
+@media screen and (max-width: 990px) { 
+  
+.login-section {
+  border-right: none;
+}
+
+.registration-section {
+  border-left: none;
+  border-top: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.kanji-pic-login {
+  display: none;
+}
+
+.login-form {
+  width: 350px;
+  height: 37px;
+}
+
+
+
+}
+
 
 /* 携帯レスポンシブ */
 
@@ -46,6 +113,5 @@
   width: 262px; 
   height: 100%;
 }
-  
   
 }

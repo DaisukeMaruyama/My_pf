@@ -1,6 +1,6 @@
 <div class="container">
-    <h2 class="signup-heading mb-4" style="margin-top: 60px;">Sign up</h2>
-    <div class="Signup-section">
+    <h1 class="signup-heading mb-4" style="margin-top: 60px;">Register</h2>
+    <div class="Signup-section ml-2">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 
@@ -55,9 +55,9 @@
       <div class="form-group row mt-2">
         <label class="col-md-3"></label>
         <div class="col-md-3 mt-2">
-          <%= f.submit "Sign up", class:"btn btn-success" %>
+          <%= f.submit "Register", class:"login-btn btn-lg" %>
         </div>
-        <p class="col-sm-9 mt-4" style="margin-bottom: 80px;">Returning Customer? => <%= link_to 'Sign in', new_user_session_path , style:"color: #D98E04;" %></p>
+        <p class="col-sm-9 mt-4" style="margin-bottom: 80px;">Returning Customer? => <%= link_to 'Log in', new_user_session_path , style:"color: black;" %></p>
       </div>
     <% end %>
 
