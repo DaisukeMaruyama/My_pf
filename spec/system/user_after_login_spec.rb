@@ -8,35 +8,43 @@ describe 'ユーザログイン後のテスト' do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Signin'
+    click_button 'Log in'
   end
 
   context 'ヘッダーの表示を確認' do
     it 'タイトルが表示される' do
       expect(page).to have_content 'SnackBen'
     end
-    it 'Homeリンクが表示される: 左上から1番目のリンクが「CONTACT US」である' do
-      contact_us_link = find_all('a')[1].native.inner_text
+    it 'CONTACT USリンクが表示される: 右上から1番目のリンクが「CONTACT US」である' do
+      contact_us_link = find_all('a')[0].native.inner_text
       expect(contact_us_link).to match(/CONTACT US/i)
     end
-    it 'Aboutリンクが表示される: 左上から3番目のリンクが「About」である' do
-      about_link = find_all('a')[3].native.inner_text
-      expect(about_link).to match(/about/i)
+    it 'HOMEリンクが表示される: 左上から1番目のリンクが「HOME」である' do
+      contact_us_link = find_all('a')[1].native.inner_text
+      expect(contact_us_link).to match(/HOME/i)
     end
-    it 'Snacksリンクが表示される: 左上から4番目のリンクが「Snacks」である' do
-      genre_name_link = find_all('a')[4].native.inner_text
-      expect(genre_name_link).to match(/Snacks/i)
+    it 'SHOPリンクが表示される: 左上から2番目のリンクが「SHOP」である' do
+      genre_name_link = find_all('a')[2].native.inner_text
+      expect(genre_name_link).to match(/SHOP/i)
     end
-    it 'View allリンクが表示される: 左上から5番目のリンクが「View all」である' do
-      view_all_link = find_all('a')[5].native.inner_text
-      expect(view_all_link).to match(/View all/i)
+    it 'Allリンクが表示される: SHOPリンクの最後のリンクが「All」である' do
+      view_all_link = find_all('a')[3].native.inner_text
+      expect(view_all_link).to match(/All/i)
     end
-    it 'Sign outリンクが表示される: 左上から6番目のリンクが「Sign out」である' do
-      sign_out_link = find_all('a')[6].native.inner_text
-      expect(sign_out_link).to match(/sign out/i)
+    it 'ABOUTリンクが表示される: 左上から3番目のリンクが「ABOUT」である' do
+      about_link = find_all('a')[4].native.inner_text
+      expect(about_link).to match(/ABOUT/i)
     end
-    it 'Cartリンクが表示される: 左上から8番目のリンクが「Cart」である' do
-      cart_link = find_all('a')[8].native.inner_text
+    it 'SIGN OUTリンクが表示される: 左上から4番目のリンクが「SIGN OUT」である' do
+      sign_out_link = find_all('a')[5].native.inner_text
+      expect(sign_out_link).to match(/SIGN OUT/i)
+    end
+    it 'Your account pageリンクが表示される: 左上から5番目のリンクが「Your account page」である' do
+      cart_link = find_all('a')[6].native.inner_text
+      expect(cart_link).to match(/Your account page/i)
+    end
+    it 'Cartアイコンリンクが表示される: 左上から6番目のリンクが「Cartアイコン」である' do
+      cart_link = find_all('a')[7].native.inner_text
       expect(cart_link).to match(/0/i)
     end
   end
@@ -49,7 +57,7 @@ describe 'ユーザログアウトのテスト' do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Signin'
+    click_button 'Log in'
     sign_out_link = find_all('a')[5].native.inner_text
     sign_out_link = sign_out_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
     click_link sign_out_link
@@ -75,7 +83,7 @@ describe 'ヘッダーのテスト: ログインしている場合' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Signin'
+      click_button 'Log in'
     end
     subject { current_path }
 
@@ -85,26 +93,32 @@ describe 'ヘッダーのテスト: ログインしている場合' do
       click_link home_link
       is_expected.to eq '/'
     end
-    it 'Aboutを押すと、About画面に遷移する' do
-      about_link = find_all('a')[2].native.inner_text
-      about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      click_link about_link
-      is_expected.to eq '/about'
-    end
-    it 'Snacksを押すと、Snacksジャンル別画面に遷移する' do
-      genre_name_link = find_all('a')[3].native.inner_text
+    it 'SHOPを押すと、ジャンルを出す' do
+      genre_name_link = find_all('a')[2].native.inner_text
       genre_name_link = genre_name_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link genre_name_link
       is_expected.to eq '/'
     end
-    it 'View allを押すと、items画面に遷移する' do
-      view_all_link = find_all('a')[4].native.inner_text
-      view_all_link = view_all_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      click_link view_all_link
+    it 'Allを押すと、製品一覧画面へ遷移する' do
+      genre_name_link = find_all('a')[3].native.inner_text
+      genre_name_link = genre_name_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link genre_name_link
       is_expected.to eq '/items'
     end
-    it 'Cartを押すと、Cart画面に遷移する' do
+    it 'ABOUTを押すと、ABOUT画面に遷移する' do
+      about_link = find_all('a')[4].native.inner_text
+      about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link about_link
+      is_expected.to eq '/about'
+    end
+    it 'Your account pageを押すと、マイページ画面に遷移する' do
       cart_link = find_all('a')[6].native.inner_text
+      cart_link = cart_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link cart_link
+      is_expected.to eq '/users/1'
+    end
+    it 'Cartアイコンを押すと、Cart画面に遷移する' do
+      cart_link = find_all('a')[7].native.inner_text
       cart_link = cart_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link cart_link
       is_expected.to eq '/cart_items'
@@ -119,7 +133,7 @@ describe '自分のユーザ詳細画面のテスト' do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Signin'
+    click_button 'Log in'
     visit user_path(user)
   end
     

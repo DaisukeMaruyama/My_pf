@@ -14,21 +14,21 @@ describe '仕上げのテスト' do
       fill_in 'user[email]', with: 'a' + user.email # 確実にuser, other_userと違う文字列にするため
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign up'
+      click_button 'Register'
       is_expected.to have_content 'successfully'
     end
     it 'ユーザログイン成功時' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Sign in'
+      click_button 'Log in'
       is_expected.to have_content 'successfully'
     end
     it 'ユーザログアウト成功時' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Sign in'
+      click_button 'Log in'
       signout_link = find_all('a')[5].native.inner_text
       signout_link = signout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link signout_link
@@ -38,7 +38,7 @@ describe '仕上げのテスト' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Sign in'
+      click_button 'Log in'
       visit edit_user_path(user)
       click_button 'Save'
       is_expected.to have_content 'updated'

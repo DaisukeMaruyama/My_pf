@@ -10,24 +10,24 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
       end
-      it 'Sign inリンクが表示される: 左上から4番目のリンクが「LOG IN/REGSTER」である' do
+      it 'LOG IN/REGSTER リンクが表示される: 左上から4番目のリンクが「LOG IN/REGSTER」である' do
         sign_in_link = find_all('a')[5].native.inner_text
         expect(sign_in_link).to match(/LOG IN/i)
       end
-      it 'Sign inリンクの内容が正しい' do
+      it 'LOG IN/REGSTERリンクの内容が正しい' do
         log_in_link = find_all('a')[5].native.inner_text
         expect(page).to have_link log_in_link, href: new_user_session_path
       end
     end  
-    context '遷移先にSign upリンクがあるかの確認' do  
+    context '遷移先にCreate An Accountリンクがあるかの確認' do  
       before do 
         visit new_user_session_path
       end  
-      it 'Sign Upリンクが表示される' do
-        expect(page).to have_link 'Sign up'
+      it 'Create An Accountリンクが表示される' do
+        expect(page).to have_link 'Create An Account'
       end
-      it 'Sign Upリンクの内容が正しい' do
-        expect(page).to have_link 'Sign up', href: new_user_registration_path
+      it 'Create An Accountリンクの内容が正しい' do
+        expect(page).to have_link 'Create An Account', href: new_user_registration_path
       end
     end
   end
@@ -110,8 +110,8 @@ describe 'ユーザログイン前のテスト' do
       before do 
         visit new_user_session_path
       end
-      it '(画面遷移後)Sign upを押すと、 新規登録画面に遷移する' do
-        click_link 'Sign up'
+      it '(画面遷移後)Create An Accountを押すと、 新規登録画面に遷移する' do
+        click_link 'Create An Account'
         is_expected.to eq '/users/sign_up'
       end
     end  
@@ -126,8 +126,8 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
       end
-      it '「Sign up」と表示される' do
-        expect(page).to have_content 'Sign up'
+      it '「Register」と表示される' do
+        expect(page).to have_content 'Register'
       end
       it 'first_nameフォームが表示される' do
         expect(page).to have_field 'user[first_name]'
@@ -144,8 +144,8 @@ describe 'ユーザログイン前のテスト' do
       it 'password_confirmationフォームが表示される' do
         expect(page).to have_field 'user[password_confirmation]'
       end
-      it 'Sign upボタンが表示される' do
-        expect(page).to have_button 'Sign up'
+      it 'Registerボタンが表示される' do
+        expect(page).to have_button 'Register'
       end
     end
 
@@ -159,10 +159,10 @@ describe 'ユーザログイン前のテスト' do
       end
 
       it '正しく新規登録される' do
-        expect { click_button 'Sign up' }.to change(User.all, :count).by(1)
+        expect { click_button 'Register' }.to change(User.all, :count).by(1)
       end
       it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
-        click_button 'Sign up'
+        click_button 'Register'
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
     end
@@ -179,8 +179,8 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_in'
       end
-      it '「Sign in」と表示される' do
-        expect(page).to have_content 'Sign in'
+      it '「Welcome back!」と表示される' do
+        expect(page).to have_content 'Welcome back!'
       end
       it 'emailフォームが表示される' do
         expect(page).to have_field 'user[email]'
@@ -188,8 +188,8 @@ describe 'ユーザログイン前のテスト' do
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'user[password]'
       end
-      it 'Sign inボタンが表示される' do
-        expect(page).to have_button 'Sign in'
+      it 'Log inボタンが表示される' do
+        expect(page).to have_button 'Log in'
       end
     end
 
@@ -197,7 +197,7 @@ describe 'ユーザログイン前のテスト' do
       before do
         fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
-        click_button 'Sign in'
+        click_button 'Log in'
       end
 
       it 'ログイン後のリダイレクト先が画面、Top画面になっている' do
@@ -209,7 +209,7 @@ describe 'ユーザログイン前のテスト' do
       before do
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
-        click_button 'Sign in'
+        click_button 'Log in'
       end
 
       it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
