@@ -1,10 +1,9 @@
 class Public::ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-
   
   def index
-    @items = Item.all.order(created_at: :desc).order(created_at: :desc).page(params[:page]).per(8)
-    @q = Item.ransack(params[:q])
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(8)
+    # Ransack使用の場合⇨　@q = Item.ransack(params[:q])　今回は不使用
     @genres = Genre.all
   end
 
