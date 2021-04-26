@@ -9,6 +9,17 @@
         <p><%= @datas.total_count %> snacks found</p>
       </div>
       
+      <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
+        <%= f.select :keyword, [
+            ['High to low','high'],
+            ['Low to high','low'],
+            ['Newest','new'],
+            ['Oldest','old'],
+            ] %>
+        <%= f.hidden_field :value, :value => params["search"][:value] %>
+        <%= f.submit 'Sort' %>
+      <% end %>
+      
       <div class="d-flex col-12 pt-2 category-search-section">
         <h5 class="ml-3 col-2 category-search-title" style="font-family: 'Lobster', cursive;">Categories</h5>
         <div class="col-9">

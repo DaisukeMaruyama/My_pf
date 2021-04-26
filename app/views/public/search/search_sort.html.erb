@@ -4,23 +4,22 @@
       <div class="pt-4 col-12 mb-2 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">
         <p>Your search results for:</p>
         <h2 style="font-family: 'Chango', cursive;">
-          <%= @genre.genre_name %>
+          <%= @value %>
         </h2>
         <p><%= @datas.total_count %> snacks found</p>
       </div>
-
-      <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
+      
+      <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
         <%= f.select :keyword, [
             ['High to low','high'],
             ['Low to high','low'],
             ['Newest','new'],
             ['Oldest','old'],
             ] %>
-        <%= f.hidden_field :id, :value => @genre.id %>
-        <%= f.hidden_field :content, :value => params["search"][:content] %>
+        <%= f.hidden_field :value, :value => params[:value] %>
         <%= f.submit 'Sort' %>
       <% end %>
-
+      
       <div class="d-flex col-12 pt-2 category-search-section">
         <h5 class="ml-3 col-2 category-search-title" style="font-family: 'Lobster', cursive;">Categories</h5>
         <div class="col-9">
@@ -29,15 +28,16 @@
           <% end %>
         </div>
       </div>
-
+        
       <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
+
         <div class="text-center mt-5">
           <% if @datas.empty? %>
             <h2>NOTHING MATCHES YOUR SEARCH</h2>
             <p>But don't give up – check the spelling or try less specific search terms.</p>
           <% end %>
         </div>
-
+      
         <div class="items d-flex flex-wrap col-12 mx-auto mt-4">
           <% @datas.each do |data| %>
             <div class="card snacks" style="width: 20rem; min-height: 350px;">
@@ -49,8 +49,7 @@
               </div>
             </div>
           <% end %>
-        </div>
-
+        </div>  
       </div>
     </div>
     <%= paginate @datas %>

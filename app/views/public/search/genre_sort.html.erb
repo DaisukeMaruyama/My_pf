@@ -6,7 +6,7 @@
         <h2 style="font-family: 'Chango', cursive;">
           <%= @genre.genre_name %>
         </h2>
-        <p><%= @datas.total_count %> snacks found</p>
+        <p><%= @datas.count %> snacks found</p>
       </div>
 
       <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
@@ -17,7 +17,7 @@
             ['Oldest','old'],
             ] %>
         <%= f.hidden_field :id, :value => @genre.id %>
-        <%= f.hidden_field :content, :value => params["search"][:content] %>
+        <%= f.hidden_field :content, :value => params[:content] %>
         <%= f.submit 'Sort' %>
       <% end %>
 
