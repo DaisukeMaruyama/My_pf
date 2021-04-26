@@ -1,7 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="py-3 col-12 text-center items-all-top mb-2"><h2>All Snacks</h2><span>(<%= @items.total_count %> snacks)</span></div>
-
+    <%= form_with model: @item, url: sort_path, method: :get, local:true do |f| %>
+      <%= f.select :keyword, [
+        ['High to low','high'],
+        ['Low to high','low'],
+        ['Newest','new'],
+        ['Oldest','old'],
+        ] %>
+      <%= f.submit 'sort' %>
+    <% end %>
     <div class="d-flex col-12 pt-2 category-search-section">
       <h5 class="ml-3 col-2 category-search-title" style="font-family: 'Lobster', cursive;">Categories</h5>
       <div class="col-9">

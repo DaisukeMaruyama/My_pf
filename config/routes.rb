@@ -34,18 +34,21 @@ scope module: :public do
 
   get 'search/search'
   get 'search/genre_search'
+  get 'sort' => 'items#sort'
+  get 'genre_sort' => 'search#genre_sort'
+  get 'search_sort' => 'search#search_sort'
 
   get 'items/condition_search' => 'items#condition_search'
   resources :items, only: [:index, :show] do
     resources :reviews
   end
-  
+
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update] do
-    collection do 
+    collection do
       post :shipping_confirm
     end
-  end  
+  end
 
 
   get 'orders/thanks' => 'orders#thanks'
@@ -55,7 +58,7 @@ scope module: :public do
       post :pay
     end
   end
-  
+
   patch 'users/:id/update_password' => 'users#update_password', as: 'update_password'
   get 'users/:id/newpassword' => 'users#newpassword'
   get 'users/unsubscribe' => 'users#unsubscribe'

@@ -6,6 +6,11 @@ class Public::ItemsController < ApplicationController
     # Ransack使用の場合⇨　@q = Item.ransack(params[:q])　今回は不使用
     @genres = Genre.all
   end
+  
+  def sort
+    selection = params[:keyword]
+    @items = Item.sort(selection).page(params[:page]).per(8)
+  end
 
   def show
     @item = Item.find(params[:id])
