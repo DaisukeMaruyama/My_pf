@@ -1,3 +1,14 @@
 // Place all the styles related to the Search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-result-section {
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+  background-color: #101626;
+  color: white;
+}
+
+.search-result {
+  font-family: 'Chango', cursive;
+}

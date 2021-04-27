@@ -1,25 +1,10 @@
 <body style="background-color: #EBE9DE;">
   <div class="container-fluid">
     <div class="row">
-      <div class="pt-4 col-12 mb-2 text-center" style="border-top: 2px solid grey; border-bottom: 2px solid grey; background-color: #101626; color:white;">
-        <p>Your search results for:</p>
-        <h2 style="font-family: 'Chango', cursive;">
-          <%= @genre.genre_name %>
-        </h2>
-        <p><%= @datas.count %> snacks found</p>
+      <div class="pt-4 col-12 mb-2 pb-3 text-center search-result-section">
+        <h2 class="search-result"><%= @datas.total_count %> results for ”<%= @genre.genre_name %>”</h2>
+        <span>Showing <%= @datas.count %> of <%= @datas.total_count %> results </span>
       </div>
-
-      <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
-        <%= f.select :keyword, [
-            ['High to low','high'],
-            ['Low to high','low'],
-            ['Newest','new'],
-            ['Oldest','old'],
-            ] %>
-        <%= f.hidden_field :id, :value => @genre.id %>
-        <%= f.hidden_field :content, :value => params[:content] %>
-        <%= f.submit 'Sort' %>
-      <% end %>
 
       <div class="d-flex col-12 pt-2 category-search-section">
         <h5 class="ml-3 col-2 category-search-title" style="font-family: 'Lobster', cursive;">Categories</h5>
@@ -29,8 +14,23 @@
           <% end %>
         </div>
       </div>
+      
+      <div class="mt-2 d-flex ml-auto mr-3">
+        <p class="mr-1">Filter</p>
+        <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
+          <%= f.select :keyword, [
+          [""],
+          ['Price, High to low','high'],
+          ['Price, Low to high','low'],
+          ['Date, New to old','new'],
+          ['Date, Old to new','old'],
+          ] , {} , :onchange => 'this.form.submit()' %>
+          <%= f.hidden_field :id, :value => @genre.id %>
+          <%= f.hidden_field :content, :value => params[:id] %>
+        <% end %>
+      </div>
 
-      <div class="items col-12 mx-auto mt-4" style="padding-bottom: 50px;">
+      <div class="items col-12 mx-auto" style="padding-bottom: 50px;">
         <div class="text-center mt-5">
           <% if @datas.empty? %>
             <h2>NOTHING MATCHES YOUR SEARCH</h2>
@@ -38,7 +38,7 @@
           <% end %>
         </div>
 
-        <div class="items d-flex flex-wrap col-12 mx-auto mt-4">
+        <div class="items d-flex flex-wrap col-12 mx-auto">
           <% @datas.each do |data| %>
             <div class="card snacks" style="width: 20rem; min-height: 350px;">
               <span><%= attachment_image_tag data, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
