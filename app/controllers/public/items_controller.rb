@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index,:sort, :show]
   
   def index
     @items = Item.all.order(created_at: :desc).page(params[:page]).per(8)
