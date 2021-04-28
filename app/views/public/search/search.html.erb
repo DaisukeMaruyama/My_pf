@@ -16,7 +16,7 @@
       </div>
       
       <div class="mt-2 d-flex ml-auto mr-3">
-        <p class="mr-1">Filter</p> 
+        <p class="mr-1">Sort By</p>
           <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
             <%= f.select :keyword, [
             ['Date, New to old','new'],
