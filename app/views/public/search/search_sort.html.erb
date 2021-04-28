@@ -19,12 +19,11 @@
         <p class="mr-1">Filter</p> 
           <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
             <%= f.select :keyword, [
-            [""],
-            ['Price, High to low','high'],
-            ['Price, Low to high','low'],
             ['Date, New to old','new'],
             ['Date, Old to new','old'],
-            ] , {} , :onchange => 'this.form.submit()' %>
+            ['Price, High to low','high'],
+            ['Price, Low to high','low']
+            ] , { selected: params[:keyword] } , :onchange => 'this.form.submit()' %>
             <%= f.hidden_field :value, :value => params[:value] %>
           <% end %>
       </div>
