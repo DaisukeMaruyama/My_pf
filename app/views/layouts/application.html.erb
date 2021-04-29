@@ -21,25 +21,26 @@
     <div style="background-color:#EBE9DE; height: 41px;">
       <div class="d-flex justify-content-end mx-4">
         <div class="d-flex justify-content-start">
-          <li class="pt-2 search-section-list">
-            <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。  ボタンを左側に置ききたい為、button_tagが先 %>
-            <div class="search-section">
-            <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline", local:true do |f| %>
-              <%= button_tag :type => "submit", :class =>"search-button" do %>
-                <i class="fa fa-search"></i>
+          <% unless admin_signed_in? %>
+            <li class="pt-2 search-section-list">
+              <%# ↓自作検索機能。検索の仕組みを学習する為、ここではransackを使わず自作検索機能を作った。  ボタンを左側に置ききたい為、button_tagが先 %>
+              <div class="search-section">
+                <%= form_with url: search_search_path, method: :get, class:"d-flex flex-row form-inline", local:true do |f| %>
+                  <%= button_tag :type => "submit", :class =>"search-button" do %>
+                    <i class="fa fa-search"></i>
+                  <% end %>
+                  <%= f.text_field 'search[value]', class:"mr-3 search-form", autocomplete:"off" %>
+                  <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
+                <% end %>
+              </div>
+            </li>
+            <span class="pt-2" style="color: #D6D6D5;">|</span>
+            <p class="pt-1">
+              <%= link_to new_contact_path, class:"nav-link contact-link" do %>
+                <i class="fas fa-envelope mr-2"></i>CONTACT US
               <% end %>
-              <%= f.text_field 'search[value]', class:"mr-3 search-form", autocomplete:"off" %>
-              <%#　今回のアプリでは一致検索不要。後学のためコメントアウトで残す⇨。<%= f.select 'search[how]', options_for_select({ "Partical" => "partical", "Forward" => "forward", "Backword" => "backward", "Match" => "match" }), {}, {style: 'height: 35px;'} %>
-            <% end %>
-            </div>
-          </li>
-
-          <span class="pt-2" style="color: #D6D6D5;">|</span>
-          <p class="pt-1">
-            <%= link_to new_contact_path, class:"nav-link contact-link" do %>
-              <i class="fas fa-envelope mr-2"></i>CONTACT US
-            <% end %>
             </p>
+          <% end %>
         </div>
       </div>
     </div>
