@@ -23,18 +23,23 @@
   background-color: #F0F3EF;
 }
 
+.yourCustomClass {
+  width: 550px;
+  border-radius: 15px;
+}
+
 /*order thanks*/
 .thanks-top-section {
   background-image: image-url("cherry-blossom.jpg");
 	background-size: cover;
 	background-position: center;
-  height: 170px; 
+  height: 170px;
   width:  100%;
 	max-width:  auto;
 }
 
 .thanks-hedding {
-  color: #EBE9DE; 
+  color: #EBE9DE;
   font-family: 'Ranchers', cursive;
 }
 
@@ -84,19 +89,27 @@
     font-weight: bold;
     margin-right: 10px;
   }
-  
+
 }
 
 /* 携帯レスポンシブ */
 
 @media screen and (max-width: 450px) {
-  
+
   .order-address {
   width: 300px;
   }
-  
+
   .thank-you {
   font-size: 35px;
   }
-  
+
+}
+
+/* confirm 購入ボタンレスポンシブ */
+@media screen and (max-width: 800px) {
+ .yourCustomClass {
+  width: 90%;
+}  
+
 }

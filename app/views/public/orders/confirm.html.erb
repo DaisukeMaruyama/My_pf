@@ -26,7 +26,7 @@
             <% end %>
           </tbody>
         </table>
-      
+
 			  <table class="table table-bordered order-shipdelivery-table col-lg-8">
           <tr>
             <th class="active">Delivery Time</th>
@@ -37,7 +37,7 @@
           <tr>
             <th class="col-xs-4 active">Shipping Address</th>
             <td class="col-xs-8">
-              <%= @order.first_name %> <%= @order.last_name %> <%= @order.address %> <%= @order.city %> <%= @order.postal_code %> 
+              <%= @order.first_name %> <%= @order.last_name %> <%= @order.address %> <%= @order.city %> <%= @order.postal_code %>
               <% if @order.country == "KR" %>
                 Korea
               <% else %>
@@ -47,7 +47,7 @@
           </tr>
         </table>
 
-        
+
         <table class="table table-bordered order-confirm-table col-lg-4">
           <tbody>
             <tr>
@@ -64,14 +64,14 @@
             </tr>
           </tbody>
         </table>
-       
+
 
       </div>
 
     </div>
   </div>
-  
-  
+
+
 
 　<%# Stripe決済ボタン↓ %>
   <div class="comfirmation-btn-wrap text-center mb-5">
@@ -110,7 +110,7 @@
         data-panel-label="Pay now"
        >
       </script>
-      <button type="submit" class="yourCustomClass btn btn-primary btn-lg" style="border-radius: 15px;">Place order with credit card<i class="fas fa-check ml-2"></i></button>
+      <button type="submit" class="yourCustomClass btn btn-primary btn-lg">Place order with credit card<i class="fas fa-check ml-2"></i></button>
       <style type="text/css">
                 <%#<!--
                 button.stripe-button-el,
