@@ -26,6 +26,13 @@
 .yourCustomClass {
   width: 550px;
   border-radius: 15px;
+  background-color: #f2b705;
+  border: 1px solid black;
+  text-decoration: none!important;
+}
+
+.yourCustomClass:hover {
+  background-color: #D9A404;
 }
 
 /*order thanks*/
@@ -110,6 +117,6 @@
 @media screen and (max-width: 800px) {
  .yourCustomClass {
   width: 90%;
-}  
+}
 
 }
