@@ -15,30 +15,30 @@
         </div>
     <% end %>
 
-  <div class="row">
-    <div class="col-lg-7 mb-3">
-      <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Address" %></strong></h4>
+    <div class="row">
+      <div class="col-lg-7 mb-3">
+        <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Address" %></strong></h4>
         
-          <div class="field mt-3 ml-3">
-            <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
-            
-            <%= f.label :oaddress, "Ship to your address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
-            <% if current_user.postal_code && current_user.address %>
-              <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
-              <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> 
-              <% if @user.country == "KR" %>
-                Korea
-              <% else %>
-                <%= @user.country_name %>
-              <% end %>
-              </p>
+        <div class="field mt-3 ml-3">
+          <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
+          
+          <%= f.label :oaddress, "Ship to your address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
+          <% if current_user.postal_code && current_user.address %>
+            <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
+            <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> 
+            <% if @user.country == "KR" %>
+              Korea
             <% else %>
-              <p class="ml-4" style="font-size: 14px;">You want us to ship to your address, but you haven't created your profile yet?</p>
-              <div class="d-flex">
-              <p class="ml-4">Create your profile to enjoy faster checkout!<br>=><%= link_to 'Create the profile', edit_user_path(current_user), style:"color: black; background-color: #FF9872; border-radius: 25px;" ,class:"ml-1 btn btn-sm mt-1" %></p>
-              </div>
+              <%= @user.country_name %>
             <% end %>
-          </div>
+            </p>
+          <% else %>
+            <p class="ml-4" style="font-size: 14px;">You want us to ship to your address, but you haven't created your profile yet?</p>
+            <div class="d-flex">
+              <p class="ml-4">Create your profile to enjoy faster checkout!<br>=><%= link_to 'Create the profile', edit_user_path(current_user), style:"color: black; background-color: #FF9872; border-radius: 25px;" ,class:"ml-1 btn btn-sm mt-1" %></p>
+            </div>
+          <% end %>
+        </div>
         
     
         <div class="field ml-3">
