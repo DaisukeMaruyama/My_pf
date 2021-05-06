@@ -10,35 +10,35 @@
 			<!-- カート商品一覧 -->
 			<div class="cart-item-table row">
 				<table class="table01 table table-sm">
-    <thead class="active">
-      <tr>
-        <th colspan="2">Product name</th>
-        <th class="text-center">Unit price</th>
-        <th class="text-center">Amount</th>
-        <th class="text-center">Subtotal</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody style="background-color: #F0F3EF;">
-      <% @user.cart_items.each do |cart_item| %>
-      <tr>
-        <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
-        <td data-label="Product name" class="text-center"><p><%= cart_item.item.item_name %></p></td>
-        <td data-label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
-        <td data-label="Amount" class="text-center" style="white-space: nowrap;" >
-        	<%= form_with model: cart_item, class:"form-inline",local:true do |f| %>
-						<div class="mx-auto cart_item">
-							<%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
-							<%= f.submit "Edit", class:"btn btn-primary" %>
-					  </div>
-					<% end %>
-        </td>
-        <td data-label="Subtotal" class="text-center"><p>$ <%= number_with_precision(cart_item.subtotal_price, precision: 2) %></p></td><!-- cart_item.subtotal_priceはcart_item.rbに記載 -->
-				<td class="text-right"><p><%= link_to "Remove", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></p></td>
-       </tr>
-       <% end %>
-    </tbody>
-  </table>
+			    <thead class="active">
+			      <tr>
+			        <th colspan="2">Product name</th>
+			        <th class="text-center">Unit price</th>
+			        <th class="text-center">Amount</th>
+			        <th class="text-center">Subtotal</th>
+			        <th></th>
+			      </tr>
+			    </thead>
+			    <tbody style="background-color: #F0F3EF;">
+			      <% @user.cart_items.each do |cart_item| %>
+			      <tr>
+			        <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
+			        <td data-label="Product name" class="text-center"><p><%= cart_item.item.item_name %></p></td>
+			        <td data-label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
+			        <td data-label="Amount" class="text-center" style="white-space: nowrap;" >
+			        	<%= form_with model: cart_item, class:"form-inline",local:true do |f| %>
+									<div class="mx-auto cart_item">
+										<%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
+										<%= f.submit "Edit", class:"btn btn-primary" %>
+								  </div>
+								<% end %>
+			        </td>
+			        <td data-label="Subtotal" class="text-center"><p>$ <%= number_with_precision(cart_item.subtotal_price, precision: 2) %></p></td><!-- cart_item.subtotal_priceはcart_item.rbに記載 -->
+							<td class="text-right"><p><%= link_to "Remove", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></p></td>
+			       </tr>
+			       <% end %>
+			    </tbody>
+  			</table>
 			</div>
 
 			<!-- 合計金額 -->
