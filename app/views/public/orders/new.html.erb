@@ -1,6 +1,6 @@
 <div class="container">
 
-	<h2 class="ec-cart-index-title mt-4">Cheak Out</h2>
+  <h2 class="ec-cart-index-title mt-4">Cheak Out</h2>
 
 
   <%= form_with model: @order,url: confirm_orders_path, method: :post, local: true do |f| %>
@@ -11,21 +11,21 @@
             <ul>
               <li>・<%= message %></li>
             </ul>
-          <% end %>  
+          <% end %>
         </div>
     <% end %>
 
     <div class="row">
       <div class="col-lg-7 mb-3">
         <h4 style="color:  #D98E04;"><strong><%= f.label :address, "Shipping Address" %></strong></h4>
-        
+
         <div class="field mt-3 ml-3">
           <%= radio_button_tag :address_type, 0, checked: "checked",class:"ml-3" %>
-          
+
           <%= f.label :oaddress, "Ship to your address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
           <% if current_user.postal_code && current_user.address %>
             <p class="ml-4"><%= @user.first_name %> <%= @user.last_name %></p>
-            <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %> 
+            <p class="ml-4"><%= @user.address %> <%= @user.city %> <%= @user.postal_code %>
             <% if @user.country == "KR" %>
               Korea
             <% else %>
@@ -39,48 +39,48 @@
             </div>
           <% end %>
         </div>
-        
-    
+
+
         <div class="field ml-3">
           <%= radio_button_tag :address_type, 1 ,class:"ml-3"%>
           <%= f.label :address, "Ship to registered addresses", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
           <!-- 登録済み住所から持ってくる。full_shipping_addressはdeliveryモデルに-->
-          
+
           <%= f.collection_select(:delivery_id, @registered_addresses, :id, :full_shipping_address,{prompt: "Select one of your registered addresses"}, {class: "ml-4 registered-address my-2"} ) %>
         </div>
-        
+
         <div class="field mt-3 ml-3">
             <%= radio_button_tag :address_type, 2 ,class:"ml-3"%>
             <%= f.label :address, "Ship to this address", style:"color: #26110F; font-weight: bold; font-size: 20px;" %><br>
-            
+
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Name</strong></label>
             <div class="col-sm-9">
               <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
             </div>
           </div>
-          
+
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Address</strong></label>
             <div class="col-sm-9">
               <%= f.text_field :address, class:"order-address" %>
             </div>
           </div>
-          
+
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>City</strong></label>
             <div class="col-sm-9">
               <%= f.text_field :city %>
             </div>
           </div>
-          
+
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
             <div class="col-sm-9">
                <%= f.text_field :postal_code %>
             </div>
           </div>
-        
+
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Country</strong></label>
             <div class="col-sm-9">
@@ -88,22 +88,22 @@
               "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 189px; height: 31px;', data: { attribute: "value" } } %>
             </div>
           </div>
-        </div>  
-        
-      </div>    
-      
+        </div>
+
+      </div>
+
       <div class="col-lg-4 offset-lg-1">
-      
+
       <%#後学のため残す。
       <%#<%= f.label :shipping_method, "Shipping Method" %>
         <%#<div class="field mb-5">
-            
+
             <%#<%= f.radio_button :shipping_method, :Includes_tracking ,  checked: "checked" ,class:"ml-3" %>
             <%#<%= f.label :shipping_method, "Includes tracking (SP) $ 3.00"  %>
             <%#<%= f.radio_button :shipping_method, :DHL_FedEx ,class:"ml-3" %>
-            <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %> 
+            <%#<%= f.label :shipping_method, "DHL / FedEx $ 23.00" %>
         <%#</div>  %>
-        
+
         <h4 style="color:  #D98E04;"><strong>The Infomation form us</strong></h4>
         <div class="accordion mt-4" id="myAccordion">
           <div class="card">
@@ -157,12 +157,12 @@
         </div>
 
       </div>
-    </div>  
-        
+    </div>
+
     <div class="actions text-center mb-5 mt-4">
       <%= f.submit "Procced to confirmation" , class:"btn btn-primary create-order-btn-wrapper" %><%# create-order-btn-wrapperはcart_items.scss %>
     </div>
-  
+
   <% end %>
 </div>
 

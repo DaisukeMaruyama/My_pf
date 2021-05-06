@@ -1,11 +1,11 @@
 <div class="container">
-	<div class="row mx-2">
-		<div class="ec-cart-index-main col-md-12">
-			<h2 class="ec-cart-index-title">Order Confirmation</h2>
+  <div class="row mx-2">
+    <div class="ec-cart-index-main col-md-12">
+      <h2 class="ec-cart-index-title">Order Confirmation</h2>
 
-			<div class="cart-item-table row">
+      <div class="cart-item-table row">
 
-				<table class="table01 table table-sm col-12 order-confirm-table">
+        <table class="table01 table table-sm col-12 order-confirm-table">
           <thead>
             <tr class="active">
               <th colspan="2">Product name</th>
@@ -15,8 +15,8 @@
             </tr>
           </thead>
           <tbody style="background-color: #F0F3EF;">
-          	<% current_user.cart_items.each do |cart_item| %>
-            	<tr>
+            <% current_user.cart_items.each do |cart_item| %>
+              <tr>
                 <th><%= attachment_image_tag cart_item.item, :image, size: "100x100", fallback: "no-image.jpeg", format: "jpeg", class: "card" %></th>
                 <td data-label="Product name" class="text-center"><p><%= cart_item.item.item_name %></p></td>
                 <td data-label="Unit price" class="text-center"><p>$ <%= number_with_precision(cart_item.item.price, precision: 2) %></p></td>
@@ -27,7 +27,7 @@
           </tbody>
         </table>
 
-			  <table class="table table-bordered order-shipdelivery-table col-lg-8">
+        <table class="table table-bordered order-shipdelivery-table col-lg-8">
           <tr>
             <th class="active">Delivery Time</th>
             <td class="text-left">
@@ -72,7 +72,7 @@
 
 
 
-　<%# Stripe決済ボタン↓ %>
+  <%# Stripe決済ボタン↓ %>
   <div class="comfirmation-btn-wrap text-center mb-5">
 
     <%= form_tag pay_orders_path, method: :post do |f| %>
