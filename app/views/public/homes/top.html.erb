@@ -6,17 +6,17 @@
 </div>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="top-wrapper">
-			<img src="<%= asset_path "ben.kanji.png" %>" class="ben-kanji-pic"></img>
-		</div>
-		<div class="top-wrapper-bar">
-		</div>
-		<h2 class="item-heading text-center col-md-12" style="font-family: 'Abril Fatface', cursive; color: #26110F;">New Arrivals</h2>
-	</div>	
-	
-	<div class="items col-md-12 mx-auto">	
-		<% @items.each do |item| %>
+  <div class="row">
+    <div class="top-wrapper">
+      <img src="<%= asset_path "ben.kanji.png" %>" class="ben-kanji-pic"></img>
+    </div>
+    <div class="top-wrapper-bar">
+    </div>
+    <h2 class="item-heading text-center col-md-12" style="font-family: 'Abril Fatface', cursive; color: #26110F;">New Arrivals</h2>
+  </div>  
+
+  <div class="items col-md-12 mx-auto">  
+    <% @items.each do |item| %>
       <div class="card" style="width: 18rem; min-height: 340px;  background: transparent; border-radius: 7px;">
         <span><%= attachment_image_tag item, :image, size:"190x160", fallback: "no-image.jpeg",class:"card-img-top", style:"background: transparent;", format: "jpeg" %></span>
         <div class="card-body">
@@ -25,38 +25,38 @@
           <%= link_to 'Explore', item_path(item), class: 'btn btn-primary' %>
         </div>
       </div>
-    <% end %>	
-	</div>
-	
-	<div class="container">
-		<p class="view-more text-right mt-4"><%= link_to "View more snacks", items_path, class:"btn btn-gradient" %></p>
-	</div>
+    <% end %>  
+  </div>
+  
+  <div class="container">
+    <p class="view-more text-right mt-4"><%= link_to "View more snacks", items_path, class:"btn btn-gradient" %></p>
+  </div>
       
       <div class="message-wrapper mb-2">
-		<h2 class="message-heading text-center" style="font-family: 'Abril Fatface', cursive; color: #26110F;">Snack Box</h2>
-		<div class="row">
-			<div class="sweets-box-image-mobile"></div>
-			<div class="snack-box-description mx-auto col-sm-6">
-				<h3>Sweets Box</h3>
-				<p>A delicious sample of authentic Japanese snacks. <br>
-					Each box comes with a mini-snack guide and includes 10-12 Japanese snacks. <br>
-					The Sweets Box is perfect to get you started!</p>
-				<%= link_to 'Go to detail page', item_path(4), class:"btn btn-primary" %>		
-			</div>
-			<div class="sweets-box-description-image col-sm-6"></div>
-		</div>
-		<div class="row">
-			<div class="ramen-box-image-mobile"></div>
-			<div class="ramen-box-description-image col-sm-6"></div>
-			<div class="snack-box-description mx-auto col-sm-6">
-				<h3>Ramen Box</h3>
-				<p>If you can't make up your mind which one to choose, <br>
-					we recommend trying out some instant ramen form 5 different prefectures.<br>
-					Let's go find your favorite one!</p>	
-				<%= link_to 'Go to detail page', item_path(5), class:"btn btn-primary" %>	
-			</div>	
-		</div>
-	</div>
+    <h2 class="message-heading text-center" style="font-family: 'Abril Fatface', cursive; color: #26110F;">Snack Box</h2>
+    <div class="row">
+      <div class="sweets-box-image-mobile"></div>
+      <div class="snack-box-description mx-auto col-sm-6">
+        <h3>Sweets Box</h3>
+        <p>A delicious sample of authentic Japanese snacks. <br>
+          Each box comes with a mini-snack guide and includes 10-12 Japanese snacks. <br>
+          The Sweets Box is perfect to get you started!</p>
+        <%= link_to 'Go to detail page', item_path(4), class:"btn btn-primary" %>    
+      </div>
+      <div class="sweets-box-description-image col-sm-6"></div>
+    </div>
+    <div class="row">
+      <div class="ramen-box-image-mobile"></div>
+      <div class="ramen-box-description-image col-sm-6"></div>
+      <div class="snack-box-description mx-auto col-sm-6">
+        <h3>Ramen Box</h3>
+        <p>If you can't make up your mind which one to choose, <br>
+          we recommend trying out some instant ramen form 5 different prefectures.<br>
+          Let's go find your favorite one!</p>  
+        <%= link_to 'Go to detail page', item_path(5), class:"btn btn-primary" %>  
+      </div>  
+    </div>
+  </div>
 </div>
 
 
