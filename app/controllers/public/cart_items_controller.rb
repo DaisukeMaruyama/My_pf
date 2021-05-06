@@ -14,7 +14,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
       flash[:notice] = "You have added the item to your shopping cart"
       redirect_to cart_items_path
-    else 
+    else
       @cart_item = current_user.cart_items.new(cart_item_params)
       @cart_item.save!
       flash[:notice] = "You have added the item to your shopping cart"
@@ -55,11 +55,11 @@ class Public::CartItemsController < ApplicationController
   private
 
   def correct_user
-		@cart_item = CartItem.find(params[:id])
-		if current_user.id != @cart_item.user_id
-		  flash[:alert] = "You are not autholized."
-			redirect_to cart_items_path
-		end
+    @cart_item = CartItem.find(params[:id])
+    if current_user.id != @cart_item.user_id
+      flash[:alert] = "You are not autholized."
+      redirect_to cart_items_path
+    end
   end
 
   def cart_item_params
