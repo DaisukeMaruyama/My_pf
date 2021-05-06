@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*以下、携帯サイズ レスポンシブ*/
-  @media screen and (max-width: 465px) {
+@media screen and (max-width: 465px) {
   
   .review-title {
     font-size: 30px;
@@ -11,6 +11,6 @@
     
   .review-comment, .review-rating{
   font-size: 12px;
-}
+  }
 
 }

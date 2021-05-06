@@ -6,54 +6,54 @@
 /* top画面 */
 
 .top-screen {
-	background-color:#EBE9DE;
-	height: 40px; 
-	font-family: 'Noto Sans JP', sans-serif;
+  background-color:#EBE9DE;
+  height: 40px;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .top-wrapper {
-	background-image: image-url("sakuratoppage.png");
-	background-size: cover;
-	background-position: center;
-	width:  100%;
-	max-width:  auto;
-	padding: 270px 0;
-	margin: 0 auto;
-	position: relative;
+  background-image: image-url("sakuratoppage.png");
+  background-size: cover;
+  background-position: center;
+  width:  100%;
+  max-width:  auto;
+  padding: 270px 0;
+  margin: 0 auto;
+  position: relative;
 }
 
 
 
 .ben-kanji-pic {
-	width: 250px;
-	height: 250px;
-	position: absolute;
-	bottom: 10px;
-	left: 5px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
 }
 
 .top-wrapper-bar {
-	background-color: #592202;
-	width: 100%;
-	height: 40px;
-	color:#EBE9DE;
-	text-align: center;
-	padding: 10px 0 ;
+  background-color: #592202;
+  width: 100%;
+  height: 40px;
+  color:#EBE9DE;
+  text-align: center;
+  padding: 10px 0 ;
 }
 
 .item-heading {
-	padding-top: 40px;
-	padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .items  {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
-	margin: 10px;
+  margin: 10px;
 }
 
 .card span {
@@ -61,72 +61,72 @@
 }
 
 .card:hover {
-	box-shadow: 10px 10px 5px  grey;
-	transition: all 0.5s;
+  box-shadow: 10px 10px 5px  grey;
+  transition: all 0.5s;
 }
 
 .message-heading {
-	padding-top: 40px;
-	padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .snack-box-description {
-	padding: 120px 0;
-	text-align: center;
+  padding: 120px 0;
+  text-align: center;
 }
 
 .sweets-box-description-image-mobile {
-	display: none;
+  display: none;
 }
 
 .sweets-box-description-image {
-	background-image: image-url("sweets-box.jpg");
-	background-size: cover;
-	background-position: center;
-	width:  100%;
-	max-width:  auto;
-	padding: 130px 130px;
+  background-image: image-url("sweets-box.jpg");
+  background-size: cover;
+  background-position: center;
+  width:  100%;
+  max-width:  auto;
+  padding: 130px 130px;
 }
 
 .sweets-box-description-image:hover {
-	box-shadow: 10px 10px 5px grey;
-	transition: all 0.5s;
+  box-shadow: 10px 10px 5px grey;
+  transition: all 0.5s;
 }
 
 .ramen-box-description-image-mobile {
-	display: none;
+  display: none;
 }
 
 .ramen-box-description-image {
-	background-image: image-url("ramen-box.jpg");
-	background-size: cover;
-	background-position: center;
-	width:  100%;
-	max-width:  auto;
-	padding: 130px 130px;
+  background-image: image-url("ramen-box.jpg");
+  background-size: cover;
+  background-position: center;
+  width:  100%;
+  max-width:  auto;
+  padding: 130px 130px;
 }
 
 .ramen-box-description-image-mobile {
-	display: none;
+  display: none;
 }
 
 .ramen-box-description-image:hover {
-	box-shadow: 10px 10px 5px grey;
-	transition: all 0.5s;
+  box-shadow: 10px 10px 5px grey;
+  transition: all 0.5s;
 }
 
 .contact-form {
-	background-color: black; /* #26110Fでもいい。コメントアウトでキープ*/
-	width:  100%;
-	max-width:  auto;
-	color: #EBE9DE;
-	padding-bottom:  20px;
-	padding-top:  20px;
+  background-color: black; /* #26110Fでもいい。コメントアウトでキープ*/
+  width:  100%;
+  max-width:  auto;
+  color: #EBE9DE;
+  padding-bottom:  20px;
+  padding-top:  20px;
 }
 
 .contact-heading {
-	padding-top: 40px;
-	padding-bottom: 10px;
+  padding-top: 40px;
+  padding-bottom: 10px;
 }
 
 //View more botton//
@@ -153,13 +153,13 @@
 /* homes/about */
 
 .about-screen {
-	font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .fa-quote-left {
-	font-size: 50px;
-	color: #f2b705;
-	margin-top: 120px;
+  font-size: 50px;
+  color: #f2b705;
+  margin-top: 120px;
 }
 
 .about-top-text {
@@ -170,43 +170,43 @@
 }
 
 .about-bottom-heading {
-	border-bottom: 4px solid #1E2340;
-	font-size: 35px;
-	padding-bottom: 20px;
-	width: 500px;
-	margin-bottom: 50px;
-	font-weight: bold;
+  border-bottom: 4px solid #1E2340;
+  font-size: 35px;
+  padding-bottom: 20px;
+  width: 500px;
+  margin-bottom: 50px;
+  font-weight: bold;
 }
 
 .about-bottom-section {
-	margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .about-bottom-text-1 {
-	margin-top: 90px;
-	font-size: 23px;
+  margin-top: 90px;
+  font-size: 23px;
 }
 
 .about-bottom-text-2 {
-	font-size: 23px;
+  font-size: 23px;
 }
 
 .about-bottom-pic {
-  	width: 75%;
+    width: 75%;
   height: 75%;
 }
 
 /* TOP画像Snackbox用レスポンシブ  */
 
 @media screen and (max-width: 570px) {
-	
-	.sweets-box-image-mobile {
-	background-image: image-url("sweets-box.jpg");
-	background-size: cover;
-	background-position: center;
-	width:  100%;
-	max-width:  auto;
-	padding: 130px 130px;
+
+  .sweets-box-image-mobile {
+  background-image: image-url("sweets-box.jpg");
+  background-size: cover;
+  background-position: center;
+  width:  100%;
+  max-width:  auto;
+  padding: 130px 130px;
 }
 
 .sweets-box-description-image {
@@ -214,40 +214,40 @@
 }
 
 .ramen-box-description-image {
-	display: none;
+  display: none;
 }
 
 .ramen-box-image-mobile {
   background-image: image-url("ramen-box.jpg");
-	background-size: cover;
-	background-position: center;
-	width:  100%;
-	max-width:  auto;
-	padding: 130px 130px;
+  background-size: cover;
+  background-position: center;
+  width:  100%;
+  max-width:  auto;
+  padding: 130px 130px;
 }
 }
 
 /* ipad以下about下部テキスト レスポンシブ */
-@media screen and (max-width: 1280px) { 
-	
+@media screen and (max-width: 1280px) {
+
 .about-bottom-text-1 {
-	margin-top: 10px;
+  margin-top: 10px;
 }
-	
+
 }
 
 /* 携帯レスポンシブ */
 
 
 @media screen and (max-width: 575px) {
-	
+
 .about-top-text {
   font-size: 20px;
 }
 
 .about-bottom-heading {
-	width: 300px;
-	font-size: 20px;
+  width: 300px;
+  font-size: 20px;
 }
 
 }
@@ -255,16 +255,16 @@
 @media screen and (max-width: 450px) {
 
 .top-screen-message {
-	font-size: 14px;
-}	
+  font-size: 14px;
+}
 
 .ben-kanji-pic {
-	width: 180px;
-	height: 180px;
+  width: 180px;
+  height: 180px;
 }
 
 .snack-box-description {
-	padding: 35px 0;
+  padding: 35px 0;
 }
 
-}	
+}
