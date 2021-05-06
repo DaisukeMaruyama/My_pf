@@ -3,7 +3,7 @@
 
   <%= form_with model: @genre,url: admin_genre_path, local:true do |f| %>
   
-  <% if @genre.errors.any? %>
+    <% if @genre.errors.any? %>
       <div class="error-explanation">
         <h3><%= @genre.errors.count %>件のエラーが発生しております。</h3>
         <% @genre.errors.full_messages.each do |message| %>
