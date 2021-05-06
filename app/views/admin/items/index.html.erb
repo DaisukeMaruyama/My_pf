@@ -1,60 +1,60 @@
 <div class="container-fluid">
-	
+  
   <h2 class="mt-4 mb-3 text-center">商品一覧</h2>
   <div class="row">
-		<div class="col-lg-12 col-md-8 sc-table my-3">
-		  <%= search_form_for(@q, url: admin_items_path) do |f| %>
-		    <%= f.label :id, "商品ID" %>
-		    <%= f.search_field :id_eq %>
-		    <%= f.label :item_name, "商品名" %>
-		    <%= f.search_field :item_name_cont %>
-		    <%= f.label :item_name, "価格　" %>
-		    <%= f.search_field :price_gteq, placeholder:"$ Min"  %>〜<%= f.search_field :price_lteq, placeholder:"$ Max" %>
-		    <%= f.label :item_name, "ジャンル" %>
-		    <%= f.select :genre_id_eq, options_from_collection_for_select(Genre.all, :id, :genre_name), include_blank: "--選択してください--" %>
-		    <%= f.submit "検索", class:"btn-info px-3" %>
-		  <% end %>
-		</div>
-	</div>
+    <div class="col-lg-12 col-md-8 sc-table my-3">
+      <%= search_form_for(@q, url: admin_items_path) do |f| %>
+        <%= f.label :id, "商品ID" %>
+        <%= f.search_field :id_eq %>
+        <%= f.label :item_name, "商品名" %>
+        <%= f.search_field :item_name_cont %>
+        <%= f.label :item_name, "価格　" %>
+        <%= f.search_field :price_gteq, placeholder:"$ Min"  %>〜<%= f.search_field :price_lteq, placeholder:"$ Max" %>
+        <%= f.label :item_name, "ジャンル" %>
+        <%= f.select :genre_id_eq, options_from_collection_for_select(Genre.all, :id, :genre_name), include_blank: "--選択してください--" %>
+        <%= f.submit "検索", class:"btn-info px-3" %>
+      <% end %>
+    </div>
+  </div>
 
-	<div class="sc-table">
-  	<table class="table table-hover px-2">
-  		<thead  class="active">
-  				<tr>
-  					<th>商品ID</th>
-  					<th>商品名</th>
-  					<th>価格</th>
-  					<th>ジャンル</th>
-  					<th>販売ステータス</th>
-  					<th>
-  						<%= link_to new_admin_item_path, class:"btn btn-success btn-sm text-center", style:"margin-bottom: -4px;" do %>
-					<i class="fas fa-plus-circle"></i>製品を新規追加
-				<% end %></th>
-  				</tr>
-  		</thead>
-  		<tbody style="background-color: #F4F8F3;">
-  			<% @items.each do |item| %>
-  				<tr>
-  					<td><%= item.id %></td>
-  					<td>
-  						<%= link_to admin_item_path(item.id) do %>
-  							<%= item.item_name %>
-  						<% end %>
-  					</td>
-  					<td>$ <%= number_with_precision(item.price.to_s(:delimited), precision: 2) %></td>
-  					<td><%= item.genre.genre_name %></td>
-  					<td>
-  						<% if item.is_active == "販売中" %>
-  			      	<span style="color:#49C918;"><%= item.is_active %></sapn>
-  			      <% else %>
-  			      	<span style="color:#C0C2BF;"><%= item.is_active %></sapn>
-  			      <% end %>
-  					</td>
-  					<td><%= link_to "削除", admin_item_path(item.id), method: :delete, data:{confirm:"本当に削除しますか？"}, class:"text-danger" %></td>
-  				</tr>
-  			<% end %>
-  		</tbody>
-  	</table>
-	</div>	
-	<%= paginate @items %>
+  <div class="sc-table">
+    <table class="table table-hover px-2">
+      <thead  class="active">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>ジャンル</th>
+            <th>販売ステータス</th>
+            <th>
+            <%= link_to new_admin_item_path, class:"btn btn-success btn-sm text-center", style:"margin-bottom: -4px;" do %>
+              <i class="fas fa-plus-circle"></i>製品を新規追加
+            <% end %></th>
+          </tr>
+      </thead>
+      <tbody style="background-color: #F4F8F3;">
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td>
+              <%= link_to admin_item_path(item.id) do %>
+                <%= item.item_name %>
+              <% end %>
+            </td>
+            <td>$ <%= number_with_precision(item.price.to_s(:delimited), precision: 2) %></td>
+            <td><%= item.genre.genre_name %></td>
+            <td>
+              <% if item.is_active == "販売中" %>
+                <span style="color:#49C918;"><%= item.is_active %></sapn>
+              <% else %>
+                <span style="color:#C0C2BF;"><%= item.is_active %></sapn>
+              <% end %>
+            </td>
+            <td><%= link_to "削除", admin_item_path(item.id), method: :delete, data:{confirm:"本当に削除しますか？"}, class:"text-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>	
+  <%= paginate @items %>
 </div>

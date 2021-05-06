@@ -19,12 +19,13 @@
   <div class="form-group row">
     <label class="col-sm-4 col-lg-2"><h5><strong>配送先</strong></h5></label>
     <div class="col-sm-8 col-lg-10"><%= @order.address %>, <%= @order.city %>, <%= @order.postal_code %>, 
-    <% if @order.country == "KR" %>
-      Korea
-    <% else %>
-      <%= @order.country_name %>
-    <% end %><br>
-    <%= @order.first_name %> <%= @order.last_name %></div>
+      <% if @order.country == "KR" %>
+        Korea
+      <% else %>
+        <%= @order.country_name %>
+      <% end %><br>
+      <%= @order.first_name %> <%= @order.last_name %>
+    </div>
   </div>
   
   <div class="form-group row">
@@ -39,7 +40,7 @@
       <%= f.select :order_status, {"Waiting for shipping":"Waiting for shipping", "Already shipped out":"Already shipped out"} %>
       <%= f.submit '変更', class:"btn-sm btn-success ml-3" %>
       <% end %>
-      </div>
+    </div>
   </div>
   
   <div class="row">
@@ -55,18 +56,18 @@
       </thead>
       <tbody style="background-color: #F4F8F3;">
         <% @order.order_details.each do |order_detail| %>
-        <tr>
-          <td><%= order_detail.item.item_name %></td>
-          <td><%= number_with_precision(order_detail.price, precision: 2) %></td>
-          <td><%= order_detail.amount %></td>
-          <td><%= number_with_precision(order_detail.subtotal_price.to_s(:delimited), precision: 2)  %></td>
-          <td>
-            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
-              <%= f.select :making_status, {出荷作業中:"出荷作業中", 出荷待ち:"出荷待ち", 出荷完了:"出荷完了"} %>
-              <%= f.submit '変更', class:"btn-sm btn-success ml-3" %>
-            <% end %>
+          <tr>
+            <td><%= order_detail.item.item_name %></td>
+            <td><%= number_with_precision(order_detail.price, precision: 2) %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= number_with_precision(order_detail.subtotal_price.to_s(:delimited), precision: 2)  %></td>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                <%= f.select :making_status, {出荷作業中:"出荷作業中", 出荷待ち:"出荷待ち", 出荷完了:"出荷完了"} %>
+                <%= f.submit '変更', class:"btn-sm btn-success ml-3" %>
+              <% end %>
             </td>
-        </tr>
+          </tr>
         <% end %>
       </tbody>
     </table>

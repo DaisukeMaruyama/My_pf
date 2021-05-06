@@ -3,95 +3,94 @@
   
   <div class="ml-2 col-md-12 mt-5">
   
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>会員ID</strong></h5></label>
-    <div class="col-sm-9">
-      <%= @user.id %>
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>会員ID</strong></h5></label>
+      <div class="col-sm-9">
+        <%= @user.id %>
+      </div>
     </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>Name</strong></h5></label>
-    <div class="col-sm-9">
-      <%= @user.first_name %> <%= @user.last_name %>
-    </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>Email</strong></h5></label>
-    <div class="col-sm-9">
-      <%= @user.email %>
-    </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>Address</strong></h5></label>
-    <div class="col-sm-9">
-      <% if @user.address %>
-        <%= @user.address %>
-      <% else %>
-        Unregistered
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>City</strong></h5></label>
-    <div class="col-sm-9">
-      <% if @user.city %>
-        <%= @user.city %>
-      <% else %>
-        Unregistered
-      <% end %>
-    </div>
-  </div>
-  
     
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>Zip/Postal Code</strong></h5></label>
-    <div class="col-sm-9">
-      <% if @user.postal_code %>
-        <%= @user.postal_code %>
-      <% else %>
-        Unregistered
-      <% end %>
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Name</strong></h5></label>
+      <div class="col-sm-9">
+        <%= @user.first_name %> <%= @user.last_name %>
+      </div>
     </div>
-  </div>
-  
     
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>Country</strong></h5></label>
-    <div class="col-sm-9">
-      <% if @user.country %>
-        <% if @user.country == "KR" %>
-          Korea
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Email</strong></h5></label>
+      <div class="col-sm-9">
+        <%= @user.email %>
+      </div>
+    </div>
+    
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Address</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.address %>
+          <%= @user.address %>
         <% else %>
-          <%= @user.country_name %>
+          Unregistered
         <% end %>
-      <% else %>
-        Unregistered
-      <% end %>
+      </div>
     </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"><h5><strong>会員ステータス</strong></h5></label>
-    <div class="col-sm-9">
-      <% if @user.is_deleted == "Nondeleted" %>
-        <span style="color:#49C918;">有効</sapn>
-      <% else %>
-        <span style="color:#C0C2BF;">退会</sapn>
-      <% end %>
+    
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>City</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.city %>
+          <%= @user.city %>
+        <% else %>
+          Unregistered
+        <% end %>
+      </div>
     </div>
-  </div>
-  
-  <div class="form-group row mt-2">
-    <label class="col-sm-3"></label>
-    <div class="col-sm-9 mt-2">
-      <%= link_to "編集する", edit_admin_user_path, class:"btn btn-success" %>
+    
+      
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Zip/Postal Code</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.postal_code %>
+          <%= @user.postal_code %>
+        <% else %>
+          Unregistered
+        <% end %>
+      </div>
     </div>
+    
+      
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Country</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.country %>
+          <% if @user.country == "KR" %>
+            Korea
+          <% else %>
+            <%= @user.country_name %>
+          <% end %>
+        <% else %>
+          Unregistered
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>会員ステータス</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.is_deleted == "Nondeleted" %>
+          <span style="color:#49C918;">有効</sapn>
+        <% else %>
+          <span style="color:#C0C2BF;">退会</sapn>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group row mt-2">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-9 mt-2">
+        <%= link_to "編集する", edit_admin_user_path, class:"btn btn-success" %>
+      </div>
+    </div>
+    
   </div>
-  
-  </div>
-  
 </div>
