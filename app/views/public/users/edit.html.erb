@@ -14,59 +14,59 @@
         </div>
       <% end %>
     
-    <div class="ml-2 col-md-12 mt-5">
-      <h3 class="mb-4" style="color: #D98E04;">Edit Personal Information</h3>
-      <div class="form-group row mt-2">
-        <label class="col-md-5"><strong>Name</strong></label>
-        <div class="col-md-7 d-flex">
-          <%= f.text_field :first_name, placeholder:"First Name", class:"edit-name" %>　<%= f.text_field :last_name , placeholder:"Last Name", class:"edit-name" %>
+      <div class="ml-2 col-md-12 mt-5">
+        <h3 class="mb-4" style="color: #D98E04;">Edit Personal Information</h3>
+        <div class="form-group row mt-2">
+          <label class="col-md-5"><strong>Name</strong></label>
+          <div class="col-md-7 d-flex">
+            <%= f.text_field :first_name, placeholder:"First Name", class:"edit-name" %>　<%= f.text_field :last_name , placeholder:"Last Name", class:"edit-name" %>
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label class="col-md-5"><strong>Email</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :email %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Address</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :address, class:"edit-address" %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>City</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :city %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
+          <div class="col-md-7">
+            <%= f.text_field :postal_code %>
+          </div>
+        </div>
+  
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Country</strong></label>
+          <div class="col-md-7">
+            <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { class: 'edit-country', data: { attribute: "value" } } %>
+          </div>
+        </div>
+        <div class="d-flex">
+        <div class="text-center col-md-11">
+          <%= f.submit 'Save' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
+        </div>
+        <div class="col-md-1">
+          <%= link_to 'Unsubscribe', users_unsubscribe_path, class: "btn btn-danger mb-3 mt-3", style:"border-radius: 15px; " %>
+        </div>
         </div>
       </div>
-
-      <div class="form-group row">
-        <label class="col-md-5"><strong>Email</strong></label>
-        <div class="col-md-7">
-          <%= f.text_field :email %>
-        </div>
-      </div>
-
-      <div class="form-group row mt-2">
-         <label class="col-md-5"><strong>Address</strong></label>
-        <div class="col-md-7">
-          <%= f.text_field :address, class:"edit-address" %>
-        </div>
-      </div>
-
-      <div class="form-group row mt-2">
-         <label class="col-md-5"><strong>City</strong></label>
-        <div class="col-md-7">
-          <%= f.text_field :city %>
-        </div>
-      </div>
-
-      <div class="form-group row mt-2">
-         <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
-        <div class="col-md-7">
-          <%= f.text_field :postal_code %>
-        </div>
-      </div>
-
-      <div class="form-group row mt-2">
-         <label class="col-md-5"><strong>Country</strong></label>
-        <div class="col-md-7">
-          <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-          "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { class: 'edit-country', data: { attribute: "value" } } %>
-        </div>
-      </div>
-      <div class="d-flex">
-      <div class="text-center col-md-11">
-        <%= f.submit 'Save' , class: "btn btn-success mb-3 mt-3", style:"border-radius: 15px; padding: 5px 40px;" %>
-      </div>
-      <div class="col-md-1">
-      <%= link_to 'Unsubscribe', users_unsubscribe_path, class: "btn btn-danger mb-3 mt-3", style:"border-radius: 15px; " %>
-      </div>
-      </div>
-    </div>
     <% end %>
   </div>
 </div>  
