@@ -27,9 +27,9 @@ describe 'ユーザログイン後のテスト' do
       genre_name_link = find_all('a')[2].native.inner_text
       expect(genre_name_link).to match(/SHOP/i)
     end
-    it 'Allリンクが表示される: SHOPリンクの最後のリンクが「All」である' do
+    it 'ALLリンクが表示される: SHOPリンクの最後のリンクが「ALL」である' do
       view_all_link = find_all('a')[3].native.inner_text
-      expect(view_all_link).to match(/All/i)
+      expect(view_all_link).to match(/ALL/i)
     end
     it 'ABOUTリンクが表示される: 左上から3番目のリンクが「ABOUT」である' do
       about_link = find_all('a')[4].native.inner_text

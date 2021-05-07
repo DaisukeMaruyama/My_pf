@@ -61,9 +61,9 @@ describe 'ユーザログイン前のテスト' do
         shop_link = find_all('a')[2].native.inner_text
         expect(shop_link).to match(/SHOP/i)
       end
-      it 'SHOPの中にAllリンクが表示される' do
+      it 'SHOPの中にALLリンクが表示される' do
         items_link = find_all('a')[3].native.inner_text
-        expect(items_link).to match(/All/i)
+        expect(items_link).to match(/ALL/i)
       end
       it 'Aboutリンクが表示される: 左上から4番目のリンクが「ABOUT」である' do
         about_link = find_all('a')[4].native.inner_text
@@ -89,7 +89,7 @@ describe 'ユーザログイン前のテスト' do
        # category_link = find_link('Sweets')
       #  is_expected.to eq '/search/genre_search?search%5Bcontent%5D=1'
       #end
-      it 'Allを押すと、製品一覧画面に遷移する' do
+      it 'ALLを押すと、製品一覧画面に遷移する' do
         items_link = find_all('a')[3].native.inner_text
         items_link = items_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link items_link
