@@ -1,42 +1,35 @@
 <body style="background-color: #EBE9DE;">
   <div class="container-fluid">
     <div class="row">
-      <div class="pt-4 col-12 mb-2 pb-3 text-center search-result-section">
-        <h2 class="search-result"><%= @datas.total_count %> results for ”<%= @value %>”</h2>
-        <span>Showing <%= @datas.count %> of <%= @datas.total_count %> results </span>
+      <div class="py-3 col-12 text-center items-all-top mb-2">
+        <h1 class="items-all-top-title">"<%= @value %>"</h2>
+        <h6 class="result-figure">Showing <%= @datas.count %> of <%= @datas.total_count %> matches</h6>
       </div>
-      
+
       <div class="d-flex col-12 pt-2 category-search-section">
-        <h5 class="ml-3 col-2 category-search-title" style="font-family: 'Lobster', cursive;">Categories</h5>
-        <div class="col-9">
+
+        <div class="col-md-8 mb-2 d-flex justify-content-around mx-auto">
           <% @genres.each do |genre| %>
-            <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: white;", class:"ml-3" %>
+            <%= link_to genre.genre_name, search_genre_search_path('search[content]': genre.id), style:"color: white; font-size: 17px;" %>
           <% end %>
         </div>
       </div>
-      
+
       <div class="mt-2 d-flex ml-auto mr-3">
-        <p class="mr-1">Sort By</p> 
+        <p class="mr-2">Sort</p>
           <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
             <%= f.select :keyword, [
-            ['Date, New to old','new'],
-            ['Date, Old to new','old'],
-            ['Price, High to low','high'],
-            ['Price, Low to high','low']
-            ] , { selected: params[:keyword] } , :onchange => 'this.form.submit()' %>
+            ["What's new","new"],
+            ["Price (high to low)","high"],
+            ["Price (low to high)","low"]
+            ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
             <%= f.hidden_field :value, :value => params[:value] %>
           <% end %>
       </div>
-        
+
       <div class="items col-12 mx-auto" style="padding-bottom: 50px;">
 
-        <div class="text-center mt-5">
-          <% if @datas.empty? %>
-            <h2>NOTHING MATCHES YOUR SEARCH</h2>
-            <p>But don't give up – check the spelling or try less specific search terms.</p>
-          <% end %>
-        </div>
-      
+
         <div class="items d-flex flex-wrap col-12 mx-auto">
           <% @datas.each do |data| %>
             <div class="card snacks" style="width: 20rem; min-height: 350px;">
@@ -48,7 +41,7 @@
               </div>
             </div>
           <% end %>
-        </div>  
+        </div>
       </div>
     </div>
     <%= paginate @datas %>

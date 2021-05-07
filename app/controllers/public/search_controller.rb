@@ -3,6 +3,7 @@ class Public::SearchController < ApplicationController
   def search
     @value = params["search"]["value"]
     @datas = search_for_item(@value).order(created_at: :desc).page(params[:page]).per(8)
+    @items = Item.all.order(created_at: :desc).limit(4)
   end
 
   def genre_search
@@ -10,6 +11,7 @@ class Public::SearchController < ApplicationController
     @datas = search_for_genre(@content).order(created_at: :desc).page(params[:page]).per(8)
     params[:id] = @content
     @genre = Genre.find(params[:id])
+    @items = Item.all.order(created_at: :desc).limit(4)
   end
   
   def genre_sort
