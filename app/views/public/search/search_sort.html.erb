@@ -17,14 +17,14 @@
 
       <div class="mt-2 d-flex ml-auto mr-3">
         <p class="mr-2">Sort</p>
-          <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
-            <%= f.select :keyword, [
-            ["What's new","new"],
-            ["Price (high to low)","high"],
-            ["Price (low to high)","low"]
-            ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
-            <%= f.hidden_field :value, :value => params[:value] %>
-          <% end %>
+        <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
+          <%= f.select :keyword, [
+          ["What's new","new"],
+          ["Price (high to low)","high"],
+          ["Price (low to high)","low"]
+          ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
+          <%= f.hidden_field :value, :value => params[:value] %>
+        <% end %>
       </div>
 
       <div class="items col-12 mx-auto" style="padding-bottom: 50px;">

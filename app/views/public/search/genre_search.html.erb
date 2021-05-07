@@ -14,24 +14,26 @@
         </div>
       </div>
       
-      <div class="mt-2 d-flex ml-auto mr-3">
-        <p class="mr-2">Sort</p>
-        <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
-          <%= f.select :keyword, [
-          ["What's new","new"],
-          ["Price (high to low)","high"],
-          ["Price (low to high)","low"]
-          ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
-          <%= f.hidden_field :id, :value => @genre.id %>
-          <%= f.hidden_field :content, :value => params[:id] %>
-        <% end %>
-      </div>
+      <% if @datas.present? %>
+        <div class="mt-2 d-flex ml-auto mr-3">
+          <p class="mr-2">Sort</p>
+          <%= form_with model: @search, url: genre_sort_path , method: :get, local:true do |f| %>
+            <%= f.select :keyword, [
+            ["What's new","new"],
+            ["Price (high to low)","high"],
+            ["Price (low to high)","low"]
+            ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
+            <%= f.hidden_field :id, :value => @genre.id %>
+            <%= f.hidden_field :content, :value => params[:id] %>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="items col-12 mx-auto" style="padding-bottom: 50px;">
         
         <div class="text-center mt-5">
           <% if @datas.empty? %>
-            <h2>We couldn't find anything for "<%= @value %>".</h2>
+            <h2>We couldn't find anything for "<%= @genre.genre_name %>".</h2>
             <p>These new arrivals might interest you.</p>
             <div class="items d-flex flex-wrap col-12 mx-auto text-left">
               <% @items.each do |item| %>

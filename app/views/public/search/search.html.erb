@@ -16,8 +16,8 @@
       </div>
       
       <% if @datas.present? %>
-      <div class="mt-2 d-flex ml-auto mr-3">
-        <p class="mr-2">Sort</p>
+        <div class="mt-2 d-flex ml-auto mr-3">
+          <p class="mr-2">Sort</p>
           <%= form_with model: @search, url: search_sort_path , method: :get, local:true do |f| %>
             <%= f.select :keyword, [
             ["What's new","new"],
@@ -26,7 +26,7 @@
             ] , { selected: params[:keyword] } , class:"sort-selection", :onchange => 'this.form.submit()' %>
             <%= f.hidden_field :value, :value => params["search"][:value] %>
           <% end %>
-      </div>
+        </div>
       <% end %>
         
       <div class="items col-12 mx-auto" style="padding-bottom: 50px;">
