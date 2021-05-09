@@ -22,8 +22,6 @@
   position: relative;
 }
 
-
-
 .ben-kanji-pic {
   width: 250px;
   height: 250px;
@@ -103,7 +101,7 @@
 }
 
 .sweets-box-description-image {
-  background-image: image-url("sweets-box.jpg");
+  background-image: image-url("PaintingBlogBanner.png");
   background-size: cover;
   background-position: center;
   width:  100%;
@@ -116,12 +114,12 @@
   transition: all 0.5s;
 }
 
-.ramen-box-description-image-mobile {
+.season-box-description-image-mobile {
   display: none;
 }
 
-.ramen-box-description-image {
-  background-image: image-url("ramen-box.jpg");
+.season-box-description-image {
+  background-image: image-url("PaintingBlogBanner2.png");
   background-size: cover;
   background-position: center;
   width:  100%;
@@ -129,11 +127,11 @@
   padding: 130px 130px;
 }
 
-.ramen-box-description-image-mobile {
+.season-box-description-image-mobile {
   display: none;
 }
 
-.ramen-box-description-image:hover {
+.season-box-description-image:hover {
   box-shadow: 10px 10px 5px grey;
   transition: all 0.5s;
 }
@@ -152,25 +150,39 @@
   padding-bottom: 10px;
 }
 
-//View more botton//
-.btn-gradient {
-  -webkit-transform: skew(-15deg);
-  transform: skew(-15deg);
-  color: #fff;
-  border-radius: 0;
-  background-image: -webkit-gradient(linear, left top, right top, from(#2af598), to(#009efd));
-  background-image: -webkit-linear-gradient(left, #2af598 0%, #009efd 100%);
-  background-image: linear-gradient(90deg, #2af598 0%, #009efd 100%);
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+//View all botton//
+
+.view-all-btn:hover {
+  background-color: #D9A404;
+  color: black; 
 }
 
-.btn-gradient:hover {
-  -webkit-transform: skew(0);
-  transform: skew(0);
-  color: #fff;
-  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+.view-all-btn {
+  background-color: #f2b705;
+  border: 2px solid black;
+  text-decoration: none!important;
+  color: black; 
+  font-size: 21px;
+  padding: 5px 35px;
+  border-radius: 7px;
+  margin-right: 80px;
+}
+
+// view more bottun  //
+
+.view-more-btn:hover {
+  background-color: #D9A404;
+  color: black; 
+}
+
+.view-more-btn {
+  background-color: #f2b705;
+  border: 2px solid black;
+  text-decoration: none!important;
+  color: black; 
+  font-size: 21px;
+  padding: 5px 35px;
+  border-radius: 7px;
 }
 
 /* homes/about */
@@ -223,8 +235,8 @@
 
 @media screen and (max-width: 570px) {
 
-  .sweets-box-image-mobile {
-  background-image: image-url("sweets-box.jpg");
+.sweets-box-image-mobile {
+  background-image: image-url("PaintingBlogBanner.png");
   background-size: cover;
   background-position: center;
   width:  100%;
@@ -236,12 +248,12 @@
   display: none;
 }
 
-.ramen-box-description-image {
+.season-box-description-image {
   display: none;
 }
 
-.ramen-box-image-mobile {
-  background-image: image-url("ramen-box.jpg");
+.season-box-image-mobile {
+  background-image: image-url("PaintingBlogBanner2.png");
   background-size: cover;
   background-position: center;
   width:  100%;

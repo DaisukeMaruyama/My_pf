@@ -106,6 +106,20 @@ a {
   transform: translate(-50%);
 }
 
+// footer //
+
+.contact-form {
+  position: relative;
+}
+
+.footer-pic {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 160px;
+  width: 150px;
+}
+
 @media (min-width: 768px) {
 .brand-center {
   margin-left: 0 !important;

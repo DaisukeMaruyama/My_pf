@@ -29,32 +29,34 @@
     <% end %>  
   </div>
   
-  <div class="container">
-    <p class="view-more text-right mt-4"><%= link_to "View more snacks", items_path, class:"btn btn-gradient" %></p>
+  <div class="col-12">
+    <p class="view-more mt-4 d-flex justify-content-end"><%= link_to "View all", items_path, class:"view-all-btn" %></p>
   </div>
       
-      <div class="message-wrapper mb-2">
-    <h2 class="message-heading text-center" style="font-family: 'Abril Fatface', cursive; color: #26110F;">Snack Box</h2>
+  <div class="message-wrapper mb-2">
+    <h2 class="message-heading text-center" style="font-family: 'Abril Fatface', cursive; color: #26110F;"></h2>
     <div class="row">
       <div class="sweets-box-image-mobile"></div>
       <div class="snack-box-description mx-auto col-sm-6">
-        <h3>Sweets Box</h3>
-        <p>A delicious sample of authentic Japanese snacks. <br>
-          Each box comes with a mini-snack guide and includes 10-12 Japanese snacks. <br>
-          The Sweets Box is perfect to get you started!</p>
-        <%= link_to 'Go to detail page', item_path(4), class:"btn btn-primary" %>    
+        <h3>Sweets Ben</h3>
+        <p>Feeling like a kid in a candy store? We get it. It’s happens to us too. <br>
+        With so many snacks to choose from, it can be hard to make your first choice. 
+        That’s why we created Starter Ben.
+        It’s our way of bringing you a little closer to finding your favorites.</p>
+        <%= link_to 'View more', item_path(4), class:"view-more-btn" %>    
       </div>
       <div class="sweets-box-description-image col-sm-6"></div>
     </div>
     <div class="row">
-      <div class="ramen-box-image-mobile"></div>
-      <div class="ramen-box-description-image col-sm-6"></div>
+      <div class="season-box-image-mobile"></div>
+      <div class="season-box-description-image col-sm-6"></div>
       <div class="snack-box-description mx-auto col-sm-6">
-        <h3>Ramen Box</h3>
-        <p>If you can't make up your mind which one to choose, <br>
-          we recommend trying out some instant ramen form 5 different prefectures.<br>
-          Let's go find your favorite one!</p>  
-        <%= link_to 'Go to detail page', item_path(5), class:"btn btn-primary" %>  
+        <h3>Ben of the Month</h3>
+        <p>At SnackBen, our goal is to bring a little of bit of Japan to everyone. <br>
+        With employees from all over the country, we’re passionate about showing you the places we call home. 
+        That’s why we created the Ben of the Month. 
+        Each month, we curate a special box featuring a prefecture or Japanese custom.</p>  
+        <%= link_to 'View more', item_path(5), class:"view-more-btn" %>  
       </div>  
     </div>
   </div>

@@ -117,7 +117,7 @@
             </ul>
             <%# ここからheaderブランド名の右側 %>
             <% if user_signed_in? %>
-              <li class="ml-3"><%= link_to 'Your account page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
+              <li class="ml-3"><%= link_to 'Your Account Page', user_path(current_user), style:"color: #EBE9DE;" %></sapn>
             <% end %>
             <% unless user_signed_in? || admin_signed_in?  %>
               <%#<li class="nav-item">
@@ -162,19 +162,24 @@
     <div class="contact-form">
       <div class="container">
         <div class="row">
-          <h2 class="col-md-3 mt-3">SnackBen</h2>
-          <div class="col-md-4 mt-1">
-            <h2 class="cantact-heading">Information</h2>
-            <%= link_to 'About us', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
+          <h1 class="col-lg-4">SNACKBEN</h1>
+          <div class="col-lg-4 mt-3">
+            <h4 class="cantact-heading">HELP & INFORMATION</h4>
+            <%= link_to 'About Us', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
             <%= link_to 'Inquiry', new_contact_path, class:"nav-link", style:"color: #EBE9DE;" %>
           </div>
-          <div class="col-md-5 mt-3">
-            <h5 class="mb-3">100% SATISFACTION GUARANTEED</h5>
-            <p>Contact us at any time and we'll get back to you right away!</p>
+          <div class="col-lg-4 mt-3">
+            <h4>MY ACCOUNT</h4>
+            <% if user_signed_in? %>
+              <p class="ml-3"><%= link_to 'Your Account Page', user_path(current_user), style:"color: #EBE9DE;" %></p>
+            <% else %>
+              <p><%= link_to 'Log In / Register', new_user_session_path, class:"nav-link", style:"color: #EBE9DE;" %></p>
+            <% end %>
           </div>
-          <p class="ml-2">© 2021 SnackBen.</p>
+          <p class="ml-4">(c) SNACKBEN 2021</p>
         </div>
       </div>
+      <img src="<%= asset_path "ben.kanji.png" %>" class="footer-pic"></img>
     </div>
   </body>
 </html>
