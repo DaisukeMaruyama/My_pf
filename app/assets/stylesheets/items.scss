@@ -13,7 +13,17 @@
 
 .show-item-name {
   margin-bottom: 30px;
-  
+}
+
+.item-show-card {
+  /*アニメーションの設定*/
+  transition: all .3s;
+}
+
+/*hoverをしたらボックスに影がつき、上に上がる*/
+.item-show-card:hover {
+	top:-3px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .show-item-introduction {
@@ -66,6 +76,19 @@
   background: transparent;
 }
 
+/*以下、タブレットサイズ レスポンシブ*/
+
+@media screen and (max-width: 990px) {
+  
+.item-show-card {
+  width: 100%;
+  margin-left: -1px;
+  margin-bottom: 20px;
+}
+
+
+}
+
 /*以下、携帯サイズ レスポンシブ*/
 
 @media screen and (max-width: 465px) {
@@ -78,15 +101,17 @@
 .show-item-name {
   font-size: 32px; 
 }
-  
+
 .item-show-card {
   width: 100%;
   margin-left: -1px;
+  margin-bottom: 20px;
 }
 
 .related-snacks {
   width: 148px!important;
   height: 120px!important;
+  position: relative;
 }
 
 .related-snacks-title {
@@ -95,6 +120,9 @@
 
 .related-snacks-price {
   font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .related-snacks-button {
@@ -103,21 +131,17 @@
 
 /* index */
 
-.snacks {
+.card {
   width: 137px!important;
   height: 350px!important;
 }
 
-.snacks-title {
+.card-title {
   font-size: 11px;
 }
 
-.snacks-price {
+.card-text {
   font-size: 11px;
-}
-
-.snacks-button {
-  font-size: 11px!important;
 }
 
 /* kaminari */

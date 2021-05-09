@@ -32,12 +32,13 @@
 
         <div class="items d-flex flex-wrap col-12 mx-auto">
           <% @datas.each do |data| %>
-            <div class="card snacks" style="width: 20rem; min-height: 350px;">
-              <span><%= attachment_image_tag data, :image, size:"190x160", fallback: "no-image.jpeg", class:"card-img-top", format: "jpeg" %></span>
+            <div class="card sna" style="width: 20rem; min-height: 360px;  background: transparent; border-radius: 7px;">
+              <span><%= attachment_image_tag data, :image, size:"200x200", fallback: "no-image.jpeg",class:"card-img-top", style:"background: transparent;", format: "jpeg" %></span>
               <div class="card-body">
-                <h5 class="card-title snacks-title" style="height: 40%;"><%= data.item_name %></h5>
-                <p class="card-text snacks-price">$ <%= number_with_precision(data.price, precision: 2) %></p>
-                <%= link_to 'Explore', item_path(data), class: 'btn btn-primary snacks-button' %>
+                <%= link_to item_path(data), class:"item-hover" do %>
+                  <h5 class="card-title text-center"><%= data.item_name %></h5>
+                <% end %>
+                <p class="card-text">$ <%= number_with_precision(data.price, precision: 2) %></p>
               </div>
             </div>
           <% end %>

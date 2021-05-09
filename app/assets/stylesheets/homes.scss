@@ -56,6 +56,29 @@
   margin: 10px;
 }
 
+.card-body {
+ position: relative;
+}
+
+.card-title {
+  height: 40%; 
+  color: black; 
+  font-weight: bold;
+}
+
+.card-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  font-size: 17px;
+}
+
+.item-hover{
+  color: black!important;
+}
+
 .card span {
   border-bottom: 1px solid #F1A244;
 }
@@ -192,7 +215,7 @@
 }
 
 .about-bottom-pic {
-    width: 75%;
+  width: 75%;
   height: 75%;
 }
 
