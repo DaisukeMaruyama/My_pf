@@ -33,4 +33,14 @@
 en:
   hello: "Hello world"
   
-
+  devise:
+    sessions:
+      user:
+        signed_in: "You're now signed in."
+        signed_out: "You've been signed out."
+    registrations:
+      user:
+        signed_up: "Welcome! You've successfully created an account."
+    failure:
+      invalid: "Something's wrong. Please try again."
+      

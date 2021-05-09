@@ -74,7 +74,7 @@
                 <%= link_to 'ABOUT', '/about', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
               <li class="nav-item">
-                <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure that you want to sign out?',cancel: 'Back',commit: 'Sign out'}, title: 'Confirmation', class:"nav-link", style:"color: #EBE9DE;" %>
+                <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, data:{ confirm: 'Are you sure you want to do this?',cancel: 'Cancel',commit: 'Yes'}, title:'Sign Out', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
 
               <% elsif admin_signed_in? %>
@@ -91,7 +91,7 @@
                 <%= link_to 'ジャンル⼀覧', admin_genres_path , class: " nav-link", style:"color: #EBE9DE;" %>
               </li>
               <li class="nav-item">
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data:{ confirm: '本当にログアウトしますか?',cancel: 'Back',commit: 'Logout'}, title: '確認画面', class:"nav-link", style:"color: #EBE9DE;" %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data:{ confirm: '本当にログアウトしますか?',cancel: 'いいえ',commit: 'はい'}, title: 'ログアウト', class:"nav-link", style:"color: #EBE9DE;" %>
               </li>
 
               <% else %>
