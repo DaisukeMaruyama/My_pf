@@ -1,44 +1,44 @@
 <div class="container">
   <% if @orders.present? %>
-  <h2 class="ml-3 mt-5 mb-4" style="color: #D98E04;">The Order History</h2>
-  
-  <table class="tbl-r05 table table-sm table-bordered mb-5">
-    <% @orders.each do |order| %> <%# !!current_user.orders.order(created_at: :desc).page(params[:page]).per(8)をコントローラーで表記。ただの@ordersではない!!%>
-    <tr class="thead" style="background-color: #F0EDEC;">
-      <th>Order Date</th>
-      <th>Shipping Address</th>
-      <th>Order Products</th>
-      <th>Payment</th>
-      <th>Status</th>
-      <th>Order Detail</th>
-    </tr>
-    <tr style="background-color: #F0F3EF;">
-      <td data-label="Order Date"><%= order.created_at.strftime("%d/%m/%Y").to_s  %></td>
-      <td data-label="Shipping Address">
-        <%= order.first_name %> <%= order.last_name %><br>
-        <%= order.address %><br>
-        <%= order.city %>
-        <%= order.postal_code %>
-        <% if order.country == "KR" %>
-          Korea
-        <% else %>
-          <%= order.country_name %>
+    <h2 class="ml-3 mt-5 mb-4" style="color: #D98E04;">The Order History</h2>
+    
+    <table class="tbl-r05 table table-sm table-bordered mb-5">
+      <% @orders.each do |order| %> <%# !!current_user.orders.order(created_at: :desc).page(params[:page]).per(8)をコントローラーで表記。ただの@ordersではない!!%>
+      <tr class="thead" style="background-color: #F0EDEC;">
+        <th>Order Date</th>
+        <th>Shipping Address</th>
+        <th>Order Products</th>
+        <th>Payment</th>
+        <th>Status</th>
+        <th>Order Detail</th>
+      </tr>
+      <tr style="background-color: #F0F3EF;">
+        <td data-label="Order Date"><%= order.created_at.strftime("%d/%m/%Y").to_s  %></td>
+        <td data-label="Shipping Address">
+          <%= order.first_name %> <%= order.last_name %><br>
+          <%= order.address %><br>
+          <%= order.city %>
+          <%= order.postal_code %>
+          <% if order.country == "KR" %>
+            Korea
+          <% else %>
+            <%= order.country_name %>
+          <% end %>
+        </td>
+        <td data-label="Order Products">
+          <% order.order_details.each do |order_detail| %>
+            <%= order_detail.item.item_name %><br>
+          <% end %>
+        </td>
+        <td data-label="Payment">$ <%= number_with_precision(order.total_payment.to_s(:delimited), precision: 2) %></td>
+        <td data-label="Status"><%= order.order_status %></td>
+        <td data-label="Order Detail"><%= link_to 'Detail',order_path(order.id), class:"btn btn-success" %></td>
         <% end %>
-      </td>
-      <td data-label="Order Products">
-        <% order.order_details.each do |order_detail| %>
-          <%= order_detail.item.item_name %><br>
-        <% end %>
-      </td>
-      <td data-label="Payment">$ <%= number_with_precision(order.total_payment.to_s(:delimited), precision: 2) %></td>
-      <td data-label="Status"><%= order.order_status %></td>
-      <td data-label="Order Detail"><%= link_to 'Detail',order_path(order.id), class:"btn btn-success" %></td>
-      <% end %>
-    </tr>
+      </tr>
   </table>
   <% else %>
     <h1 class="text-center mt-5">No orders</h1>
-    <p></p>
+    <h3 class="text-center">You don't have any orders in your history.</h3>
   <% end %>
 </div>  
 <%= paginate @orders %>
