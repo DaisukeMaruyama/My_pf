@@ -12,12 +12,12 @@ class Public::CartItemsController < ApplicationController
     if @cart_item = current_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
       @cart_item.amount += params[:cart_item][:amount].to_i
       @cart_item.save
-      flash[:notice] = "You have added the item to your shopping cart"
+      flash[:notice] = "You have added the item to your shopping cart."
       redirect_to cart_items_path
     else
       @cart_item = current_user.cart_items.new(cart_item_params)
       @cart_item.save!
-      flash[:notice] = "You have added the item to your shopping cart"
+      flash[:notice] = "You have added the item to your shopping cart."
       redirect_to cart_items_path
     end
   end
@@ -25,21 +25,21 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    flash[:notice] = "You have removed the item"
+    flash[:notice] = "You have removed the item."
     redirect_to cart_items_path
   end
 
   def destroy_all
     @user = User.find(current_user.id)
     @user.cart_items.destroy_all
-    flash[:notice] = "You have emptied all items"
+    flash[:notice] = "You have emptied all items."
     redirect_to cart_items_path
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    flash[:notice] = "You have changed the amount of item"
+    flash[:notice] = "You have changed the amount of item."
     redirect_to cart_items_path
   end
 
