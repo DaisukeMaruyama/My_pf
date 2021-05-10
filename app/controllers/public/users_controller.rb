@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated your information"
+      flash[:notice] = "You’ve updated your account information."
       redirect_to user_path
     else
       render :edit
@@ -40,7 +40,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_update_password)
       sign_in(@user, :bypass => true) #パスワードを変えたときにログインキープ
-      flash[:notice] = "You have updated your password"
+      flash[:notice] = "You have updated your password."
       redirect_to user_path
     else
       render :newpassword
