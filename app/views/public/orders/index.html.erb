@@ -1,4 +1,5 @@
 <div class="container">
+  <% if @orders.present? %>
   <h2 class="ml-3 mt-5 mb-4" style="color: #D98E04;">The Order History</h2>
   
   <table class="tbl-r05 table table-sm table-bordered mb-5">
@@ -35,6 +36,10 @@
       <% end %>
     </tr>
   </table>
+  <% else %>
+    <h1 class="text-center mt-5">No orders</h1>
+    <p></p>
+  <% end %>
 </div>  
 <%= paginate @orders %>
   
