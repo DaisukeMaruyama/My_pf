@@ -40,8 +40,8 @@ describe 'ユーザログイン後のテスト' do
       expect(sign_out_link).to match(/SIGN OUT/i)
     end
     it 'Your account pageリンクが表示される: 左上から5番目のリンクが「Your account page」である' do
-      cart_link = find_all('a')[6].native.inner_text
-      expect(cart_link).to match(/Your account page/i)
+      page_link = find_all('a')[6].native.inner_text
+      expect(page_link).to match(/Your Account Page/i)
     end
     it 'Cartアイコンリンクが表示される: 左上から6番目のリンクが「Cartアイコン」である' do
       cart_link = find_all('a')[7].native.inner_text
@@ -111,10 +111,10 @@ describe 'ヘッダーのテスト: ログインしている場合' do
       click_link about_link
       is_expected.to eq '/about'
     end
-    it 'Your account pageを押すと、マイページ画面に遷移する' do
-      cart_link = find_all('a')[6].native.inner_text
-      cart_link = cart_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      click_link cart_link
+    it 'Your Account Pageを押すと、マイページ画面に遷移する' do
+      page_link = find_all('a')[6].native.inner_text
+      page_link = page_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link page_link, match: :first
       is_expected.to eq '/users/1'
     end
     it 'Cartアイコンを押すと、Cart画面に遷移する' do
