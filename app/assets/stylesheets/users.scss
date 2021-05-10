@@ -42,16 +42,41 @@
   bottom: 5px;
 }
 
-
+// user account 画面 //
 .profile-top {
-  background-image: image-url("profile.jpg");
+  background-image: image-url("sakuratoppage.png");
 	background-size: cover;
 	background-position: center;
   height: 140px; 
   width:  100%;
-  font-family: 'Ranchers', cursive;
+  font-family: 'Abril Fatface', cursive;
   padding-top: 60px;
   color: #EBE9DE;
+}
+
+.account-heading {
+  font-weight: bold;
+}
+
+.account-info {
+  font-size: 19px;
+}
+
+.account-btn:hover {
+  background-color: #D9A404;
+  color: black;
+}
+
+.account-btn {
+  background-color: #f2b705;
+  border: 1px solid black;
+  text-decoration: none!important;
+  color: black;
+  width: 80%;
+  height: 60px;
+  padding: 5px 30px;
+  font-size: 25px;
+  border-radius: 7px;
 }
 
 .user-edit-link {
@@ -69,8 +94,17 @@
   width: 189px;
   height: 31px;
 }
+
   
 /* ユーザー登録画面レスポンシブ */  
+
+@media screen and (max-width: 1200px) { 
+.account-btn {
+  font-size: 20px;
+}
+
+}
+
 @media screen and (max-width: 990px) { 
   
 .login-section {
@@ -100,6 +134,10 @@
 /* 携帯レスポンシブ */
 
 @media screen and (max-width: 450px) {
+
+.account-heading {
+  font-size: 25px;
+}
 
 .edit-name {
   width: 155px;

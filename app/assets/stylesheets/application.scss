@@ -106,19 +106,7 @@ a {
   transform: translate(-50%);
 }
 
-// footer //
-
-.contact-form {
-  position: relative;
-}
-
-.footer-pic {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  height: 160px;
-  width: 150px;
-}
+// ブランドをセンターにさせる //
 
 @media (min-width: 768px) {
 .brand-center {
@@ -149,6 +137,29 @@ a {
 
 .cart-circle-relative {
   position: relative;
+}
+
+// footer //
+
+.contact-form {
+  position: relative;
+}
+
+.footer-pic {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 160px;
+  width: 150px;
+}
+
+// 漢字レスポンシブ //
+
+@media (max-width: 1100px) {
+.footer-pic {
+  height: 120px;
+  width: 120px;
+}
 }
 
 /* kaminari */

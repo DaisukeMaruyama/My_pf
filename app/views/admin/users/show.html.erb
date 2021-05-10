@@ -25,6 +25,21 @@
     </div>
     
     <div class="form-group row mt-2">
+      <label class="col-sm-3"><h5><strong>Country</strong></h5></label>
+      <div class="col-sm-9">
+        <% if @user.country %>
+          <% if @user.country == "KR" %>
+            Korea
+          <% else %>
+            <%= @user.country_name %>
+          <% end %>
+        <% else %>
+          Unregistered
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group row mt-2">
       <label class="col-sm-3"><h5><strong>Address</strong></h5></label>
       <div class="col-sm-9">
         <% if @user.address %>
@@ -48,26 +63,10 @@
     
       
     <div class="form-group row mt-2">
-      <label class="col-sm-3"><h5><strong>Zip/Postal Code</strong></h5></label>
+      <label class="col-sm-3"><h5><strong>Postcode</strong></h5></label>
       <div class="col-sm-9">
         <% if @user.postal_code %>
           <%= @user.postal_code %>
-        <% else %>
-          Unregistered
-        <% end %>
-      </div>
-    </div>
-    
-      
-    <div class="form-group row mt-2">
-      <label class="col-sm-3"><h5><strong>Country</strong></h5></label>
-      <div class="col-sm-9">
-        <% if @user.country %>
-          <% if @user.country == "KR" %>
-            Korea
-          <% else %>
-            <%= @user.country_name %>
-          <% end %>
         <% else %>
           Unregistered
         <% end %>

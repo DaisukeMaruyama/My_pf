@@ -22,6 +22,14 @@
             <%= f.text_field :first_name, placeholder:"First Name", class:"edit-name" %>　<%= f.text_field :last_name , placeholder:"Last Name", class:"edit-name" %>
           </div><%# classはuser.scssに記述 %>
         </div>
+        
+        <div class="form-group row mt-2">
+           <label class="col-md-5"><strong>Country</strong></label>
+          <div class="col-md-7">
+            <%= f.country_select :delivery_country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { class: 'edit-country', data: { attribute: "value" } } %>
+          </div><%# classはuser.scssに記述 %>
+        </div>
   
         <div class="form-group row mt-2">
            <label class="col-md-5"><strong>Address</strong></label>
@@ -38,18 +46,10 @@
         </div>
   
         <div class="form-group row mt-2">
-           <label class="col-md-5"><strong>Zip/Postal Code</strong></label>
+           <label class="col-md-5"><strong>Postcode</strong></label>
           <div class="col-md-7">
             <%= f.text_field :delivery_postal_code %>
           </div>
-        </div>
-  
-        <div class="form-group row mt-2">
-           <label class="col-md-5"><strong>Country</strong></label>
-          <div class="col-md-7">
-            <%= f.country_select :delivery_country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-            "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"] }, { class: 'edit-country', data: { attribute: "value" } } %>
-          </div><%# classはuser.scssに記述 %>
         </div>
   
         <div class="text-center col-md-11">

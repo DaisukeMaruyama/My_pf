@@ -59,6 +59,14 @@
               <%= f.text_field :first_name, placeholder:"First Name" %>　<%= f.text_field :last_name , placeholder:"Last Name" %>
             </div>
           </div>
+          
+          <div class="form-group row mt-2">
+            <label class="col-sm-3"><strong>Country</strong></label>
+            <div class="col-sm-9">
+              <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
+              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 189px; height: 31px;', data: { attribute: "value" } } %>
+            </div>
+          </div>
 
           <div class="form-group row mt-2">
             <label class="col-sm-3"><strong>Address</strong></label>
@@ -75,19 +83,12 @@
           </div>
 
           <div class="form-group row mt-2">
-            <label class="col-sm-3"><strong>Zip/Postal Code</strong></label>
+            <label class="col-sm-3"><strong>Postcode</strong></label>
             <div class="col-sm-9">
                <%= f.text_field :postal_code %>
             </div>
           </div>
-
-          <div class="form-group row mt-2">
-            <label class="col-sm-3"><strong>Country</strong></label>
-            <div class="col-sm-9">
-              <%= f.country_select :country, { only: ["GB","FR","DE","IT","ES","SE","IQ","IL", "EG","TR","YE","OM","ET","NG", "JM","AR","BR","GH",
-              "US","CA", "MX","AU","PE","PH","RU", "TW","CN","VN", "MY", "KR","JP"],include_blank: 'Select a country' }, { style: 'width: 189px; height: 31px;', data: { attribute: "value" } } %>
-            </div>
-          </div>
+          
         </div>
 
       </div>
