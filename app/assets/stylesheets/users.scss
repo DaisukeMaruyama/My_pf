@@ -99,34 +99,33 @@
 /* ユーザー登録画面レスポンシブ */  
 
 @media screen and (max-width: 1200px) { 
-.account-btn {
+  
+  .account-btn {
   font-size: 20px;
-}
+  }
 
 }
 
 @media screen and (max-width: 990px) { 
   
-.login-section {
+  .login-section {
   border-right: none;
-}
+  }
 
-.registration-section {
+  .registration-section {
   border-left: none;
   border-top: 1px solid black;
   margin-bottom: 30px;
-}
+  }
 
-.kanji-pic-login {
+  .kanji-pic-login {
   display: none;
-}
+  }
 
-.login-form {
+  .login-form {
   width: 350px;
   height: 37px;
-}
-
-
+  }
 
 }
 
@@ -135,21 +134,21 @@
 
 @media screen and (max-width: 450px) {
 
-.account-heading {
+  .account-heading {
   font-size: 25px;
-}
+  }
 
-.edit-name {
+  .edit-name {
   width: 155px;
-}
+  }
 
-.edit-address {
+  .edit-address {
   width: 262px;
-}
+  }
 
-.edit-country {
+  .edit-country {
   width: 262px; 
   height: 100%;
-}
+  }
   
 }

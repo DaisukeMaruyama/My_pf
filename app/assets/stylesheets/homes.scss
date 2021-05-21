@@ -235,48 +235,48 @@
 
 @media screen and (max-width: 570px) {
 
-.sweets-box-image-mobile {
+  .sweets-box-image-mobile {
   background-image: image-url("PaintingBlogBanner.png");
   background-size: cover;
   background-position: center;
   width:  100%;
   max-width:  auto;
   padding: 130px 130px;
-}
+  }
 
-.sweets-box-description-image {
+  .sweets-box-description-image {
   display: none;
-}
+  }
 
-.season-box-description-image {
+  .season-box-description-image {
   display: none;
-}
+  }
 
-.season-box-image-mobile {
+  .season-box-image-mobile {
   background-image: image-url("PaintingBlogBanner2.png");
   background-size: cover;
   background-position: center;
   width:  100%;
   max-width:  auto;
   padding: 130px 130px;
-}
+  }
 }
 
 /* ipad以下about下部テキスト レスポンシブ */
 @media screen and (max-width: 1280px) {
 
-.about-bottom-text-1 {
+  .about-bottom-text-1 {
   margin-top: 10px;
-}
+  }
 
 }
 
 /* Home/top レスポンシブ */
 @media screen and (max-width: 460px) {
 
-.view-all-btn {
+  .view-all-btn {
   margin: 0 auto;
-}
+  }
 
 }
 
@@ -285,44 +285,44 @@
 
 @media screen and (max-width: 575px) {
 
-.about-top-text {
+  .about-top-text {
   font-size: 20px;
-}
+  }
 
-.about-bottom-heading {
+  .about-bottom-heading {
   width: 300px;
   font-size: 20px;
-}
+  }
 
 }
 
 @media screen and (max-width: 450px) {
 
-.top-screen-message {
+  .top-screen-message {
   font-size: 14px;
-}
+  }
 
-.ben-kanji-pic {
+  .ben-kanji-pic {
   width: 180px;
   height: 180px;
-}
+  }
 
-.snack-box-description {
+  .snack-box-description {
   padding: 35px 0;
-}
+  }
 
 }
 
 @media screen and (max-width: 368px) {
 
-.top-screen-message {
+  .top-screen-message {
   font-size: 12px;
-}
+  }
 
-.ben-kanji-pic {
+  .ben-kanji-pic {
   width: 160px;
   height: 160px;
-}
+  }
 
 }
 

@@ -80,12 +80,11 @@
 
 @media screen and (max-width: 990px) {
   
-.item-show-card {
+  .item-show-card {
   width: 100%;
   margin-left: -1px;
   margin-bottom: 20px;
-}
-
+  }
 
 }
 
@@ -94,59 +93,59 @@
 @media screen and (max-width: 465px) {
 
 /* show */  
-.show-item-title {
+  .show-item-title {
   font-size: 32px;
-}  
+  }  
 
-.show-item-name {
+  .show-item-name {
   font-size: 32px; 
-}
+  }
 
-.item-show-card {
+  .item-show-card {
   width: 100%;
   margin-left: -1px;
   margin-bottom: 20px;
-}
+  }
 
-.related-snacks {
+  .related-snacks {
   width: 148px!important;
   height: 120px!important;
   position: relative;
-}
+  }
 
-.related-snacks-title {
+  .related-snacks-title {
   font-size: 15px;
-}
+  }
 
-.related-snacks-price {
+  .related-snacks-price {
   font-size: 14px;
   position: absolute;
   bottom: 0;
   right: 0;
-}
+  }
 
-.related-snacks-button {
+  .related-snacks-button {
   font-size: 12px!important;
-}
+  }
 
-/* index */
+  /* index */
 
-.card {
+  .card {
   width: 137px!important;
   height: 350px!important;
-}
+  }
 
-.card-title {
+  .card-title {
   font-size: 11px;
-}
+  }
 
-.card-text {
+  .card-text {
   font-size: 11px;
-}
+  }
 
-/* kaminari */
-.page-item {
+  /* kaminari */
+  .page-item {
   font-size: 9px;
-}
+  }
 
 }
