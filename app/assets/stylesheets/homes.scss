@@ -271,6 +271,15 @@
 
 }
 
+/* Home/top レスポンシブ */
+@media screen and (max-width: 460px) {
+
+.view-all-btn {
+  margin: 0 auto;
+}
+
+}
+
 /* 携帯レスポンシブ */
 
 
@@ -303,3 +312,17 @@
 }
 
 }
+
+@media screen and (max-width: 368px) {
+
+.top-screen-message {
+  font-size: 12px;
+}
+
+.ben-kanji-pic {
+  width: 160px;
+  height: 160px;
+}
+
+}
+
