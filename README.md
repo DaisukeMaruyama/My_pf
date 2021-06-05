@@ -28,4 +28,4 @@ https://docs.google.com/spreadsheets/d/1XTO8wr44l-dO5lT8cs_jcGGpFnoxX6MV_XUrHHf1
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+- IDE: Cloud9
